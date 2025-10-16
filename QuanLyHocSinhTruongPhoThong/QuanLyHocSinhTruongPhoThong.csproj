@@ -92,6 +92,12 @@
     <Compile Include="Views\Admins\MonHoc_UC.Designer.cs">
       <DependentUpon>MonHoc_UC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Admins\PhanCong_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Admins\PhanCong_UC.Designer.cs">
+      <DependentUpon>PhanCong_UC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Login\FormDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Admins\MonHoc_UC.resx">
       <DependentUpon>MonHoc_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Admins\PhanCong_UC.resx">
+      <DependentUpon>PhanCong_UC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Login\FormDangNhap.resx">
       <DependentUpon>FormDangNhap.cs</DependentUpon>
