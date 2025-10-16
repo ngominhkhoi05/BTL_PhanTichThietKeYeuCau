@@ -68,6 +68,30 @@
     <Compile Include="Index.Designer.cs">
       <DependentUpon>Index.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Admins\GiaoVien_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Admins\GiaoVien_UC.Designer.cs">
+      <DependentUpon>GiaoVien_UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admins\HocSinh_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Admins\HocSinh_UC.Designer.cs">
+      <DependentUpon>HocSinh_UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admins\Lophoc_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Admins\Lophoc_UC.Designer.cs">
+      <DependentUpon>Lophoc_UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admins\MonHoc_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Admins\MonHoc_UC.Designer.cs">
+      <DependentUpon>MonHoc_UC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Login\FormDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,14 +122,32 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLHSTHDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserControl1.cs">
+    <Compile Include="Views\Chung\UserControl1.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UserControl1.Designer.cs">
+    <Compile Include="Views\Chung\UserControl1.Designer.cs">
       <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admins\NienKhoa_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Admins\NienKhoa_UC.Designer.cs">
+      <DependentUpon>NienKhoa_UC.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Index.resx">
       <DependentUpon>Index.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Admins\GiaoVien_UC.resx">
+      <DependentUpon>GiaoVien_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Admins\HocSinh_UC.resx">
+      <DependentUpon>HocSinh_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Admins\Lophoc_UC.resx">
+      <DependentUpon>Lophoc_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Admins\MonHoc_UC.resx">
+      <DependentUpon>MonHoc_UC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Login\FormDangNhap.resx">
       <DependentUpon>FormDangNhap.cs</DependentUpon>
@@ -120,8 +162,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Views\UserControl1.resx">
+    <EmbeddedResource Include="Views\Chung\UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Admins\NienKhoa_UC.resx">
+      <DependentUpon>NienKhoa_UC.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -155,7 +200,6 @@
     <None Include="Resources\imglogout.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Admin\" />
     <Folder Include="Views\GiaoVienBoMon\" />
     <Folder Include="Views\GiaoVien\" />
   </ItemGroup>
