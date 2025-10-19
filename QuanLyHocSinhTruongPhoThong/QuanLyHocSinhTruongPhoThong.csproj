@@ -98,17 +98,35 @@
     <Compile Include="Views\Admins\PhanCong_UC.Designer.cs">
       <DependentUpon>PhanCong_UC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Admins\TaiKhoan_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Admins\TaiKhoan_UC.Designer.cs">
+      <DependentUpon>TaiKhoan_UC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Admins\ThoiKhoaBieu_UC.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Views\Admins\ThoiKhoaBieu_UC.Designer.cs">
       <DependentUpon>ThoiKhoaBieu_UC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\GiaoVienBoMons\NhapDiem_UC.cs">
+    <Compile Include="Views\GiaoViens\GiaoVienBoMons\NhapDiem_UC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\GiaoVienBoMons\NhapDiem_UC.Designer.cs">
+    <Compile Include="Views\GiaoViens\GiaoVienBoMons\NhapDiem_UC.Designer.cs">
       <DependentUpon>NhapDiem_UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GiaoViens\GiaoVienChuNhiems\DanhGiaHanhKiem_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\GiaoViens\GiaoVienChuNhiems\DanhGiaHanhKiem_UC.Designer.cs">
+      <DependentUpon>DanhGiaHanhKiem_UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GiaoViens\GiaoVienChuNhiems\KhenThuongKyLuat_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\GiaoViens\GiaoVienChuNhiems\KhenThuongKyLuat_UC.Designer.cs">
+      <DependentUpon>KhenThuongKyLuat_UC.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Login\FormDangNhap.cs">
       <SubType>Form</SubType>
@@ -170,11 +188,20 @@
     <EmbeddedResource Include="Views\Admins\PhanCong_UC.resx">
       <DependentUpon>PhanCong_UC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Admins\TaiKhoan_UC.resx">
+      <DependentUpon>TaiKhoan_UC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Admins\ThoiKhoaBieu_UC.resx">
       <DependentUpon>ThoiKhoaBieu_UC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\GiaoVienBoMons\NhapDiem_UC.resx">
+    <EmbeddedResource Include="Views\GiaoViens\GiaoVienBoMons\NhapDiem_UC.resx">
       <DependentUpon>NhapDiem_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\GiaoViens\GiaoVienChuNhiems\DanhGiaHanhKiem_UC.resx">
+      <DependentUpon>DanhGiaHanhKiem_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\GiaoViens\GiaoVienChuNhiems\KhenThuongKyLuat_UC.resx">
+      <DependentUpon>KhenThuongKyLuat_UC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Login\FormDangNhap.resx">
       <DependentUpon>FormDangNhap.cs</DependentUpon>
@@ -226,9 +253,7 @@
   <ItemGroup>
     <None Include="Resources\imglogout.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\GiaoVien\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\iconThongBaoXanh.png" />
   </ItemGroup>
