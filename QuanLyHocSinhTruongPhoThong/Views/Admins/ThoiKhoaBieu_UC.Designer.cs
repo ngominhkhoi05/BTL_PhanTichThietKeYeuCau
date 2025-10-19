@@ -28,100 +28,100 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.lvTKB = new System.Windows.Forms.ListView();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.lblLop = new System.Windows.Forms.Label();
+            this.cbbLop = new System.Windows.Forms.ComboBox();
+            this.cbbGV = new System.Windows.Forms.ComboBox();
+            this.btnTaoTKB = new System.Windows.Forms.Button();
+            this.btnXacNhan = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // listView1
+            // lvTKB
             // 
-            this.listView1.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView1.FullRowSelect = true;
-            this.listView1.GridLines = true;
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(67, 171);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(846, 417);
-            this.listView1.TabIndex = 12;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.lvTKB.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvTKB.FullRowSelect = true;
+            this.lvTKB.GridLines = true;
+            this.lvTKB.HideSelection = false;
+            this.lvTKB.Location = new System.Drawing.Point(67, 171);
+            this.lvTKB.Name = "lvTKB";
+            this.lvTKB.Size = new System.Drawing.Size(846, 417);
+            this.lvTKB.TabIndex = 12;
+            this.lvTKB.UseCompatibleStateImageBehavior = false;
+            this.lvTKB.View = System.Windows.Forms.View.Details;
             // 
-            // label1
+            // lblTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(312, 38);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(318, 40);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "THỜI KHOÁ BIỂU";
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Times New Roman", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(312, 38);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(318, 40);
+            this.lblTitle.TabIndex = 11;
+            this.lblTitle.Text = "THỜI KHOÁ BIỂU";
             // 
-            // label2
+            // lblLop
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.SystemColors.Control;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(63, 121);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 24);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "Lớp 10A3";
+            this.lblLop.AutoSize = true;
+            this.lblLop.BackColor = System.Drawing.SystemColors.Control;
+            this.lblLop.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLop.Location = new System.Drawing.Point(63, 121);
+            this.lblLop.Name = "lblLop";
+            this.lblLop.Size = new System.Drawing.Size(100, 24);
+            this.lblLop.TabIndex = 13;
+            this.lblLop.Text = "Lớp 10A3";
             // 
-            // comboBox1
+            // cbbLop
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(578, 116);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(160, 29);
-            this.comboBox1.TabIndex = 14;
-            this.comboBox1.Text = "Lớp";
+            this.cbbLop.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbLop.FormattingEnabled = true;
+            this.cbbLop.Location = new System.Drawing.Point(578, 116);
+            this.cbbLop.Name = "cbbLop";
+            this.cbbLop.Size = new System.Drawing.Size(160, 29);
+            this.cbbLop.TabIndex = 14;
+            this.cbbLop.Text = "Lớp";
             // 
-            // comboBox2
+            // cbbGV
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(753, 116);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(160, 29);
-            this.comboBox2.TabIndex = 15;
-            this.comboBox2.Text = "Giáo viên";
+            this.cbbGV.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbGV.FormattingEnabled = true;
+            this.cbbGV.Location = new System.Drawing.Point(753, 116);
+            this.cbbGV.Name = "cbbGV";
+            this.cbbGV.Size = new System.Drawing.Size(160, 29);
+            this.cbbGV.TabIndex = 15;
+            this.cbbGV.Text = "Giáo viên";
             // 
-            // button1
+            // btnTaoTKB
             // 
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(247, 612);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(207, 39);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "Tạo thời khoá biểu";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnTaoTKB.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTaoTKB.Location = new System.Drawing.Point(247, 612);
+            this.btnTaoTKB.Name = "btnTaoTKB";
+            this.btnTaoTKB.Size = new System.Drawing.Size(207, 39);
+            this.btnTaoTKB.TabIndex = 18;
+            this.btnTaoTKB.Text = "Tạo thời khoá biểu";
+            this.btnTaoTKB.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnXacNhan
             // 
-            this.button4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(520, 612);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(122, 39);
-            this.button4.TabIndex = 17;
-            this.button4.Text = "Xác nhận";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnXacNhan.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXacNhan.Location = new System.Drawing.Point(520, 612);
+            this.btnXacNhan.Name = "btnXacNhan";
+            this.btnXacNhan.Size = new System.Drawing.Size(122, 39);
+            this.btnXacNhan.TabIndex = 17;
+            this.btnXacNhan.Text = "Xác nhận";
+            this.btnXacNhan.UseVisualStyleBackColor = true;
             // 
             // ThoiKhoaBieu_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.listView1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnTaoTKB);
+            this.Controls.Add(this.btnXacNhan);
+            this.Controls.Add(this.cbbGV);
+            this.Controls.Add(this.cbbLop);
+            this.Controls.Add(this.lblLop);
+            this.Controls.Add(this.lvTKB);
+            this.Controls.Add(this.lblTitle);
             this.Name = "ThoiKhoaBieu_UC";
             this.Size = new System.Drawing.Size(972, 673);
             this.ResumeLayout(false);
@@ -130,12 +130,12 @@
         }
 
         #endregion
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.ListView lvTKB;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblLop;
+        private System.Windows.Forms.ComboBox cbbLop;
+        private System.Windows.Forms.ComboBox cbbGV;
+        private System.Windows.Forms.Button btnTaoTKB;
+        private System.Windows.Forms.Button btnXacNhan;
     }
 }

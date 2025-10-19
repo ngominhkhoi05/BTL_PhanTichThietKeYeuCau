@@ -30,7 +30,7 @@
         {
             this.label8 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnInfo = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -43,14 +43,14 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lblTaiKhoan = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.pnInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // label8
@@ -76,31 +76,31 @@
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             // 
-            // panel1
+            // pnInfo
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.textBox6);
-            this.panel1.Controls.Add(this.dateTimePicker1);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.comboBox1);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.textBox5);
-            this.panel1.Controls.Add(this.textBox4);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Location = new System.Drawing.Point(126, 101);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(720, 307);
-            this.panel1.TabIndex = 33;
+            this.pnInfo.BackColor = System.Drawing.Color.White;
+            this.pnInfo.Controls.Add(this.label9);
+            this.pnInfo.Controls.Add(this.textBox6);
+            this.pnInfo.Controls.Add(this.dateTimePicker1);
+            this.pnInfo.Controls.Add(this.label5);
+            this.pnInfo.Controls.Add(this.comboBox1);
+            this.pnInfo.Controls.Add(this.label3);
+            this.pnInfo.Controls.Add(this.textBox5);
+            this.pnInfo.Controls.Add(this.textBox4);
+            this.pnInfo.Controls.Add(this.textBox3);
+            this.pnInfo.Controls.Add(this.textBox2);
+            this.pnInfo.Controls.Add(this.textBox1);
+            this.pnInfo.Controls.Add(this.label2);
+            this.pnInfo.Controls.Add(this.lblTaiKhoan);
+            this.pnInfo.Controls.Add(this.button1);
+            this.pnInfo.Controls.Add(this.button4);
+            this.pnInfo.Controls.Add(this.label6);
+            this.pnInfo.Controls.Add(this.label7);
+            this.pnInfo.Controls.Add(this.label4);
+            this.pnInfo.Location = new System.Drawing.Point(126, 101);
+            this.pnInfo.Name = "pnInfo";
+            this.pnInfo.Size = new System.Drawing.Size(720, 307);
+            this.pnInfo.TabIndex = 33;
             // 
             // label9
             // 
@@ -209,16 +209,16 @@
             this.label2.Text = "Niên khoá";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label10
+            // lblTaiKhoan
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(51, 52);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(111, 21);
-            this.label10.TabIndex = 29;
-            this.label10.Text = "Tên tài khoản";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblTaiKhoan.AutoSize = true;
+            this.lblTaiKhoan.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTaiKhoan.Location = new System.Drawing.Point(51, 52);
+            this.lblTaiKhoan.Name = "lblTaiKhoan";
+            this.lblTaiKhoan.Size = new System.Drawing.Size(111, 21);
+            this.lblTaiKhoan.TabIndex = 29;
+            this.lblTaiKhoan.Text = "Tên tài khoản";
+            this.lblTaiKhoan.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // button1
             // 
@@ -273,15 +273,15 @@
             this.label4.Text = "Mật khẩu";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label1
+            // lblTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(286, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(387, 40);
-            this.label1.TabIndex = 32;
-            this.label1.Text = "QUẢN LÝ TÀI KHOẢN";
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Times New Roman", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(286, 23);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(387, 40);
+            this.lblTitle.TabIndex = 32;
+            this.lblTitle.Text = "QUẢN LÝ TÀI KHOẢN";
             // 
             // TaiKhoan_UC
             // 
@@ -289,12 +289,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.label8);
             this.Controls.Add(this.listView1);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pnInfo);
+            this.Controls.Add(this.lblTitle);
             this.Name = "TaiKhoan_UC";
             this.Size = new System.Drawing.Size(972, 673);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnInfo.ResumeLayout(false);
+            this.pnInfo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -304,7 +304,7 @@
 
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnInfo;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
@@ -317,12 +317,12 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblTaiKhoan;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTitle;
     }
 }

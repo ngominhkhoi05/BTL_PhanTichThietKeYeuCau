@@ -134,30 +134,13 @@
     <Compile Include="Views\Login\FormDangNhap.Designer.cs">
       <DependentUpon>FormDangNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Account.cs" />
-    <Compile Include="Models\AppDbContext.cs" />
-    <Compile Include="Models\BangDiem.cs" />
-    <Compile Include="Models\GiaoVien.cs" />
-    <Compile Include="Models\HanhKiem.cs" />
-    <Compile Include="Models\HocKy.cs" />
-    <Compile Include="Models\HocSinh.cs" />
-    <Compile Include="Models\HocSinh_PhuHuynh.cs" />
-    <Compile Include="Models\KhenThuongKyLuat.cs" />
-    <Compile Include="Models\Lop.cs" />
-    <Compile Include="Models\MonHoc.cs" />
-    <Compile Include="Models\NienKhoa.cs" />
-    <Compile Include="Models\PhanCongGiangDay.cs" />
-    <Compile Include="Models\PhuHuynh.cs" />
-    <Compile Include="Models\Role.cs" />
-    <Compile Include="Models\sysdiagram.cs" />
-    <Compile Include="Models\ThoiKhoaBieu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\Chung\UserControl1.cs">
+    <Compile Include="Views\Chung\BangDieuKhien_UC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\Chung\UserControl1.Designer.cs">
-      <DependentUpon>UserControl1.cs</DependentUpon>
+    <Compile Include="Views\Chung\BangDieuKhien_UC.Designer.cs">
+      <DependentUpon>BangDieuKhien_UC.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Admins\NienKhoa_UC.cs">
       <SubType>UserControl</SubType>
@@ -211,8 +194,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Views\Chung\UserControl1.resx">
-      <DependentUpon>UserControl1.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Chung\BangDieuKhien_UC.resx">
+      <DependentUpon>BangDieuKhien_UC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Admins\NienKhoa_UC.resx">
       <DependentUpon>NienKhoa_UC.cs</DependentUpon>

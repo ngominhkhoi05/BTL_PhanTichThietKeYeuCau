@@ -26,5 +26,10 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
         {
 
         }
+
+        private void lblListGV_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

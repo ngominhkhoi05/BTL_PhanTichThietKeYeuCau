@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QuanLyHocSinhTruongPhoThong.Views
 {
-    public partial class UserControl1 : UserControl
+    public partial class BangDieuKhien_UC : UserControl
     {
-        public UserControl1()
+        public BangDieuKhien_UC()
         {
             InitializeComponent();
         }

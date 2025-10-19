@@ -53,7 +53,7 @@
             this.button12 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.userControl11 = new QuanLyHocSinhTruongPhoThong.Views.UserControl1();
+            this.userControl11 = new QuanLyHocSinhTruongPhoThong.Views.BangDieuKhien_UC();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
@@ -454,6 +454,6 @@
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private Views.UserControl1 userControl11;
+        private Views.BangDieuKhien_UC userControl11;
     }
 }
