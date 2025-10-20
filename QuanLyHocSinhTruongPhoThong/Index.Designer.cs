@@ -32,7 +32,6 @@
             this.lblMKVN = new System.Windows.Forms.Label();
             this.txtTenNguoiDung = new System.Windows.Forms.TextBox();
             this.pnInfo = new System.Windows.Forms.Panel();
-            this.ptrbAnhDaiDien = new System.Windows.Forms.PictureBox();
             this.txtVaiTro = new System.Windows.Forms.TextBox();
             this.btnGiangDay = new System.Windows.Forms.Button();
             this.btnMon = new System.Windows.Forms.Button();
@@ -50,13 +49,18 @@
             this.btnBaoCao = new System.Windows.Forms.Button();
             this.btnTaiKhoan = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.pnHost = new System.Windows.Forms.Panel();
+            this.txtTimKiem = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnThongbao = new System.Windows.Forms.Button();
             this.btnDangNhap = new System.Windows.Forms.Button();
-            this.pnHost = new System.Windows.Forms.Panel();
+            this.ptrbAnhDaiDien = new System.Windows.Forms.PictureBox();
+            this.lblTimKiem = new System.Windows.Forms.Label();
             this.pnInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptrbAnhDaiDien)).BeginInit();
             this.flbnScrollBar.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptrbAnhDaiDien)).BeginInit();
             this.SuspendLayout();
             // 
             // lblMKVN
@@ -94,16 +98,6 @@
             this.pnInfo.Name = "pnInfo";
             this.pnInfo.Size = new System.Drawing.Size(252, 91);
             this.pnInfo.TabIndex = 4;
-            // 
-            // ptrbAnhDaiDien
-            // 
-            this.ptrbAnhDaiDien.Image = ((System.Drawing.Image)(resources.GetObject("ptrbAnhDaiDien.Image")));
-            this.ptrbAnhDaiDien.Location = new System.Drawing.Point(11, 15);
-            this.ptrbAnhDaiDien.Name = "ptrbAnhDaiDien";
-            this.ptrbAnhDaiDien.Size = new System.Drawing.Size(60, 59);
-            this.ptrbAnhDaiDien.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ptrbAnhDaiDien.TabIndex = 0;
-            this.ptrbAnhDaiDien.TabStop = false;
             // 
             // txtVaiTro
             // 
@@ -363,12 +357,41 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.DarkCyan;
+            this.panel3.Controls.Add(this.lblTimKiem);
+            this.panel3.Controls.Add(this.pictureBox1);
+            this.panel3.Controls.Add(this.txtTimKiem);
             this.panel3.Controls.Add(this.btnThongbao);
             this.panel3.Controls.Add(this.btnDangNhap);
             this.panel3.Location = new System.Drawing.Point(247, -5);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(972, 64);
             this.panel3.TabIndex = 0;
+            // 
+            // pnHost
+            // 
+            this.pnHost.Location = new System.Drawing.Point(247, 59);
+            this.pnHost.Name = "pnHost";
+            this.pnHost.Size = new System.Drawing.Size(972, 673);
+            this.pnHost.TabIndex = 5;
+            // 
+            // txtTimKiem
+            // 
+            this.txtTimKiem.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTimKiem.Location = new System.Drawing.Point(641, 18);
+            this.txtTimKiem.Name = "txtTimKiem";
+            this.txtTimKiem.Size = new System.Drawing.Size(189, 29);
+            this.txtTimKiem.TabIndex = 2;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.Image = global::QuanLyHocSinhTruongPhoThong.Properties.Resources.imgFind1;
+            this.pictureBox1.Location = new System.Drawing.Point(805, 19);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(25, 26);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // btnThongbao
             // 
@@ -396,12 +419,26 @@
             this.btnDangNhap.TabIndex = 0;
             this.btnDangNhap.UseVisualStyleBackColor = true;
             // 
-            // pnHost
+            // ptrbAnhDaiDien
             // 
-            this.pnHost.Location = new System.Drawing.Point(247, 59);
-            this.pnHost.Name = "pnHost";
-            this.pnHost.Size = new System.Drawing.Size(972, 673);
-            this.pnHost.TabIndex = 5;
+            this.ptrbAnhDaiDien.Image = ((System.Drawing.Image)(resources.GetObject("ptrbAnhDaiDien.Image")));
+            this.ptrbAnhDaiDien.Location = new System.Drawing.Point(11, 15);
+            this.ptrbAnhDaiDien.Name = "ptrbAnhDaiDien";
+            this.ptrbAnhDaiDien.Size = new System.Drawing.Size(60, 59);
+            this.ptrbAnhDaiDien.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ptrbAnhDaiDien.TabIndex = 0;
+            this.ptrbAnhDaiDien.TabStop = false;
+            // 
+            // lblTimKiem
+            // 
+            this.lblTimKiem.AutoSize = true;
+            this.lblTimKiem.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimKiem.ForeColor = System.Drawing.Color.White;
+            this.lblTimKiem.Location = new System.Drawing.Point(548, 23);
+            this.lblTimKiem.Name = "lblTimKiem";
+            this.lblTimKiem.Size = new System.Drawing.Size(82, 21);
+            this.lblTimKiem.TabIndex = 4;
+            this.lblTimKiem.Text = "Tìm kiếm";
             // 
             // Index
             // 
@@ -418,9 +455,11 @@
             this.Load += new System.EventHandler(this.Index_Load);
             this.pnInfo.ResumeLayout(false);
             this.pnInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptrbAnhDaiDien)).EndInit();
             this.flbnScrollBar.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptrbAnhDaiDien)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -452,5 +491,8 @@
         private System.Windows.Forms.Button btnThongbao;
         private System.Windows.Forms.PictureBox ptrbAnhDaiDien;
         private System.Windows.Forms.Panel pnHost;
+        private System.Windows.Forms.TextBox txtTimKiem;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblTimKiem;
     }
 }

@@ -69,6 +69,22 @@
       <DependentUpon>Index.cs</DependentUpon>
     </Compile>
     <Compile Include="IReloadable.cs" />
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\AppDbContext.cs" />
+    <Compile Include="Models\BangDiem.cs" />
+    <Compile Include="Models\GiaoVien.cs" />
+    <Compile Include="Models\HanhKiem.cs" />
+    <Compile Include="Models\HocKy.cs" />
+    <Compile Include="Models\HocSinh.cs" />
+    <Compile Include="Models\HocSinh_PhuHuynh.cs" />
+    <Compile Include="Models\KhenThuongKyLuat.cs" />
+    <Compile Include="Models\Lop.cs" />
+    <Compile Include="Models\MonHoc.cs" />
+    <Compile Include="Models\NienKhoa.cs" />
+    <Compile Include="Models\PhanCongGiangDay.cs" />
+    <Compile Include="Models\PhuHuynh.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\ThoiKhoaBieu.cs" />
     <Compile Include="NavManager.cs" />
     <Compile Include="Views\Admins\GiaoVien_UC.cs">
       <SubType>UserControl</SubType>
@@ -130,6 +146,12 @@
     <Compile Include="Views\GiaoViens\GiaoVienChuNhiems\KhenThuongKyLuat_UC.Designer.cs">
       <DependentUpon>KhenThuongKyLuat_UC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\GiaoViens\GiaoVienChuNhiems\PhuHuynh_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\GiaoViens\GiaoVienChuNhiems\PhuHuynh_UC.Designer.cs">
+      <DependentUpon>PhuHuynh_UC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Login\FormDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +205,9 @@
     <EmbeddedResource Include="Views\GiaoViens\GiaoVienChuNhiems\KhenThuongKyLuat_UC.resx">
       <DependentUpon>KhenThuongKyLuat_UC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\GiaoViens\GiaoVienChuNhiems\PhuHuynh_UC.resx">
+      <DependentUpon>PhuHuynh_UC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Login\FormDangNhap.resx">
       <DependentUpon>FormDangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -222,7 +247,9 @@
   <ItemGroup>
     <None Include="Resources\imglogout.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\imgFind.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\iconThongBaoXanh.png" />
   </ItemGroup>
@@ -253,6 +280,10 @@
   <ItemGroup>
     <None Include="Resources\iconphantram.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgFind.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

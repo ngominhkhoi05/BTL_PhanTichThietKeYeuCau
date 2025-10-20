@@ -143,6 +143,26 @@ namespace QuanLyHocSinhTruongPhoThong.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap imgFind {
+            get {
+                object obj = ResourceManager.GetObject("imgFind", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgFind1 {
+            get {
+                object obj = ResourceManager.GetObject("imgFind1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap imgHS {
             get {
                 object obj = ResourceManager.GetObject("imgHS", resourceCulture);

@@ -35,7 +35,7 @@ namespace QuanLyHocSinhTruongPhoThong
             _nav.Register("LopHoc", () => new Lophoc_UC());
             _nav.Register("GiaoVien", () => new GiaoVien_UC());
             _nav.Register("HocSinh", () => new HocSinh_UC());
-            //_nav.Register("PhuHuynh", () => new PhuHuynh_UC());
+            _nav.Register("PhuHuynh", () => new PhuHuynh_UC());
             _nav.Register("MonHoc", () => new MonHoc_UC());
             _nav.Register("PhanCong", () => new PhanCong_UC());
             _nav.Register("TKB", () => new ThoiKhoaBieu_UC());
