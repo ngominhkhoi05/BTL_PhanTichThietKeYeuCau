@@ -68,6 +68,8 @@
     <Compile Include="Index.Designer.cs">
       <DependentUpon>Index.cs</DependentUpon>
     </Compile>
+    <Compile Include="IReloadable.cs" />
+    <Compile Include="NavManager.cs" />
     <Compile Include="Views\Admins\GiaoVien_UC.cs">
       <SubType>UserControl</SubType>
     </Compile>
