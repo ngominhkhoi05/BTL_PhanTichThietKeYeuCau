@@ -44,6 +44,7 @@ namespace QuanLyHocSinhTruongPhoThong
             _nav.Register("KhenThuong", () => new KhenThuongKyLuat_UC());
             //_nav.Register("TraCuu", () => new TraCuu_UC());
             _nav.Register("TaiKhoan", () => new TaiKhoan_UC());
+            _nav.Register("HanhKiem", () => new DanhGiaHanhKiem_UC());
         }
 
         private void Index_Load(object sender, EventArgs e)
@@ -114,6 +115,26 @@ namespace QuanLyHocSinhTruongPhoThong
         private void btnNhapDiem_Click(object sender, EventArgs e)
         {
             _nav.Show("NhapDiem");
+        }
+
+        private void btnHanhKiem_Click(object sender, EventArgs e)
+        {
+            _nav.Show("HanhKiem");
+        }
+
+        private void btnKhenThuong_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnBaoCao_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTaiKhoan_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -32,6 +32,7 @@
             this.lblMKVN = new System.Windows.Forms.Label();
             this.txtTenNguoiDung = new System.Windows.Forms.TextBox();
             this.pnInfo = new System.Windows.Forms.Panel();
+            this.ptrbAnhDaiDien = new System.Windows.Forms.PictureBox();
             this.txtVaiTro = new System.Windows.Forms.TextBox();
             this.btnGiangDay = new System.Windows.Forms.Button();
             this.btnMon = new System.Windows.Forms.Button();
@@ -49,18 +50,17 @@
             this.btnBaoCao = new System.Windows.Forms.Button();
             this.btnTaiKhoan = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.pnHost = new System.Windows.Forms.Panel();
-            this.txtTimKiem = new System.Windows.Forms.TextBox();
+            this.lblTimKiem = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.btnThongbao = new System.Windows.Forms.Button();
             this.btnDangNhap = new System.Windows.Forms.Button();
-            this.ptrbAnhDaiDien = new System.Windows.Forms.PictureBox();
-            this.lblTimKiem = new System.Windows.Forms.Label();
+            this.pnHost = new System.Windows.Forms.Panel();
             this.pnInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptrbAnhDaiDien)).BeginInit();
             this.flbnScrollBar.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptrbAnhDaiDien)).BeginInit();
             this.SuspendLayout();
             // 
             // lblMKVN
@@ -98,6 +98,16 @@
             this.pnInfo.Name = "pnInfo";
             this.pnInfo.Size = new System.Drawing.Size(252, 91);
             this.pnInfo.TabIndex = 4;
+            // 
+            // ptrbAnhDaiDien
+            // 
+            this.ptrbAnhDaiDien.Image = ((System.Drawing.Image)(resources.GetObject("ptrbAnhDaiDien.Image")));
+            this.ptrbAnhDaiDien.Location = new System.Drawing.Point(11, 15);
+            this.ptrbAnhDaiDien.Name = "ptrbAnhDaiDien";
+            this.ptrbAnhDaiDien.Size = new System.Drawing.Size(60, 59);
+            this.ptrbAnhDaiDien.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ptrbAnhDaiDien.TabIndex = 0;
+            this.ptrbAnhDaiDien.TabStop = false;
             // 
             // txtVaiTro
             // 
@@ -308,6 +318,7 @@
             this.btnHanhKiem.Text = "Đánh giá hạnh kiểm";
             this.btnHanhKiem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHanhKiem.UseVisualStyleBackColor = false;
+            this.btnHanhKiem.Click += new System.EventHandler(this.btnHanhKiem_Click);
             // 
             // btnKhenThuong
             // 
@@ -323,6 +334,7 @@
             this.btnKhenThuong.Text = "Khen thưởng / Kỉ luật";
             this.btnKhenThuong.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnKhenThuong.UseVisualStyleBackColor = false;
+            this.btnKhenThuong.Click += new System.EventHandler(this.btnKhenThuong_Click);
             // 
             // btnBaoCao
             // 
@@ -338,6 +350,7 @@
             this.btnBaoCao.Text = "Tra cứu và báo cáo";
             this.btnBaoCao.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBaoCao.UseVisualStyleBackColor = false;
+            this.btnBaoCao.Click += new System.EventHandler(this.btnBaoCao_Click);
             // 
             // btnTaiKhoan
             // 
@@ -353,6 +366,7 @@
             this.btnTaiKhoan.Text = "Tài khoản người dùng";
             this.btnTaiKhoan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTaiKhoan.UseVisualStyleBackColor = false;
+            this.btnTaiKhoan.Click += new System.EventHandler(this.btnTaiKhoan_Click);
             // 
             // panel3
             // 
@@ -367,20 +381,16 @@
             this.panel3.Size = new System.Drawing.Size(972, 64);
             this.panel3.TabIndex = 0;
             // 
-            // pnHost
+            // lblTimKiem
             // 
-            this.pnHost.Location = new System.Drawing.Point(247, 59);
-            this.pnHost.Name = "pnHost";
-            this.pnHost.Size = new System.Drawing.Size(972, 673);
-            this.pnHost.TabIndex = 5;
-            // 
-            // txtTimKiem
-            // 
-            this.txtTimKiem.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTimKiem.Location = new System.Drawing.Point(641, 18);
-            this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(189, 29);
-            this.txtTimKiem.TabIndex = 2;
+            this.lblTimKiem.AutoSize = true;
+            this.lblTimKiem.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimKiem.ForeColor = System.Drawing.Color.White;
+            this.lblTimKiem.Location = new System.Drawing.Point(548, 23);
+            this.lblTimKiem.Name = "lblTimKiem";
+            this.lblTimKiem.Size = new System.Drawing.Size(82, 21);
+            this.lblTimKiem.TabIndex = 4;
+            this.lblTimKiem.Text = "Tìm kiếm";
             // 
             // pictureBox1
             // 
@@ -392,6 +402,14 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
+            // 
+            // txtTimKiem
+            // 
+            this.txtTimKiem.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTimKiem.Location = new System.Drawing.Point(641, 18);
+            this.txtTimKiem.Name = "txtTimKiem";
+            this.txtTimKiem.Size = new System.Drawing.Size(189, 29);
+            this.txtTimKiem.TabIndex = 2;
             // 
             // btnThongbao
             // 
@@ -419,26 +437,12 @@
             this.btnDangNhap.TabIndex = 0;
             this.btnDangNhap.UseVisualStyleBackColor = true;
             // 
-            // ptrbAnhDaiDien
+            // pnHost
             // 
-            this.ptrbAnhDaiDien.Image = ((System.Drawing.Image)(resources.GetObject("ptrbAnhDaiDien.Image")));
-            this.ptrbAnhDaiDien.Location = new System.Drawing.Point(11, 15);
-            this.ptrbAnhDaiDien.Name = "ptrbAnhDaiDien";
-            this.ptrbAnhDaiDien.Size = new System.Drawing.Size(60, 59);
-            this.ptrbAnhDaiDien.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ptrbAnhDaiDien.TabIndex = 0;
-            this.ptrbAnhDaiDien.TabStop = false;
-            // 
-            // lblTimKiem
-            // 
-            this.lblTimKiem.AutoSize = true;
-            this.lblTimKiem.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimKiem.ForeColor = System.Drawing.Color.White;
-            this.lblTimKiem.Location = new System.Drawing.Point(548, 23);
-            this.lblTimKiem.Name = "lblTimKiem";
-            this.lblTimKiem.Size = new System.Drawing.Size(82, 21);
-            this.lblTimKiem.TabIndex = 4;
-            this.lblTimKiem.Text = "Tìm kiếm";
+            this.pnHost.Location = new System.Drawing.Point(247, 59);
+            this.pnHost.Name = "pnHost";
+            this.pnHost.Size = new System.Drawing.Size(972, 673);
+            this.pnHost.TabIndex = 5;
             // 
             // Index
             // 
@@ -455,11 +459,11 @@
             this.Load += new System.EventHandler(this.Index_Load);
             this.pnInfo.ResumeLayout(false);
             this.pnInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptrbAnhDaiDien)).EndInit();
             this.flbnScrollBar.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptrbAnhDaiDien)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

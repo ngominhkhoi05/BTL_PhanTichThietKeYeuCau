@@ -16,5 +16,20 @@ namespace QuanLyHocSinhTruongPhoThong.Views
         {
             InitializeComponent();
         }
+
+        private void lblTenGV_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblNienKhoa_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
