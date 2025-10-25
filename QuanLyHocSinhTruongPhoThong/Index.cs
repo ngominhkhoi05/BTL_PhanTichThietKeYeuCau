@@ -49,14 +49,14 @@ namespace QuanLyHocSinhTruongPhoThong
 
         private void Index_Load(object sender, EventArgs e)
         {
-            using (var dlg = new FormDangNhap())
-            {
-                var result = dlg.ShowDialog(this);
-                if (result == DialogResult.OK)
-                {
+            //using (var dlg = new FormDangNhap())
+            //{
+            //    var result = dlg.ShowDialog(this);
+            //    if (result == DialogResult.OK)
+            //    {
 
-                }
-            }
+            //    }
+            //}
             flbnScrollBar.AutoScroll = true;
             flbnScrollBar.FlowDirection = FlowDirection.TopDown;
             flbnScrollBar.WrapContents = false;

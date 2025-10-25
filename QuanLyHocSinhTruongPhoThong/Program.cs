@@ -16,7 +16,21 @@ namespace QuanLyHocSinhTruongPhoThong
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Index());
+
+            // Mở form đăng nhập trước
+            using (FormDangNhap login = new FormDangNhap())
+            {
+                if (login.ShowDialog() == DialogResult.OK)
+                {
+                    // Nếu đăng nhập OK → mở form chính
+                    Application.Run(new Index());
+                }
+                else
+                {
+                    // Nếu bấm X hoặc đăng nhập sai → thoát chương trình
+                    Application.Exit();
+                }
+            }
         }
     }
 }

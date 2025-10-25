@@ -13,7 +13,7 @@ namespace QuanLyHocSinhTruongPhoThong.Views
 {
     public partial class BangDieuKhien_UC : UserControl
     {
-        public AppDbContext context=new AppDbContext();
+        //public AppDbContext context=new AppDbContext();
         public BangDieuKhien_UC()
         {
             InitializeComponent();
@@ -26,11 +26,13 @@ namespace QuanLyHocSinhTruongPhoThong.Views
         }
         public int getSoluongHocSinh()
         {
-            return context.HocSinhs.Count();
+            //return context.HocSinhs.Count();
+            return 0;
         }
         public int getSoluongGV()
         {
-            return context.GiaoViens.Count();
+            //return context.GiaoViens.Count();
+            return 0;
         }
     }
 }

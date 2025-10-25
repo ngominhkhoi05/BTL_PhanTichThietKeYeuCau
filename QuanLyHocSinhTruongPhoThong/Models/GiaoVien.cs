@@ -38,6 +38,9 @@ namespace QuanLyHocSinhTruongPhoThong.Models
         [StringLength(200)]
         public string Email { get; set; }
 
+        [StringLength(200)]
+        public string DiaChi { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Account> Accounts { get; set; }
 

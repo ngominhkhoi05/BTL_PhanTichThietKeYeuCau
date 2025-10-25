@@ -32,5 +32,23 @@ namespace QuanLyHocSinhTruongPhoThong
             }
         }
 
+        private void btnDangNhap_Click(object sender, EventArgs e)
+        {
+            // Giả sử bạn kiểm tra tài khoản ở đây
+            //string user = txtUser.Text;
+            //string pass = txtPassword.Text;
+
+            if (true) // ví dụ
+            {
+                // Đăng nhập thành công
+                this.DialogResult = DialogResult.OK;
+                this.Close(); // đóng form đăng nhập
+            }
+            else
+            {
+                MessageBox.Show("Sai tài khoản hoặc mật khẩu!", "Đăng nhập thất bại",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

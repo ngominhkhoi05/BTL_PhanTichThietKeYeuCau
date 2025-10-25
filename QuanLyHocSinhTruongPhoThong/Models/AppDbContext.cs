@@ -8,7 +8,7 @@ namespace QuanLyHocSinhTruongPhoThong.Models
     public partial class AppDbContext : DbContext
     {
         public AppDbContext()
-            : base("name=ApplicationDbContext")
+            : base("name=AppDbContext")
         {
         }
 
