@@ -64,6 +64,7 @@
             this.lvGiaoVien.TabIndex = 9;
             this.lvGiaoVien.UseCompatibleStateImageBehavior = false;
             this.lvGiaoVien.View = System.Windows.Forms.View.Details;
+            this.lvGiaoVien.SelectedIndexChanged += new System.EventHandler(this.lvGiaoVien_SelectedIndexChanged);
             // 
             // lblTitle
             // 
@@ -124,12 +125,13 @@
             // btnClear
             // 
             this.btnClear.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(644, 207);
+            this.btnClear.Location = new System.Drawing.Point(644, 212);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(122, 39);
             this.btnClear.TabIndex = 25;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // txtmaGV
             // 
@@ -193,32 +195,35 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(492, 207);
+            this.btnDelete.Location = new System.Drawing.Point(492, 212);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(122, 39);
             this.btnDelete.TabIndex = 17;
             this.btnDelete.Text = "Xoá";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSua
             // 
             this.btnSua.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSua.Location = new System.Drawing.Point(644, 150);
+            this.btnSua.Location = new System.Drawing.Point(644, 155);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(122, 39);
             this.btnSua.TabIndex = 16;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnThem
             // 
             this.btnThem.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThem.Location = new System.Drawing.Point(492, 150);
+            this.btnThem.Location = new System.Drawing.Point(492, 155);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(122, 39);
             this.btnThem.TabIndex = 15;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // lblSDT
             // 
@@ -281,6 +286,7 @@
             this.Controls.Add(this.lblTitle);
             this.Name = "GiaoVien_UC";
             this.Size = new System.Drawing.Size(972, 673);
+            this.Load += new System.EventHandler(this.GiaoVien_UC_Load);
             this.pnInfo.ResumeLayout(false);
             this.pnInfo.PerformLayout();
             this.ResumeLayout(false);

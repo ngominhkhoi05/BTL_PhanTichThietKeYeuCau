@@ -132,7 +132,6 @@
             // 
             this.txtMaNienKhoa.Location = new System.Drawing.Point(162, 51);
             this.txtMaNienKhoa.Name = "txtMaNienKhoa";
-            this.txtMaNienKhoa.ReadOnly = true;
             this.txtMaNienKhoa.Size = new System.Drawing.Size(220, 20);
             this.txtMaNienKhoa.TabIndex = 24;
             // 
@@ -287,7 +286,6 @@
             // 
             this.txtMaHocKy.Location = new System.Drawing.Point(162, 51);
             this.txtMaHocKy.Name = "txtMaHocKy";
-            this.txtMaHocKy.ReadOnly = true;
             this.txtMaHocKy.Size = new System.Drawing.Size(220, 20);
             this.txtMaHocKy.TabIndex = 24;
             // 

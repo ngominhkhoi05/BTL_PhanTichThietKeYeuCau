@@ -3,24 +3,16 @@
   "WorkspaceRootPath": "D:\\nam3\\PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\BTL_PhanTichThietKeYeuCau\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{971F743E-8DE3-40C3-99EF-851B9CC34521}|QuanLyHocSinhTruongPhoThong\\QuanLyHocSinhTruongPhoThong.csproj|d:\\nam3\\phantichthietkeyeucau\\quanlyhocsinhtruongphothong\\btl_phantichthietkeyeucau\\quanlyhocsinhtruongphothong\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{971F743E-8DE3-40C3-99EF-851B9CC34521}|QuanLyHocSinhTruongPhoThong\\QuanLyHocSinhTruongPhoThong.csproj|solutionrelative:quanlyhocsinhtruongphothong\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{971F743E-8DE3-40C3-99EF-851B9CC34521}|QuanLyHocSinhTruongPhoThong\\QuanLyHocSinhTruongPhoThong.csproj|d:\\nam3\\phantichthietkeyeucau\\quanlyhocsinhtruongphothong\\btl_phantichthietkeyeucau\\quanlyhocsinhtruongphothong\\views\\admins\\giaovien_uc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{971F743E-8DE3-40C3-99EF-851B9CC34521}|QuanLyHocSinhTruongPhoThong\\QuanLyHocSinhTruongPhoThong.csproj|solutionrelative:quanlyhocsinhtruongphothong\\views\\admins\\giaovien_uc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{971F743E-8DE3-40C3-99EF-851B9CC34521}|QuanLyHocSinhTruongPhoThong\\QuanLyHocSinhTruongPhoThong.csproj|d:\\nam3\\phantichthietkeyeucau\\quanlyhocsinhtruongphothong\\btl_phantichthietkeyeucau\\quanlyhocsinhtruongphothong\\views\\login\\formdangnhap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{971F743E-8DE3-40C3-99EF-851B9CC34521}|QuanLyHocSinhTruongPhoThong\\QuanLyHocSinhTruongPhoThong.csproj|solutionrelative:quanlyhocsinhtruongphothong\\views\\login\\formdangnhap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{971F743E-8DE3-40C3-99EF-851B9CC34521}|QuanLyHocSinhTruongPhoThong\\QuanLyHocSinhTruongPhoThong.csproj|D:\\nam3\\PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\BTL_PhanTichThietKeYeuCau\\quanlyhocsinhtruongphothong\\views\\admins\\giaovien_uc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{971F743E-8DE3-40C3-99EF-851B9CC34521}|QuanLyHocSinhTruongPhoThong\\QuanLyHocSinhTruongPhoThong.csproj|solutionrelative:quanlyhocsinhtruongphothong\\views\\admins\\giaovien_uc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{971F743E-8DE3-40C3-99EF-851B9CC34521}|QuanLyHocSinhTruongPhoThong\\QuanLyHocSinhTruongPhoThong.csproj|d:\\nam3\\phantichthietkeyeucau\\quanlyhocsinhtruongphothong\\btl_phantichthietkeyeucau\\quanlyhocsinhtruongphothong\\views\\login\\formdangnhap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{971F743E-8DE3-40C3-99EF-851B9CC34521}|QuanLyHocSinhTruongPhoThong\\QuanLyHocSinhTruongPhoThong.csproj|solutionrelative:quanlyhocsinhtruongphothong\\views\\login\\formdangnhap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{971F743E-8DE3-40C3-99EF-851B9CC34521}|QuanLyHocSinhTruongPhoThong\\QuanLyHocSinhTruongPhoThong.csproj|d:\\nam3\\phantichthietkeyeucau\\quanlyhocsinhtruongphothong\\btl_phantichthietkeyeucau\\quanlyhocsinhtruongphothong\\index.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{971F743E-8DE3-40C3-99EF-851B9CC34521}|QuanLyHocSinhTruongPhoThong\\QuanLyHocSinhTruongPhoThong.csproj|solutionrelative:quanlyhocsinhtruongphothong\\index.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{971F743E-8DE3-40C3-99EF-851B9CC34521}|QuanLyHocSinhTruongPhoThong\\QuanLyHocSinhTruongPhoThong.csproj|d:\\nam3\\phantichthietkeyeucau\\quanlyhocsinhtruongphothong\\btl_phantichthietkeyeucau\\quanlyhocsinhtruongphothong\\index.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{971F743E-8DE3-40C3-99EF-851B9CC34521}|QuanLyHocSinhTruongPhoThong\\QuanLyHocSinhTruongPhoThong.csproj|solutionrelative:quanlyhocsinhtruongphothong\\index.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{971F743E-8DE3-40C3-99EF-851B9CC34521}|QuanLyHocSinhTruongPhoThong\\QuanLyHocSinhTruongPhoThong.csproj|d:\\nam3\\phantichthietkeyeucau\\quanlyhocsinhtruongphothong\\btl_phantichthietkeyeucau\\quanlyhocsinhtruongphothong\\getidfordatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{971F743E-8DE3-40C3-99EF-851B9CC34521}|QuanLyHocSinhTruongPhoThong\\QuanLyHocSinhTruongPhoThong.csproj|solutionrelative:quanlyhocsinhtruongphothong\\getidfordatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,69 +22,44 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "FormDangNhap.cs",
-              "DocumentMoniker": "D:\\nam3\\PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\BTL_PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\Views\\Login\\FormDangNhap.cs",
-              "RelativeDocumentMoniker": "QuanLyHocSinhTruongPhoThong\\Views\\Login\\FormDangNhap.cs",
-              "ToolTip": "D:\\nam3\\PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\BTL_PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\Views\\Login\\FormDangNhap.cs",
-              "RelativeToolTip": "QuanLyHocSinhTruongPhoThong\\Views\\Login\\FormDangNhap.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAWwCoAAAAnAAAAAAAAAA==",
+              "Title": "GetIDForDatabase.cs",
+              "DocumentMoniker": "D:\\nam3\\PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\BTL_PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\GetIDForDatabase.cs",
+              "RelativeDocumentMoniker": "QuanLyHocSinhTruongPhoThong\\GetIDForDatabase.cs",
+              "ToolTip": "D:\\nam3\\PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\BTL_PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\GetIDForDatabase.cs",
+              "RelativeToolTip": "QuanLyHocSinhTruongPhoThong\\GetIDForDatabase.cs",
+              "ViewState": "AgIAAGIAAAAAAAAAAAA3wHYAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-25T04:15:46.372Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FormDangNhap.cs [Design]",
-              "DocumentMoniker": "D:\\nam3\\PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\BTL_PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\Views\\Login\\FormDangNhap.cs",
-              "RelativeDocumentMoniker": "QuanLyHocSinhTruongPhoThong\\Views\\Login\\FormDangNhap.cs",
-              "ToolTip": "D:\\nam3\\PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\BTL_PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\Views\\Login\\FormDangNhap.cs [Design]",
-              "RelativeToolTip": "QuanLyHocSinhTruongPhoThong\\Views\\Login\\FormDangNhap.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-25T04:15:44.25Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Index.cs",
-              "DocumentMoniker": "D:\\nam3\\PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\BTL_PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\Index.cs",
-              "RelativeDocumentMoniker": "QuanLyHocSinhTruongPhoThong\\Index.cs",
-              "ToolTip": "D:\\nam3\\PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\BTL_PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\Index.cs",
-              "RelativeToolTip": "QuanLyHocSinhTruongPhoThong\\Index.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAArwDoAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-25T04:15:20.205Z",
+              "WhenOpened": "2025-10-25T07:45:50.754Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\nam3\\PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\BTL_PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\Program.cs",
-              "RelativeDocumentMoniker": "QuanLyHocSinhTruongPhoThong\\Program.cs",
-              "ToolTip": "D:\\nam3\\PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\BTL_PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\Program.cs",
-              "RelativeToolTip": "QuanLyHocSinhTruongPhoThong\\Program.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAswBsAAAAUAAAAAAAAAA==",
+              "Title": "GiaoVien_UC.cs",
+              "DocumentMoniker": "D:\\nam3\\PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\BTL_PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\Views\\Admins\\GiaoVien_UC.cs",
+              "RelativeDocumentMoniker": "QuanLyHocSinhTruongPhoThong\\Views\\Admins\\GiaoVien_UC.cs",
+              "ToolTip": "D:\\nam3\\PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\BTL_PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\Views\\Admins\\GiaoVien_UC.cs",
+              "RelativeToolTip": "QuanLyHocSinhTruongPhoThong\\Views\\Admins\\GiaoVien_UC.cs",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAmwIkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-25T04:14:11.457Z",
+              "WhenOpened": "2025-10-25T06:32:39.745Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Index.cs [Design]",
-              "DocumentMoniker": "D:\\nam3\\PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\BTL_PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\Index.cs",
-              "RelativeDocumentMoniker": "QuanLyHocSinhTruongPhoThong\\Index.cs",
-              "ToolTip": "D:\\nam3\\PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\BTL_PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\Index.cs [Design]",
-              "RelativeToolTip": "QuanLyHocSinhTruongPhoThong\\Index.cs [Design]",
+              "DocumentIndex": 1,
+              "Title": "GiaoVien_UC.cs [Design]",
+              "DocumentMoniker": "D:\\nam3\\PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\BTL_PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\Views\\Admins\\GiaoVien_UC.cs",
+              "RelativeDocumentMoniker": "QuanLyHocSinhTruongPhoThong\\Views\\Admins\\GiaoVien_UC.cs",
+              "ToolTip": "D:\\nam3\\PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\BTL_PhanTichThietKeYeuCau\\QuanLyHocSinhTruongPhoThong\\Views\\Admins\\GiaoVien_UC.cs [Design]",
+              "RelativeToolTip": "QuanLyHocSinhTruongPhoThong\\Views\\Admins\\GiaoVien_UC.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-25T04:13:11.612Z",
+              "WhenOpened": "2025-10-25T06:32:23.917Z",
               "EditorCaption": " [Design]"
             }
           ]

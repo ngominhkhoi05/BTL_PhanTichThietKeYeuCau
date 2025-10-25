@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.pnInfo = new System.Windows.Forms.Panel();
+            this.btnBoCon = new System.Windows.Forms.Button();
+            this.btnChonCon = new System.Windows.Forms.Button();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.lblDiaChi = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -49,8 +51,6 @@
             this.lblTenPH = new System.Windows.Forms.Label();
             this.lvPH = new System.Windows.Forms.ListView();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.btnChonCon = new System.Windows.Forms.Button();
-            this.btnBoCon = new System.Windows.Forms.Button();
             this.lvHS = new System.Windows.Forms.ListView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -84,6 +84,26 @@
             this.pnInfo.Name = "pnInfo";
             this.pnInfo.Size = new System.Drawing.Size(864, 268);
             this.pnInfo.TabIndex = 20;
+            // 
+            // btnBoCon
+            // 
+            this.btnBoCon.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBoCon.Location = new System.Drawing.Point(733, 207);
+            this.btnBoCon.Name = "btnBoCon";
+            this.btnBoCon.Size = new System.Drawing.Size(108, 39);
+            this.btnBoCon.TabIndex = 29;
+            this.btnBoCon.Text = "Bỏ con";
+            this.btnBoCon.UseVisualStyleBackColor = true;
+            // 
+            // btnChonCon
+            // 
+            this.btnChonCon.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChonCon.Location = new System.Drawing.Point(733, 150);
+            this.btnChonCon.Name = "btnChonCon";
+            this.btnChonCon.Size = new System.Drawing.Size(108, 39);
+            this.btnChonCon.TabIndex = 28;
+            this.btnChonCon.Text = "Chọn con";
+            this.btnChonCon.UseVisualStyleBackColor = true;
             // 
             // txtDiaChi
             // 
@@ -276,26 +296,6 @@
             this.lblTitle.Size = new System.Drawing.Size(230, 40);
             this.lblTitle.TabIndex = 18;
             this.lblTitle.Text = "PHỤ HUYNH";
-            // 
-            // btnChonCon
-            // 
-            this.btnChonCon.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChonCon.Location = new System.Drawing.Point(733, 150);
-            this.btnChonCon.Name = "btnChonCon";
-            this.btnChonCon.Size = new System.Drawing.Size(108, 39);
-            this.btnChonCon.TabIndex = 28;
-            this.btnChonCon.Text = "Chọn con";
-            this.btnChonCon.UseVisualStyleBackColor = true;
-            // 
-            // btnBoCon
-            // 
-            this.btnBoCon.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBoCon.Location = new System.Drawing.Point(733, 207);
-            this.btnBoCon.Name = "btnBoCon";
-            this.btnBoCon.Size = new System.Drawing.Size(108, 39);
-            this.btnBoCon.TabIndex = 29;
-            this.btnBoCon.Text = "Bỏ con";
-            this.btnBoCon.UseVisualStyleBackColor = true;
             // 
             // lvHS
             // 

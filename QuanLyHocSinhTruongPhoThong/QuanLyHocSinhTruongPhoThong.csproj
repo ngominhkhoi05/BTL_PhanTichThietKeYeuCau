@@ -62,6 +62,7 @@
     <Compile Include="Class1.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="GetIDForDatabase.cs" />
     <Compile Include="Index.cs">
       <SubType>Form</SubType>
     </Compile>

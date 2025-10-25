@@ -118,7 +118,6 @@
             // 
             this.txtmaGV.Location = new System.Drawing.Point(166, 27);
             this.txtmaGV.Name = "txtmaGV";
-            this.txtmaGV.ReadOnly = true;
             this.txtmaGV.Size = new System.Drawing.Size(220, 20);
             this.txtmaGV.TabIndex = 24;
             // 
