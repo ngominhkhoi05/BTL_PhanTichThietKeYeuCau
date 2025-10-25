@@ -61,6 +61,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Xác nhận";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -71,6 +72,7 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "Huỷ";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // QuanHe
             // 
@@ -83,6 +85,7 @@
             this.Controls.Add(this.lblQuanHe);
             this.Name = "QuanHe";
             this.Text = "QuanHe";
+            this.Load += new System.EventHandler(this.QuanHe_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

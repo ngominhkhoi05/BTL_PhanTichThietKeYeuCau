@@ -1,4 +1,5 @@
 ﻿using QuanLyHocSinhTruongPhoThong.Models;
+using QuanLyHocSinhTruongPhoThong.Views.Dialog;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -49,7 +50,6 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
             }
         }
 
-
         private void btnThem_Click(object sender, EventArgs e)
         {
             try
@@ -65,10 +65,15 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
                     return;
                 }
 
-                bool tonTai = context.HocSinhs.Any(hs =>
-                    hs.Sdt == txtSDT.Text.Trim() ||
-                    (!string.IsNullOrWhiteSpace(txtEmail.Text) && hs.Email == txtEmail.Text.Trim())
-                );
+                string email = string.IsNullOrEmpty(txtEmail.Text) ? null : txtEmail.Text.Trim();
+                string sdt = txtSDT.Text.Trim();
+
+                bool tonTai;
+                if (!string.IsNullOrEmpty(email))
+                    tonTai = context.HocSinhs.Any(hs => hs.Sdt == sdt || hs.Email == email);
+                else
+                    tonTai = context.HocSinhs.Any(hs => hs.Sdt == sdt);
+
                 if (tonTai)
                 {
                     MessageBox.Show("Đã tồn tại học sinh với SĐT hoặc Email này!",
@@ -82,10 +87,10 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
                 {
                     MaHS = maHS,
                     HoTen = txtHoTen.Text.Trim(),
-                    GioiTinh = (cbbGioiTinh.SelectedItem.ToString() == "Nam"),
+                    GioiTinh = (cbbGioiTinh.SelectedItem.ToString() == "Nam") ? true : false,
                     NgaySinh = dtpkNgaySinh.Value.Date,
-                    Sdt = txtSDT.Text.Trim(),
-                    Email = string.IsNullOrWhiteSpace(txtEmail.Text) ? null : txtEmail.Text.Trim(),
+                    Sdt = sdt,
+                    Email = email,
                     DiaChi = txtDiaChi.Text.Trim(),
                     MaLop = cbbMaLop.SelectedItem.ToString()
                 };
@@ -105,7 +110,6 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
                                 "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         private void btnSua_Click(object sender, EventArgs e)
         {
@@ -139,11 +143,17 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
                     return;
                 }
 
-                bool trungThongTinKhac = context.HocSinhs.Any(x =>
-                    x.MaHS != hs.MaHS &&
-                    (x.Sdt == txtSDT.Text.Trim() ||
-                     (!string.IsNullOrWhiteSpace(txtEmail.Text) && x.Email == txtEmail.Text.Trim()))
-                );
+                string email = string.IsNullOrEmpty(txtEmail.Text) ? null : txtEmail.Text.Trim();
+                string sdt = txtSDT.Text.Trim();
+
+                bool trungThongTinKhac;
+                if (!string.IsNullOrEmpty(email))
+                    trungThongTinKhac = context.HocSinhs.Any(x =>
+                        x.MaHS != hs.MaHS && (x.Sdt == sdt || x.Email == email));
+                else
+                    trungThongTinKhac = context.HocSinhs.Any(x =>
+                        x.MaHS != hs.MaHS && x.Sdt == sdt);
+
                 if (trungThongTinKhac)
                 {
                     MessageBox.Show("SĐT hoặc Email đã được dùng bởi học sinh khác!",
@@ -152,10 +162,10 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
                 }
 
                 hs.HoTen = txtHoTen.Text.Trim();
-                hs.GioiTinh = (cbbGioiTinh.SelectedItem?.ToString() == "Nam");
+                hs.GioiTinh = (cbbGioiTinh.SelectedItem.ToString() == "Nam") ? true : false;
                 hs.NgaySinh = dtpkNgaySinh.Value.Date;
-                hs.Sdt = txtSDT.Text.Trim();
-                hs.Email = string.IsNullOrWhiteSpace(txtEmail.Text) ? null : txtEmail.Text.Trim();
+                hs.Sdt = sdt;
+                hs.Email = email;
                 hs.DiaChi = txtDiaChi.Text.Trim();
                 hs.MaLop = cbbMaLop.SelectedItem.ToString();
 
@@ -181,7 +191,73 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
 
         private void btnChonGD_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (lvPH.SelectedItems.Count == 0)
+                {
+                    MessageBox.Show("Vui lòng chọn một phụ huynh từ danh sách!",
+                                    "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
+                if (string.IsNullOrWhiteSpace(txtmaHS.Text))
+                {
+                    MessageBox.Show("Vui lòng chọn học sinh cần gán phụ huynh!",
+                                    "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var selected = lvPH.SelectedItems[0];
+                string maPH = selected.SubItems[0].Text;
+                var ph = context.PhuHuynhs.FirstOrDefault(p => p.MaPH == maPH);
+                if (ph == null)
+                {
+                    MessageBox.Show("Không tìm thấy thông tin phụ huynh!",
+                                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Gợi ý mặc định quan hệ dựa theo giới tính
+                string goiY = ph.GioiTinh ? "Cha" : "Mẹ";
+
+                using (var form = new QuanHe(goiY))
+                {
+                    var result = form.ShowDialog();
+                    if (result == DialogResult.Cancel)
+                        return;
+
+                    string quanHe = form.SelectedQuanHe;
+                    string maHS = txtmaHS.Text.Trim();
+
+                    bool tonTai = context.HocSinh_PhuHuynh
+                        .Any(x => x.MaHS == maHS && x.MaPH == maPH);
+                    if (tonTai)
+                    {
+                        MessageBox.Show("Phụ huynh này đã được gán cho học sinh!",
+                                        "Trùng dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    var hsph = new HocSinh_PhuHuynh
+                    {
+                        MaHS = maHS,
+                        MaPH = maPH,
+                        QuanHe = quanHe
+                    };
+
+                    context.HocSinh_PhuHuynh.Add(hsph);
+                    context.SaveChanges();
+
+                    MessageBox.Show($"Đã gán phụ huynh {ph.HoTen} làm \"{quanHe}\" cho học sinh {maHS}",
+                                    "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                ClearTracker();
+                MessageBox.Show("Lỗi khi gán phụ huynh cho học sinh:\n" + ex.Message,
+                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -232,7 +308,62 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
 
         private void btnGD_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txtmaHS.Text))
+                {
+                    MessageBox.Show("Vui lòng chọn học sinh!", "Thiếu thông tin",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
+                if (lvPH.SelectedItems.Count == 0)
+                {
+                    MessageBox.Show("Vui lòng chọn một phụ huynh từ danh sách!",
+                                    "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var selected = lvPH.SelectedItems[0];
+                string maPH = selected.SubItems[0].Text;
+                string maHS = txtmaHS.Text.Trim();
+
+                var quanHe = context.HocSinh_PhuHuynh
+                    .FirstOrDefault(x => x.MaHS == maHS && x.MaPH == maPH);
+
+                if (quanHe == null)
+                {
+                    MessageBox.Show("Phụ huynh này chưa có quan hệ với học sinh được chọn!",
+                                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                string tenPH = context.PhuHuynhs.FirstOrDefault(x => x.MaPH == maPH)?.HoTen ?? "(không rõ)";
+                string tenHS = context.HocSinhs.FirstOrDefault(x => x.MaHS == maHS)?.HoTen ?? "(không rõ)";
+                string loaiQuanHe = quanHe.QuanHe ?? "Giám hộ";
+
+                var confirm = MessageBox.Show(
+                    $"Bạn có chắc muốn xóa quan hệ \"{loaiQuanHe}\" giữa học sinh \"{tenHS}\" và phụ huynh \"{tenPH}\" không?",
+                    "Xác nhận xóa quan hệ",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (confirm != DialogResult.Yes)
+                    return;
+
+                context.HocSinh_PhuHuynh.Remove(quanHe);
+                context.SaveChanges();
+
+                MessageBox.Show("Đã xóa quan hệ phụ huynh–học sinh thành công!",
+                                "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                ClearTracker();
+                MessageBox.Show("Lỗi khi xóa quan hệ phụ huynh–học sinh:\n" + ex.Message,
+                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void LoadHocSinh()
@@ -346,6 +477,9 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
             var listLop = GetListForDatabase.getListLop();
             cbbMaLop.Items.Clear();
             cbbMaLop.Items.AddRange(listLop.Select(l => l.MaLop).Cast<object>().ToArray());
+            cbbGioiTinh.Items.Clear();
+            cbbGioiTinh.Items.Add("Nam");
+            cbbGioiTinh.Items.Add("Nữ");
 
             ConfigNgaySinhHocSinh();
             SetupListViewHocSinh();
@@ -363,6 +497,49 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
         {
             foreach (var e in context.ChangeTracker.Entries().ToList())
                 e.State = EntityState.Detached;
+        }
+
+        private void lvHS_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (lvHS.SelectedItems.Count == 0)
+                    return;
+
+                var selected = lvHS.SelectedItems[0];
+                string maHS = selected.SubItems[0].Text;
+
+                var hs = context.HocSinhs.FirstOrDefault(x => x.MaHS == maHS);
+                if (hs == null)
+                    return;
+
+                txtmaHS.Text = hs.MaHS;
+                txtHoTen.Text = hs.HoTen;
+                cbbGioiTinh.SelectedItem = hs.GioiTinh ? "Nam" : "Nữ";
+
+                dtpkNgaySinh.MinDate = DateTimePicker.MinimumDateTime;
+                dtpkNgaySinh.MaxDate = DateTimePicker.MaximumDateTime;
+                dtpkNgaySinh.Value = hs.NgaySinh;
+
+                // Sau khi gán xong thì đặt lại giới hạn chọn hợp lệ (10–70 tuổi)
+                dtpkNgaySinh.MinDate = DateTime.Today.AddYears(-70);
+                dtpkNgaySinh.MaxDate = DateTime.Today.AddYears(-10);
+
+                txtSDT.Text = hs.Sdt;
+                txtEmail.Text = hs.Email ?? "";
+                txtDiaChi.Text = hs.DiaChi ?? "";
+
+                // Gán lại combobox lớp
+                if (cbbMaLop.Items.Contains(hs.MaLop))
+                    cbbMaLop.SelectedItem = hs.MaLop;
+                else
+                    cbbMaLop.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi hiển thị thông tin học sinh:\n" + ex.Message,
+                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

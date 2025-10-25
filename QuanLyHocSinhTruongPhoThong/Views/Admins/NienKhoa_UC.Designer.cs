@@ -107,6 +107,7 @@
             this.btnClearNienKhoa.TabIndex = 27;
             this.btnClearNienKhoa.Text = "Clear";
             this.btnClearNienKhoa.UseVisualStyleBackColor = true;
+            this.btnClearNienKhoa.Click += new System.EventHandler(this.btnClearNienKhoa_Click);
             // 
             // btnXoaNienKhoa
             // 
@@ -117,6 +118,7 @@
             this.btnXoaNienKhoa.TabIndex = 26;
             this.btnXoaNienKhoa.Text = "Xoá";
             this.btnXoaNienKhoa.UseVisualStyleBackColor = true;
+            this.btnXoaNienKhoa.Click += new System.EventHandler(this.btnXoaNienKhoa_Click);
             // 
             // btnSuaNienKhoa
             // 
@@ -127,6 +129,7 @@
             this.btnSuaNienKhoa.TabIndex = 25;
             this.btnSuaNienKhoa.Text = "Sửa";
             this.btnSuaNienKhoa.UseVisualStyleBackColor = true;
+            this.btnSuaNienKhoa.Click += new System.EventHandler(this.btnSuaNienKhoa_Click);
             // 
             // txtMaNienKhoa
             // 
@@ -173,6 +176,7 @@
             this.btnThemNienKhoa.TabIndex = 15;
             this.btnThemNienKhoa.Text = "Thêm";
             this.btnThemNienKhoa.UseVisualStyleBackColor = true;
+            this.btnThemNienKhoa.Click += new System.EventHandler(this.btnThemNienKhoa_Click);
             // 
             // lblNgaySinh
             // 
@@ -197,6 +201,7 @@
             this.lvNienKhoa.TabIndex = 19;
             this.lvNienKhoa.UseCompatibleStateImageBehavior = false;
             this.lvNienKhoa.View = System.Windows.Forms.View.Details;
+            this.lvNienKhoa.SelectedIndexChanged += new System.EventHandler(this.lvNienKhoa_SelectedIndexChanged);
             // 
             // lblTitle
             // 
@@ -261,6 +266,7 @@
             this.btnClearHK.TabIndex = 27;
             this.btnClearHK.Text = "Clear";
             this.btnClearHK.UseVisualStyleBackColor = true;
+            this.btnClearHK.Click += new System.EventHandler(this.btnClearHK_Click);
             // 
             // btnXoaHK
             // 
@@ -271,6 +277,7 @@
             this.btnXoaHK.TabIndex = 26;
             this.btnXoaHK.Text = "Xoá";
             this.btnXoaHK.UseVisualStyleBackColor = true;
+            this.btnXoaHK.Click += new System.EventHandler(this.btnXoaHK_Click);
             // 
             // btnSuaHK
             // 
@@ -281,6 +288,7 @@
             this.btnSuaHK.TabIndex = 25;
             this.btnSuaHK.Text = "Sửa";
             this.btnSuaHK.UseVisualStyleBackColor = true;
+            this.btnSuaHK.Click += new System.EventHandler(this.btnSuaHK_Click);
             // 
             // txtMaHocKy
             // 
@@ -320,6 +328,7 @@
             this.btnThemHK.TabIndex = 15;
             this.btnThemHK.Text = "Thêm";
             this.btnThemHK.UseVisualStyleBackColor = true;
+            this.btnThemHK.Click += new System.EventHandler(this.btnThemHK_Click);
             // 
             // lblTenHK
             // 
@@ -344,6 +353,7 @@
             this.lvHK.TabIndex = 30;
             this.lvHK.UseCompatibleStateImageBehavior = false;
             this.lvHK.View = System.Windows.Forms.View.Details;
+            this.lvHK.SelectedIndexChanged += new System.EventHandler(this.lvHK_SelectedIndexChanged);
             // 
             // lblListNienKhoa
             // 
@@ -378,6 +388,7 @@
             this.Controls.Add(this.lblTitle);
             this.Name = "NienKhoa_UC";
             this.Size = new System.Drawing.Size(972, 673);
+            this.Load += new System.EventHandler(this.NienKhoa_UC_Load);
             this.pnInfo.ResumeLayout(false);
             this.pnInfo.PerformLayout();
             this.panel1.ResumeLayout(false);

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.pnInfo = new System.Windows.Forms.Panel();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.cbbGVCN = new System.Windows.Forms.ComboBox();
             this.txtMaGVCN = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cbbNienKHoa = new System.Windows.Forms.ComboBox();
             this.txtMaNK = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
             this.txtmaGV = new System.Windows.Forms.TextBox();
@@ -49,9 +49,9 @@
             // pnInfo
             // 
             this.pnInfo.BackColor = System.Drawing.Color.White;
-            this.pnInfo.Controls.Add(this.comboBox3);
+            this.pnInfo.Controls.Add(this.cbbGVCN);
             this.pnInfo.Controls.Add(this.txtMaGVCN);
-            this.pnInfo.Controls.Add(this.comboBox2);
+            this.pnInfo.Controls.Add(this.cbbNienKHoa);
             this.pnInfo.Controls.Add(this.txtMaNK);
             this.pnInfo.Controls.Add(this.btnClear);
             this.pnInfo.Controls.Add(this.txtmaGV);
@@ -66,13 +66,13 @@
             this.pnInfo.Size = new System.Drawing.Size(864, 174);
             this.pnInfo.TabIndex = 20;
             // 
-            // comboBox3
+            // cbbGVCN
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(587, 72);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(220, 21);
-            this.comboBox3.TabIndex = 31;
+            this.cbbGVCN.FormattingEnabled = true;
+            this.cbbGVCN.Location = new System.Drawing.Point(587, 72);
+            this.cbbGVCN.Name = "cbbGVCN";
+            this.cbbGVCN.Size = new System.Drawing.Size(220, 21);
+            this.cbbGVCN.TabIndex = 31;
             // 
             // txtMaGVCN
             // 
@@ -85,13 +85,13 @@
             this.txtMaGVCN.Text = "Mã GVCN";
             this.txtMaGVCN.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // comboBox2
+            // cbbNienKHoa
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(165, 72);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(220, 21);
-            this.comboBox2.TabIndex = 29;
+            this.cbbNienKHoa.FormattingEnabled = true;
+            this.cbbNienKHoa.Location = new System.Drawing.Point(165, 72);
+            this.cbbNienKHoa.Name = "cbbNienKHoa";
+            this.cbbNienKHoa.Size = new System.Drawing.Size(220, 21);
+            this.cbbNienKHoa.TabIndex = 29;
             // 
             // txtMaNK
             // 
@@ -212,6 +212,7 @@
             this.Controls.Add(this.lblTitle);
             this.Name = "Lophoc_UC";
             this.Size = new System.Drawing.Size(950, 674);
+            this.Load += new System.EventHandler(this.Lophoc_UC_Load);
             this.pnInfo.ResumeLayout(false);
             this.pnInfo.PerformLayout();
             this.ResumeLayout(false);
@@ -232,9 +233,9 @@
         private System.Windows.Forms.Label lblTenLop;
         private System.Windows.Forms.ListView lvLop;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cbbGVCN;
         private System.Windows.Forms.Label txtMaGVCN;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbbNienKHoa;
         private System.Windows.Forms.Label txtMaNK;
     }
 }

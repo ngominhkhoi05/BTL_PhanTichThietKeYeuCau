@@ -162,7 +162,49 @@ namespace QuanLyHocSinhTruongPhoThong
     public class GetListForDatabase
     {
         public static AppDbContext context = new AppDbContext();
+        public static List<NienKhoa> getListNienKhoa()
+        {
+            try
+            {
+                return context.NienKhoas
+                    .OrderBy(nk => nk.NamBatDau)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi lấy danh sách niên khóa: " + ex.Message);
+                return new List<NienKhoa>();
+            }
+        }
+        public static List<GiaoVien> getListGiaoVien()
+        {
+            try
+            {
+                return context.GiaoViens
+                    .OrderBy(gv => gv.HoTen)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi lấy danh sách giáo viên: " + ex.Message);
+                return new List<GiaoVien>();
+            }
+        }
 
+        public static List<HocKy> getListHocKy()
+        {
+            try
+            {
+                return context.HocKies
+                    .OrderBy(hk => hk.MaHK)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi lấy danh sách học kỳ: " + ex.Message);
+                return new List<HocKy>();
+            }
+        }
         public static List<PhuHuynh> getListPhuHuynh()
         {
             try

@@ -93,6 +93,7 @@
             this.lvHS.TabIndex = 35;
             this.lvHS.UseCompatibleStateImageBehavior = false;
             this.lvHS.View = System.Windows.Forms.View.Details;
+            this.lvHS.SelectedIndexChanged += new System.EventHandler(this.lvHS_SelectedIndexChanged);
             // 
             // pnInfo
             // 
