@@ -60,7 +60,7 @@ namespace QuanLyHocSinhTruongPhoThong.Views
 
             lvHK.Columns.Clear();
             lvHK.Columns.Add("Mã học kỳ", 150);
-            lvHK.Columns.Add("Tên học kỳ", 180);
+            lvHK.Columns.Add("Tên học kỳ", 150);
             lvHK.Columns.Add("Mã niên khóa", 150);
         }
         private void LoadHocKy()

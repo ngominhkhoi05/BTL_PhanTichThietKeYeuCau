@@ -94,6 +94,7 @@
             this.btnBoCon.TabIndex = 29;
             this.btnBoCon.Text = "Bỏ con";
             this.btnBoCon.UseVisualStyleBackColor = true;
+            this.btnBoCon.Click += new System.EventHandler(this.btnBoCon_Click);
             // 
             // btnChonCon
             // 
@@ -104,6 +105,7 @@
             this.btnChonCon.TabIndex = 28;
             this.btnChonCon.Text = "Chọn con";
             this.btnChonCon.UseVisualStyleBackColor = true;
+            this.btnChonCon.Click += new System.EventHandler(this.btnChonCon_Click);
             // 
             // txtDiaChi
             // 
@@ -133,6 +135,7 @@
             this.button1.TabIndex = 25;
             this.button1.Text = "Clear";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // txtmaPH
             // 
@@ -201,6 +204,7 @@
             this.btnDelete.TabIndex = 17;
             this.btnDelete.Text = "Xoá";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSua
             // 
@@ -211,6 +215,7 @@
             this.btnSua.TabIndex = 16;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnThem
             // 
@@ -221,6 +226,7 @@
             this.btnThem.TabIndex = 15;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // lblSDT
             // 
@@ -344,6 +350,7 @@
             this.Controls.Add(this.lblTitle);
             this.Name = "PhuHuynh_UC";
             this.Size = new System.Drawing.Size(972, 673);
+            this.Load += new System.EventHandler(this.PhuHuynh_UC_Load);
             this.pnInfo.ResumeLayout(false);
             this.pnInfo.PerformLayout();
             this.ResumeLayout(false);

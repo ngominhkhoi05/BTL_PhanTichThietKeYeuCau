@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -128,7 +129,7 @@ namespace QuanLyHocSinhTruongPhoThong
                     string numberPart = lastPC.MaPC.Substring(2);
                     if (int.TryParse(numberPart, out int number))
                     {
-                        nextID = "PC" + (number + 1).ToString("D3"); 
+                        nextID = "PC" + (number + 1).ToString("D3");
                     }
                 }
 
@@ -162,6 +163,21 @@ namespace QuanLyHocSinhTruongPhoThong
     public class GetListForDatabase
     {
         public static AppDbContext context = new AppDbContext();
+        public static List<Lop> getListLopHoc()
+        {
+            try
+            {
+                return context.Lops
+                    .OrderBy(l => l.MaLop)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi lấy danh sách lớp học: " + ex.Message);
+                return new List<Lop>();
+            }
+        }
+
         public static List<NienKhoa> getListNienKhoa()
         {
             try
@@ -265,4 +281,6 @@ namespace QuanLyHocSinhTruongPhoThong
             }
         }
     }
+    
+    
 }

@@ -113,6 +113,7 @@
             this.btnClear.TabIndex = 25;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // txtmaGV
             // 
@@ -148,6 +149,7 @@
             this.btnDelete.TabIndex = 17;
             this.btnDelete.Text = "Xoá";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSua
             // 
@@ -158,6 +160,7 @@
             this.btnSua.TabIndex = 16;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnThem
             // 
@@ -168,6 +171,7 @@
             this.btnThem.TabIndex = 15;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // lblTenLop
             // 
@@ -192,6 +196,7 @@
             this.lvLop.TabIndex = 19;
             this.lvLop.UseCompatibleStateImageBehavior = false;
             this.lvLop.View = System.Windows.Forms.View.Details;
+            this.lvLop.SelectedIndexChanged += new System.EventHandler(this.lvLop_SelectedIndexChanged);
             // 
             // lblTitle
             // 
