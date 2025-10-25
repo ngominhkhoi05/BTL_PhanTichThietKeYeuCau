@@ -9,6 +9,23 @@ namespace QuanLyHocSinhTruongPhoThong
 {
     public class GetIDForDatabase
     {
+        //public static List<string> getListMaLop()
+        //{
+        //    try
+        //    {
+        //        using (var context = new AppDbContext())
+        //        {
+        //            return context.Lops
+        //                .Select(l => l.MaLop)
+        //                .ToList();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("Lỗi khi lấy danh sách mã lớp: " + ex.Message);
+        //        return new List<string>();
+        //    }
+        //}
         public static string getIDNextGiaoVien()
         {
             using (var context = new AppDbContext())
@@ -141,5 +158,69 @@ namespace QuanLyHocSinhTruongPhoThong
             }
         }
 
+    }
+    public class GetListForDatabase
+    {
+        public static AppDbContext context = new AppDbContext();
+
+        public static List<PhuHuynh> getListPhuHuynh()
+        {
+            try
+            {
+                return context.PhuHuynhs
+                    .OrderBy(ph => ph.HoTen)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi lấy danh sách phụ huynh: " + ex.Message);
+                return new List<PhuHuynh>();
+            }
+        }
+
+        public static List<HocSinh> getListHocSinh()
+        {
+            try
+            {
+                return context.HocSinhs
+                    .OrderBy(hs => hs.HoTen)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi lấy danh sách học sinh: " + ex.Message);
+                return new List<HocSinh>();
+            }
+        }
+
+        public static List<Lop> getListLop()
+        {
+            try
+            {
+                return context.Lops
+                    .OrderBy(l => l.MaLop)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi lấy danh sách lớp: " + ex.Message);
+                return new List<Lop>();
+            }
+        }
+
+        public static List<MonHoc> getListMonHoc()
+        {
+            try
+            {
+                return context.MonHocs
+                    .OrderBy(mh => mh.MaMH)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi lấy danh sách môn học: " + ex.Message);
+                return new List<MonHoc>();
+            }
+        }
     }
 }

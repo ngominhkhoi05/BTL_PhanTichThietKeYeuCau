@@ -39,7 +39,7 @@
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.lblDiaChi = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
-            this.txtmaPH = new System.Windows.Forms.TextBox();
+            this.txtmaHS = new System.Windows.Forms.TextBox();
             this.lblMaHS = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtSDT = new System.Windows.Forms.TextBox();
@@ -63,7 +63,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(494, 371);
+            this.label2.Location = new System.Drawing.Point(53, 369);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(156, 21);
             this.label2.TabIndex = 37;
@@ -74,7 +74,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(54, 372);
+            this.label1.Location = new System.Drawing.Point(506, 370);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(171, 21);
             this.label1.TabIndex = 36;
@@ -87,7 +87,7 @@
             this.lvHS.FullRowSelect = true;
             this.lvHS.GridLines = true;
             this.lvHS.HideSelection = false;
-            this.lvHS.Location = new System.Drawing.Point(495, 405);
+            this.lvHS.Location = new System.Drawing.Point(54, 403);
             this.lvHS.Name = "lvHS";
             this.lvHS.Size = new System.Drawing.Size(423, 237);
             this.lvHS.TabIndex = 35;
@@ -104,7 +104,7 @@
             this.pnInfo.Controls.Add(this.txtDiaChi);
             this.pnInfo.Controls.Add(this.lblDiaChi);
             this.pnInfo.Controls.Add(this.btnClear);
-            this.pnInfo.Controls.Add(this.txtmaPH);
+            this.pnInfo.Controls.Add(this.txtmaHS);
             this.pnInfo.Controls.Add(this.lblMaHS);
             this.pnInfo.Controls.Add(this.txtEmail);
             this.pnInfo.Controls.Add(this.txtSDT);
@@ -138,9 +138,9 @@
             this.lblMaLop.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaLop.Location = new System.Drawing.Point(67, 148);
             this.lblMaLop.Name = "lblMaLop";
-            this.lblMaLop.Size = new System.Drawing.Size(76, 21);
+            this.lblMaLop.Size = new System.Drawing.Size(63, 21);
             this.lblMaLop.TabIndex = 30;
-            this.lblMaLop.Text = "Giới tính";
+            this.lblMaLop.Text = "Mã lớp";
             this.lblMaLop.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnGD
@@ -152,6 +152,7 @@
             this.btnGD.TabIndex = 29;
             this.btnGD.Text = "Bỏ GD";
             this.btnGD.UseVisualStyleBackColor = true;
+            this.btnGD.Click += new System.EventHandler(this.btnGD_Click);
             // 
             // btnChonGD
             // 
@@ -162,6 +163,7 @@
             this.btnChonGD.TabIndex = 28;
             this.btnChonGD.Text = "Chọn GD";
             this.btnChonGD.UseVisualStyleBackColor = true;
+            this.btnChonGD.Click += new System.EventHandler(this.btnChonGD_Click);
             // 
             // txtDiaChi
             // 
@@ -191,15 +193,15 @@
             this.btnClear.TabIndex = 25;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.button1_Click);
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // txtmaPH
+            // txtmaHS
             // 
-            this.txtmaPH.Location = new System.Drawing.Point(166, 27);
-            this.txtmaPH.Name = "txtmaPH";
-            this.txtmaPH.ReadOnly = true;
-            this.txtmaPH.Size = new System.Drawing.Size(220, 20);
-            this.txtmaPH.TabIndex = 24;
+            this.txtmaHS.Location = new System.Drawing.Point(166, 27);
+            this.txtmaHS.Name = "txtmaHS";
+            this.txtmaHS.ReadOnly = true;
+            this.txtmaHS.Size = new System.Drawing.Size(220, 20);
+            this.txtmaHS.TabIndex = 24;
             // 
             // lblMaHS
             // 
@@ -260,6 +262,7 @@
             this.btnDelete.TabIndex = 17;
             this.btnDelete.Text = "Xoá";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSua
             // 
@@ -270,6 +273,7 @@
             this.btnSua.TabIndex = 16;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnThem
             // 
@@ -280,6 +284,7 @@
             this.btnThem.TabIndex = 15;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // lblSDT
             // 
@@ -339,7 +344,7 @@
             this.lvPH.FullRowSelect = true;
             this.lvPH.GridLines = true;
             this.lvPH.HideSelection = false;
-            this.lvPH.Location = new System.Drawing.Point(54, 405);
+            this.lvPH.Location = new System.Drawing.Point(506, 403);
             this.lvPH.Name = "lvPH";
             this.lvPH.Size = new System.Drawing.Size(423, 237);
             this.lvPH.TabIndex = 33;
@@ -368,6 +373,7 @@
             this.Controls.Add(this.lblTitle);
             this.Name = "HocSinh_UC";
             this.Size = new System.Drawing.Size(972, 673);
+            this.Load += new System.EventHandler(this.HocSinh_UC_Load);
             this.pnInfo.ResumeLayout(false);
             this.pnInfo.PerformLayout();
             this.ResumeLayout(false);
@@ -386,7 +392,7 @@
         private System.Windows.Forms.TextBox txtDiaChi;
         private System.Windows.Forms.Label lblDiaChi;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.TextBox txtmaPH;
+        private System.Windows.Forms.TextBox txtmaHS;
         private System.Windows.Forms.Label lblMaHS;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtSDT;
