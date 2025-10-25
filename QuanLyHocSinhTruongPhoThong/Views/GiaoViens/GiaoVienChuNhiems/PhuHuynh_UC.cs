@@ -1,4 +1,5 @@
 ﻿using QuanLyHocSinhTruongPhoThong.Models;
+using QuanLyHocSinhTruongPhoThong.Views.Dialog;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -160,7 +161,75 @@ namespace QuanLyHocSinhTruongPhoThong.Views.GiaoViens.GiaoVienChuNhiems
 
         private void btnChonCon_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txtmaPH.Text))
+                {
+                    MessageBox.Show("Vui lòng chọn phụ huynh cần gán học sinh!",
+                                    "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
+                string maPH = txtmaPH.Text.Trim();
+
+                if (lvHS.SelectedItems.Count == 0)
+                {
+                    MessageBox.Show("Vui lòng chọn một học sinh từ danh sách!",
+                                    "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var selected = lvHS.SelectedItems[0];
+                string maHS = selected.SubItems[0].Text;
+                string tenHS = selected.SubItems[1].Text;
+
+                var ph = GetListForDatabase.context.PhuHuynhs.FirstOrDefault(x => x.MaPH == maPH);
+                if (ph == null)
+                {
+                    MessageBox.Show("Không tìm thấy thông tin phụ huynh!",
+                                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                string goiY = ph.GioiTinh ? "Cha" : "Mẹ";
+
+                using (var form = new QuanHe(goiY))
+                {
+                    var result = form.ShowDialog();
+                    if (result == DialogResult.Cancel)
+                        return;
+
+                    string quanHe = form.SelectedQuanHe;
+
+                    bool tonTai = GetListForDatabase.context.HocSinh_PhuHuynh
+                        .Any(x => x.MaHS == maHS && x.MaPH == maPH);
+                    if (tonTai)
+                    {
+                        MessageBox.Show("Phụ huynh này đã được gán cho học sinh này!",
+                                        "Trùng dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    var hsph = new HocSinh_PhuHuynh
+                    {
+                        MaHS = maHS,
+                        MaPH = maPH,
+                        QuanHe = quanHe
+                    };
+
+                    GetListForDatabase.context.HocSinh_PhuHuynh.Add(hsph);
+                    GetListForDatabase.context.SaveChanges();
+
+                    MessageBox.Show($"Đã gán phụ huynh {ph.HoTen} làm \"{quanHe}\" của học sinh {tenHS}",
+                                    "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                ClearTracker();
+                MessageBox.Show("Lỗi khi gán học sinh cho phụ huynh:\n" + ex.Message,
+                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -225,8 +294,8 @@ namespace QuanLyHocSinhTruongPhoThong.Views.GiaoViens.GiaoVienChuNhiems
                 txtEmail.Clear();
                 txtDiaChi.Clear();
 
-                cbbGioiTinh.SelectedIndex = 0; // mặc định Nam
-                dtpkNgaySinh.Value = new DateTime(DateTime.Now.Year - 40, 1, 1); // mặc định khoảng tuổi hợp lý
+                cbbGioiTinh.SelectedIndex = 0;
+                dtpkNgaySinh.Value = new DateTime(DateTime.Now.Year - 40, 1, 1); 
                 lvPH.SelectedItems.Clear();
             }
             catch (Exception ex)
@@ -253,20 +322,6 @@ namespace QuanLyHocSinhTruongPhoThong.Views.GiaoViens.GiaoVienChuNhiems
             }
         }
 
-        private void lvPH_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (lvPH.SelectedItems.Count == 0)
-                return;
-
-            var item = lvPH.SelectedItems[0];
-            txtmaPH.Text = item.SubItems[0].Text;
-            txtHoTen.Text = item.SubItems[1].Text;
-            cbbGioiTinh.SelectedItem = item.SubItems[2].Text;
-            dtpkNgaySinh.Value = DateTime.ParseExact(item.SubItems[3].Text, "dd/MM/yyyy", null);
-            txtSDT.Text = item.SubItems[4].Text;
-            txtEmail.Text = item.SubItems[5].Text;
-            txtDiaChi.Text = item.SubItems[6].Text;
-        }
         private void SetupListViewPhuHuynh()
         {
             lvPH.View = View.Details;
@@ -307,7 +362,6 @@ namespace QuanLyHocSinhTruongPhoThong.Views.GiaoViens.GiaoVienChuNhiems
             {
                 lvHS.Items.Clear();
 
-                // Lấy danh sách học sinh từ GetListForDatabase
                 var listHS = GetListForDatabase.getListHocSinh();
 
                 foreach (var hs in listHS)
@@ -333,12 +387,78 @@ namespace QuanLyHocSinhTruongPhoThong.Views.GiaoViens.GiaoVienChuNhiems
 
         private void btnBoCon_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txtmaPH.Text))
+                {
+                    MessageBox.Show("Vui lòng chọn phụ huynh trước khi bỏ con!",
+                                    "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
+                string maPH = txtmaPH.Text.Trim();
+
+                if (lvHS.SelectedItems.Count == 0)
+                {
+                    MessageBox.Show("Vui lòng chọn học sinh cần bỏ khỏi danh sách con!",
+                                    "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var selected = lvHS.SelectedItems[0];
+                string maHS = selected.SubItems[0].Text;
+                string tenHS = selected.SubItems[1].Text;
+
+                var quanHe = GetListForDatabase.context.HocSinh_PhuHuynh
+                    .FirstOrDefault(x => x.MaPH == maPH && x.MaHS == maHS);
+
+                if (quanHe == null)
+                {
+                    MessageBox.Show($"Phụ huynh này chưa có quan hệ nào với học sinh {tenHS}.",
+                                    "Không có quan hệ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                var confirm = MessageBox.Show($"Bạn có chắc muốn xóa quan hệ \"{quanHe.QuanHe}\" giữa phụ huynh và học sinh {tenHS}?",
+                                              "Xác nhận xóa quan hệ",
+                                              MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (confirm != DialogResult.Yes)
+                    return;
+
+                GetListForDatabase.context.HocSinh_PhuHuynh.Remove(quanHe);
+                GetListForDatabase.context.SaveChanges();
+                ClearTracker();
+
+                MessageBox.Show($"Đã bỏ quan hệ với học sinh {tenHS} thành công!",
+                                "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                ClearTracker();
+                MessageBox.Show("Lỗi khi bỏ quan hệ phụ huynh - học sinh:\n" + ex.Message,
+                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void Reload(object arg = null)
         {
             
+        }
+
+        private void lvPH_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (lvPH.SelectedItems.Count == 0)
+                return;
+
+            var item = lvPH.SelectedItems[0];
+            txtmaPH.Text = item.SubItems[0].Text;
+            txtHoTen.Text = item.SubItems[1].Text;
+            cbbGioiTinh.SelectedItem = item.SubItems[2].Text;
+            dtpkNgaySinh.Value = DateTime.ParseExact(item.SubItems[3].Text, "dd/MM/yyyy", null);
+            txtSDT.Text = item.SubItems[4].Text;
+            txtEmail.Text = item.SubItems[5].Text;
+            txtDiaChi.Text = item.SubItems[6].Text;
         }
     }
 }

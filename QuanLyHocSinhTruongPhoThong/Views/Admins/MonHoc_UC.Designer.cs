@@ -30,9 +30,9 @@
         {
             this.pnInfo = new System.Windows.Forms.Panel();
             this.btnClear = new System.Windows.Forms.Button();
-            this.txtmaGV = new System.Windows.Forms.TextBox();
+            this.txtMaMon = new System.Windows.Forms.TextBox();
             this.lblMaMH = new System.Windows.Forms.Label();
-            this.txtHoTen = new System.Windows.Forms.TextBox();
+            this.txtTenMon = new System.Windows.Forms.TextBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
@@ -46,9 +46,9 @@
             // 
             this.pnInfo.BackColor = System.Drawing.Color.White;
             this.pnInfo.Controls.Add(this.btnClear);
-            this.pnInfo.Controls.Add(this.txtmaGV);
+            this.pnInfo.Controls.Add(this.txtMaMon);
             this.pnInfo.Controls.Add(this.lblMaMH);
-            this.pnInfo.Controls.Add(this.txtHoTen);
+            this.pnInfo.Controls.Add(this.txtTenMon);
             this.pnInfo.Controls.Add(this.btnDelete);
             this.pnInfo.Controls.Add(this.btnSua);
             this.pnInfo.Controls.Add(this.btnThem);
@@ -67,14 +67,15 @@
             this.btnClear.TabIndex = 25;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // txtmaGV
+            // txtMaMon
             // 
-            this.txtmaGV.Location = new System.Drawing.Point(166, 27);
-            this.txtmaGV.Name = "txtmaGV";
-            this.txtmaGV.ReadOnly = true;
-            this.txtmaGV.Size = new System.Drawing.Size(220, 20);
-            this.txtmaGV.TabIndex = 24;
+            this.txtMaMon.Location = new System.Drawing.Point(166, 27);
+            this.txtMaMon.Name = "txtMaMon";
+            this.txtMaMon.ReadOnly = true;
+            this.txtMaMon.Size = new System.Drawing.Size(220, 20);
+            this.txtMaMon.TabIndex = 24;
             // 
             // lblMaMH
             // 
@@ -87,12 +88,12 @@
             this.lblMaMH.Text = "Mã MH";
             this.lblMaMH.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtHoTen
+            // txtTenMon
             // 
-            this.txtHoTen.Location = new System.Drawing.Point(587, 27);
-            this.txtHoTen.Name = "txtHoTen";
-            this.txtHoTen.Size = new System.Drawing.Size(220, 20);
-            this.txtHoTen.TabIndex = 19;
+            this.txtTenMon.Location = new System.Drawing.Point(587, 27);
+            this.txtTenMon.Name = "txtTenMon";
+            this.txtTenMon.Size = new System.Drawing.Size(220, 20);
+            this.txtTenMon.TabIndex = 19;
             // 
             // btnDelete
             // 
@@ -103,6 +104,7 @@
             this.btnDelete.TabIndex = 17;
             this.btnDelete.Text = "Xoá";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSua
             // 
@@ -113,6 +115,7 @@
             this.btnSua.TabIndex = 16;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnThem
             // 
@@ -123,6 +126,7 @@
             this.btnThem.TabIndex = 15;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // lblTenMH
             // 
@@ -147,6 +151,7 @@
             this.lvMonHoc.TabIndex = 19;
             this.lvMonHoc.UseCompatibleStateImageBehavior = false;
             this.lvMonHoc.View = System.Windows.Forms.View.Details;
+            this.lvMonHoc.SelectedIndexChanged += new System.EventHandler(this.lvMonHoc_SelectedIndexChanged);
             // 
             // lblTitle
             // 
@@ -167,6 +172,7 @@
             this.Controls.Add(this.lblTitle);
             this.Name = "MonHoc_UC";
             this.Size = new System.Drawing.Size(972, 673);
+            this.Load += new System.EventHandler(this.MonHoc_UC_Load);
             this.pnInfo.ResumeLayout(false);
             this.pnInfo.PerformLayout();
             this.ResumeLayout(false);
@@ -178,9 +184,9 @@
 
         private System.Windows.Forms.Panel pnInfo;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.TextBox txtmaGV;
+        private System.Windows.Forms.TextBox txtMaMon;
         private System.Windows.Forms.Label lblMaMH;
-        private System.Windows.Forms.TextBox txtHoTen;
+        private System.Windows.Forms.TextBox txtTenMon;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;

@@ -292,6 +292,7 @@
             this.lvPH.TabIndex = 19;
             this.lvPH.UseCompatibleStateImageBehavior = false;
             this.lvPH.View = System.Windows.Forms.View.Details;
+            this.lvPH.SelectedIndexChanged += new System.EventHandler(this.lvPH_SelectedIndexChanged_1);
             // 
             // lblTitle
             // 
