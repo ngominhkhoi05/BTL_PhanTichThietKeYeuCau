@@ -160,9 +160,54 @@ namespace QuanLyHocSinhTruongPhoThong
         }
 
     }
+    public class PhanCongGiangDayView
+    {
+        public string MaPC { get; set; }
+        public string MaLop { get; set; }
+        public string TenLop { get; set; }
+        public string MaMH { get; set; }
+        public string TenMH { get; set; }
+        public string MaGV { get; set; }
+        public string TenGV { get; set; }
+        public string MaHK { get; set; }
+        public string TenHK { get; set; }
+    }
+
     public class GetListForDatabase
     {
         public static AppDbContext context = new AppDbContext();
+        public static List<PhanCongGiangDayView> getListPhanCong()
+        {
+            try
+            {
+                var list = (from pc in context.PhanCongGiangDays
+                            join lop in context.Lops on pc.MaLop equals lop.MaLop
+                            join mh in context.MonHocs on pc.MaMH equals mh.MaMH
+                            join gv in context.GiaoViens on pc.MaGV equals gv.MaGV
+                            join hk in context.HocKies on pc.MaHK equals hk.MaHK
+                            orderby pc.MaPC
+                            select new PhanCongGiangDayView
+                            {
+                                MaPC = pc.MaPC,
+                                MaLop = pc.MaLop,
+                                TenLop = lop.TenLop,
+                                MaMH = pc.MaMH,
+                                TenMH = mh.TenMH,
+                                MaGV = pc.MaGV,
+                                TenGV = gv.HoTen,
+                                MaHK = pc.MaHK,
+                                TenHK = hk.TenHK
+                            }).ToList();
+
+                return list;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi lấy danh sách phân công giảng dạy: " + ex.Message);
+                return new List<PhanCongGiangDayView>();
+            }
+        }
+
         public static List<Lop> getListLopHoc()
         {
             try
