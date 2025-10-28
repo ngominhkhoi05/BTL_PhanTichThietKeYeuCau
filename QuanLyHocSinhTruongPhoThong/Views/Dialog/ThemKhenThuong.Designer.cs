@@ -35,17 +35,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtMaKTKL = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.txtTen = new System.Windows.Forms.TextBox();
             this.lblTenHS = new System.Windows.Forms.Label();
-            this.cbbMaHK = new System.Windows.Forms.ComboBox();
             this.cbbLoai = new System.Windows.Forms.ComboBox();
             this.lblLoai = new System.Windows.Forms.Label();
             this.txtMaHS = new System.Windows.Forms.TextBox();
             this.lblMaHS = new System.Windows.Forms.Label();
             this.lblHocKi = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.cbbMaHK = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -133,6 +133,17 @@
             this.label2.Text = "Mã KTKL";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(461, 184);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(122, 39);
+            this.btnCancel.TabIndex = 54;
+            this.btnCancel.Text = "Huỷ";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // btnThem
             // 
             this.btnThem.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -162,15 +173,6 @@
             this.lblTenHS.TabIndex = 50;
             this.lblTenHS.Text = "Tên học sinh";
             this.lblTenHS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // cbbMaHK
-            // 
-            this.cbbMaHK.Enabled = false;
-            this.cbbMaHK.FormattingEnabled = true;
-            this.cbbMaHK.Location = new System.Drawing.Point(169, 126);
-            this.cbbMaHK.Name = "cbbMaHK";
-            this.cbbMaHK.Size = new System.Drawing.Size(220, 21);
-            this.cbbMaHK.TabIndex = 45;
             // 
             // cbbLoai
             // 
@@ -231,16 +233,14 @@
             this.lblTitle.TabIndex = 36;
             this.lblTitle.Text = "KHEN THƯỞNG - KỶ LUẬT";
             // 
-            // btnCancel
+            // cbbMaHK
             // 
-            this.btnCancel.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(461, 184);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(122, 39);
-            this.btnCancel.TabIndex = 54;
-            this.btnCancel.Text = "Huỷ";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.cbbMaHK.Enabled = false;
+            this.cbbMaHK.FormattingEnabled = true;
+            this.cbbMaHK.Location = new System.Drawing.Point(169, 126);
+            this.cbbMaHK.Name = "cbbMaHK";
+            this.cbbMaHK.Size = new System.Drawing.Size(220, 21);
+            this.cbbMaHK.TabIndex = 45;
             // 
             // ThemKhenThuong
             // 
@@ -273,7 +273,6 @@
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.TextBox txtTen;
         private System.Windows.Forms.Label lblTenHS;
-        private System.Windows.Forms.ComboBox cbbMaHK;
         private System.Windows.Forms.ComboBox cbbLoai;
         private System.Windows.Forms.Label lblLoai;
         private System.Windows.Forms.TextBox txtMaHS;
@@ -281,5 +280,6 @@
         private System.Windows.Forms.Label lblHocKi;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.ComboBox cbbMaHK;
     }
 }

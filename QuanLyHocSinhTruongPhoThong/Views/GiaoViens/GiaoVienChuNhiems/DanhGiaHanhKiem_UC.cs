@@ -1,4 +1,6 @@
-﻿using System;
+﻿using QuanLyHocSinhTruongPhoThong.Models;
+using QuanLyHocSinhTruongPhoThong.Views.Dialog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,13 +18,112 @@ namespace QuanLyHocSinhTruongPhoThong.Views.GiaoViens.GiaoVienChuNhiems
         {
             InitializeComponent();
         }
-        private void LoadHocKy_ToCombo()
+        
+
+        private void lvListHS_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lvHocSinh.SelectedItems.Count == 0)
+                return;
+
+            var item = lvHocSinh.SelectedItems[0];
+            string maHS = item.SubItems[0].Text;
+            string tenHS = item.SubItems[1].Text;
+
+            txtMaHS.Text = maHS;
+            txtTen.Text = tenHS;
+
+            LoadHocKy_ByNienKhoa(maHS);
+
+            if (cbbMaHK.Items.Count > 0)
+            {
+                string maHK = cbbMaHK.SelectedItem.ToString().Split('-')[0].Trim();
+                LoadKhenThuongKyLuatTheoHocSinhVaHocKy(maHS, maHK);
+            }
+            else
+            {
+                txtMaKTKL.Text = GetIDForDatabase.getIDNextKhenThuongKyLuat();
+                txtNoiDung.Clear();
+                cbbLoai.SelectedIndex = 0;
+            }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void SetupListViewHocSinh()
+        {
+            lvHocSinh.View = View.Details;
+            lvHocSinh.FullRowSelect = true;
+            lvHocSinh.GridLines = true;
+            lvHocSinh.MultiSelect = false;
+
+            lvHocSinh.Columns.Clear();
+            lvHocSinh.Columns.Add("Mã HS", 80);
+            lvHocSinh.Columns.Add("Họ và tên", 180);
+            lvHocSinh.Columns.Add("Giới tính", 80);
+            lvHocSinh.Columns.Add("Ngày sinh", 100);
+            lvHocSinh.Columns.Add("SĐT", 100);
+            lvHocSinh.Columns.Add("Email", 150);
+            lvHocSinh.Columns.Add("Địa chỉ", 180);
+            lvHocSinh.Columns.Add("Lớp", 100);
+            lvHocSinh.Columns.Add("Niên khóa", 120);
+        }
+        private void LoadHocSinhCuaGVCN()
         {
             try
             {
-                var listHK = GetListForDatabase.getListHocKy();
+                lvHocSinh.Items.Clear();
+                string username = CurrentUser.Username;
 
+                var list = GetListForDatabase.getHocSinhCuaGVCN(username);
+
+                foreach (var hs in list)
+                {
+                    var lopInfo = (from lop in GetListForDatabase.context.Lops
+                                   join nk in GetListForDatabase.context.NienKhoas on lop.MaNienKhoa equals nk.MaNienKhoa
+                                   where lop.MaLop == hs.MaLop
+                                   select new { lop.TenLop, NamBatDau = nk.NamBatDau, NamKetThuc = nk.NamKetThuc })
+                                   .FirstOrDefault();
+
+                    var item = new ListViewItem(hs.MaHS);
+                    item.SubItems.Add(hs.HoTen);
+                    item.SubItems.Add(hs.GioiTinh ? "Nam" : "Nữ");
+                    item.SubItems.Add(hs.NgaySinh.ToString("dd/MM/yyyy"));
+                    item.SubItems.Add(hs.Sdt);
+                    item.SubItems.Add(hs.Email ?? "");
+                    item.SubItems.Add(hs.DiaChi ?? "");
+                    item.SubItems.Add(lopInfo?.TenLop ?? "");
+                    item.SubItems.Add(lopInfo != null ? $"{lopInfo.NamBatDau}-{lopInfo.NamKetThuc}" : "");
+
+                    lvHocSinh.Items.Add(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải danh sách học sinh của giáo viên chủ nhiệm:\n" + ex.Message,
+                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void LoadHocKy_ByNienKhoa(string maHS)
+        {
+            try
+            {
                 cbbMaHK.Items.Clear();
+
+                var maNienKhoa = (from hs in GetListForDatabase.context.HocSinhs
+                                  join lop in GetListForDatabase.context.Lops on hs.MaLop equals lop.MaLop
+                                  where hs.MaHS == maHS
+                                  select lop.MaNienKhoa)
+                                  .FirstOrDefault();
+
+                if (string.IsNullOrEmpty(maNienKhoa))
+                    return;
+
+                var listHK = GetListForDatabase.context.HocKies
+                    .Where(hk => hk.MaNienKhoa == maNienKhoa)
+                    .OrderBy(hk => hk.MaHK)
+                    .ToList();
 
                 foreach (var hk in listHK)
                 {
@@ -38,113 +139,88 @@ namespace QuanLyHocSinhTruongPhoThong.Views.GiaoViens.GiaoVienChuNhiems
                                 "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void lvListHS_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbbMaHK_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lvListHS.SelectedItems.Count == 0)
+            if (lvHocSinh.SelectedItems.Count == 0 || cbbMaHK.SelectedIndex < 0)
                 return;
 
-            var item = lvListHS.SelectedItems[0];
+            var item = lvHocSinh.SelectedItems[0];
+            string maHS = item.SubItems[0].Text;
+            string maHK = cbbMaHK.SelectedItem.ToString().Split('-')[0].Trim();
 
-            txtMaKTKL.Text = item.SubItems[0].Text;
-            txtMaHS.Text = item.SubItems[1].Text;
-            txtTen.Text = item.SubItems[2].Text;
-            string maHK = item.SubItems[3].Text;
-            string loai = item.SubItems[4].Text;
-            string noiDung = item.SubItems[5].Text;
-            string ngay = item.SubItems[6].Text;
-
-            if (cbbLoai.Items.Contains(loai))
-                cbbLoai.SelectedItem = loai;
-            else
-                cbbLoai.SelectedIndex = 0;
-
-            txtNoiDung.Text = noiDung;
+            LoadKhenThuongKyLuatTheoHocSinhVaHocKy(maHS, maHK);
         }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        private void SetupListViewKhenThuongKyLuat()
-        {
-            lvListHS.View = View.Details;
-            lvListHS.FullRowSelect = true;
-            lvListHS.GridLines = true;
-            lvListHS.MultiSelect = false;
-
-            lvListHS.Columns.Clear();
-            lvListHS.Columns.Add("Mã KT/KL", 100);
-            lvListHS.Columns.Add("Mã HS", 80);
-            lvListHS.Columns.Add("Tên học sinh", 180);
-            lvListHS.Columns.Add("Mã học kỳ", 100);
-            lvListHS.Columns.Add("Loại", 100);
-            lvListHS.Columns.Add("Nội dung", 250);
-            lvListHS.Columns.Add("Ngày", 120);
-        }
-        private void LoadKhenThuongKyLuat(string username)
+        private void LoadKhenThuongKyLuatTheoHocSinhVaHocKy(string maHS, string maHK)
         {
             try
             {
-                lvListHS.Items.Clear();
+                var record = GetListForDatabase.context.KhenThuongKyLuats
+                    .FirstOrDefault(x => x.MaHS == maHS && x.MaHK == maHK);
 
-                string maGV = GetListForDatabase.getMaGVByUsername(username);
-
-                var hsList = GetListForDatabase.getHocSinhByUsername(username);
-                var maHSList = hsList.Select(x => x.MaHS).ToList();
-
-                var list = (from kt in GetListForDatabase.context.KhenThuongKyLuats
-                            join hs in GetListForDatabase.context.HocSinhs on kt.MaHS equals hs.MaHS
-                            where maHSList.Contains(kt.MaHS)
-                            orderby kt.Ngay descending
-                            select new
-                            {
-                                kt.MaKTKL,
-                                kt.MaHS,
-                                hs.HoTen,
-                                kt.MaHK,
-                                kt.Loai,
-                                kt.NoiDung,
-                                kt.Ngay
-                            }).ToList();
-
-                lvListHS.BeginUpdate();
-                foreach (var item in list)
+                if (record != null)
                 {
-                    var row = new ListViewItem(item.MaKTKL);
-                    row.SubItems.Add(item.MaHS);
-                    row.SubItems.Add(item.HoTen);
-                    row.SubItems.Add(item.MaHK);
-                    row.SubItems.Add(item.Loai);
-                    row.SubItems.Add(item.NoiDung ?? "");
-                    row.SubItems.Add(item.Ngay?.ToString("dd/MM/yyyy") ?? "");
-                    lvListHS.Items.Add(row);
+                    txtMaKTKL.Text = record.MaKTKL;
+                    txtMaHS.Text = record.MaHS;
+                    txtTen.Text = (from hs in GetListForDatabase.context.HocSinhs
+                                   where hs.MaHS == record.MaHS
+                                   select hs.HoTen).FirstOrDefault() ?? "";
+                    cbbLoai.SelectedItem = record.Loai;
+                    txtNoiDung.Text = record.NoiDung ?? "";
                 }
-                lvListHS.EndUpdate();
+                else
+                {
+                    txtMaKTKL.Text = GetIDForDatabase.getIDNextKhenThuongKyLuat();
+                    txtNoiDung.Clear();
+                    cbbLoai.SelectedIndex = 0;
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi tải danh sách khen thưởng/kỷ luật:\n" + ex.Message,
+                MessageBox.Show("Lỗi khi tải thông tin Khen thưởng/Kỷ luật:\n" + ex.Message,
                                 "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+
+        private void LoadLoai_ToComboBox()
+        {
+            try
+            {
+                cbbLoai.Items.Clear();
+
+                string[] loaiList = { "Khen thưởng", "Kỷ luật", "Không có" };
+
+                cbbLoai.Items.AddRange(loaiList);
+
+                if (cbbLoai.Items.Count > 0)
+                    cbbLoai.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải danh sách loại khen thưởng/kỷ luật:\n" + ex.Message,
+                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LoadKhenThuongKyLuat(string username)
+        {
+            LoadLoai_ToComboBox();
+            SetupListViewHocSinh();
+            LoadHocSinhCuaGVCN();
+        }
+
         private void DanhGiaHanhKiem_UC_Load(object sender, EventArgs e)
         {
-            SetupListViewKhenThuongKyLuat();
-            LoadHocKy_ToCombo();
-            cbbLoai.Items.Clear();
-            cbbLoai.Items.AddRange(new string[] { "Khen thưởng", "Kỷ luật", "Không có" });
-            cbbLoai.SelectedIndex = 0;
-
-            string username = CurrentUser.Username;
-            LoadKhenThuongKyLuat(username);
+            var user = CurrentUser.Username;
+            LoadKhenThuongKyLuat(user);
+            cbbMaHK.SelectedIndexChanged += cbbMaHK_SelectedIndexChanged;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-
+            
         }
+
 
         private void btnSua_Click(object sender, EventArgs e)
         {

@@ -177,6 +177,61 @@ namespace QuanLyHocSinhTruongPhoThong
     public class GetListForDatabase
     {
         public static AppDbContext context = new AppDbContext();
+        public static List<HocSinh> getHocSinhCuaGVCN(string username)
+        {
+            try
+            {
+                string maGV = getMaGVByUsername(username);
+                if (string.IsNullOrEmpty(maGV))
+                    return new List<HocSinh>();
+
+                var lopCuaGV = context.Lops
+                    .Where(l => l.MaGV == maGV)
+                    .Select(l => new { l.MaLop, l.TenLop, l.MaNienKhoa })
+                    .ToList();
+
+                if (lopCuaGV.Count == 0)
+                    return new List<HocSinh>();
+
+                var list = (from hs in context.HocSinhs
+                            join lop in context.Lops on hs.MaLop equals lop.MaLop
+                            join nk in context.NienKhoas on lop.MaNienKhoa equals nk.MaNienKhoa
+                            where lop.MaGV == maGV
+                            select new
+                            {
+                                hs.MaHS,
+                                hs.HoTen,
+                                hs.GioiTinh,
+                                hs.NgaySinh,
+                                hs.Sdt,
+                                hs.Email,
+                                hs.DiaChi,
+                                lop.TenLop,
+                                NamBatDau = nk.NamBatDau,
+                                NamKetThuc = nk.NamKetThuc
+                            })
+                            .OrderBy(x => x.TenLop)
+                            .ThenBy(x => x.HoTen)
+                            .ToList();
+
+                return list.Select(x => new HocSinh
+                {
+                    MaHS = x.MaHS,
+                    HoTen = $"{x.HoTen} ({x.TenLop})",
+                    GioiTinh = x.GioiTinh,
+                    NgaySinh = x.NgaySinh,
+                    Sdt = x.Sdt,
+                    Email = x.Email,
+                    DiaChi = x.DiaChi
+                }).ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi lấy danh sách học sinh của GVCN: " + ex.Message);
+                return new List<HocSinh>();
+            }
+        }
+
         public static List<HocSinh> getHocSinhByUsername(string username)
         {
             try

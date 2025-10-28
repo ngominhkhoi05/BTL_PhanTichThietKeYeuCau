@@ -95,7 +95,6 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Dialog
                     return;
                 }
 
-                // 👉 Lấy học kỳ hiện đang hiển thị trên combobox
                 if (cbbMaHK.SelectedIndex < 0)
                 {
                     MessageBox.Show("Vui lòng chọn học kỳ!", "Thiếu thông tin",
@@ -148,12 +147,54 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Dialog
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrWhiteSpace(txtNoiDung.Text) ||
+                cbbLoai.SelectedIndex > 0 ||
+                !string.IsNullOrWhiteSpace(txtMaHS.Text))
+            {
+                var result = MessageBox.Show(
+                    "Bạn có chắc muốn hủy thao tác thêm khen thưởng/kỷ luật này?",
+                    "Xác nhận hủy",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
 
+                if (result != DialogResult.Yes)
+                    return;
+            }
+
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
 
         private void lvListHS_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (lvHocSinh.SelectedItems.Count == 0)
+                return;
+            var item = lvHocSinh.SelectedItems[0];
 
+            string maHS = item.SubItems[0].Text;
+            string tenHS = item.SubItems[1].Text;
+            txtMaHS.Text = maHS;
+            txtTen.Text = tenHS;
+
+            txtMaKTKL.Text = GetIDForDatabase.getIDNextKhenThuongKyLuat();
+
+            if (cbbMaHK.Items.Count > 0)
+            {
+                if (cbbMaHK.SelectedIndex < 0)
+                    cbbMaHK.SelectedIndex = 0;
+            }
+            else
+            {
+                var listHK = GetListForDatabase.getListHocKy();
+                foreach (var hk in listHK)
+                    cbbMaHK.Items.Add($"{hk.MaHK} - {hk.TenHK}");
+
+                if (cbbMaHK.Items.Count > 0)
+                    cbbMaHK.SelectedIndex = 0;
+            }
+
+            if (cbbLoai.Items.Count > 0 && cbbLoai.SelectedIndex == -1)
+                cbbLoai.SelectedIndex = 0;
         }
 
         private void ThemKhenThuong_Load(object sender, EventArgs e)
