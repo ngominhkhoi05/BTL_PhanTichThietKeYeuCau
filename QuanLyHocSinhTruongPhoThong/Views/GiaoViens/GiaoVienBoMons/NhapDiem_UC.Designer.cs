@@ -30,28 +30,27 @@
         {
             this.components = new System.ComponentModel.Container();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.lvLop = new System.Windows.Forms.ListView();
+            this.lvHS = new System.Windows.Forms.ListView();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblTenLop = new System.Windows.Forms.Label();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnCapNhat = new System.Windows.Forms.Button();
             this.lblMaPC = new System.Windows.Forms.Label();
-            this.btnClear = new System.Windows.Forms.Button();
             this.txtMaNK = new System.Windows.Forms.Label();
-            this.cbbMaLop = new System.Windows.Forms.ComboBox();
+            this.cbbMaMon = new System.Windows.Forms.ComboBox();
             this.txtMaGVCN = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbbbMaGV = new System.Windows.Forms.ComboBox();
+            this.cbbMaHS = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pnInfo = new System.Windows.Forms.Panel();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.nbrUDDiemGK = new System.Windows.Forms.NumericUpDown();
+            this.nbrUDDiemCK = new System.Windows.Forms.NumericUpDown();
+            this.txtDiemTK = new System.Windows.Forms.TextBox();
+            this.cbbMaHK = new System.Windows.Forms.ComboBox();
+            this.lblDS = new System.Windows.Forms.Label();
+            this.btnLoc = new System.Windows.Forms.Button();
             this.pnInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nbrUDDiemGK)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nbrUDDiemCK)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -59,18 +58,19 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // lvLop
+            // lvHS
             // 
-            this.lvLop.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lvLop.FullRowSelect = true;
-            this.lvLop.GridLines = true;
-            this.lvLop.HideSelection = false;
-            this.lvLop.Location = new System.Drawing.Point(54, 353);
-            this.lvLop.Name = "lvLop";
-            this.lvLop.Size = new System.Drawing.Size(864, 291);
-            this.lvLop.TabIndex = 25;
-            this.lvLop.UseCompatibleStateImageBehavior = false;
-            this.lvLop.View = System.Windows.Forms.View.Details;
+            this.lvHS.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvHS.FullRowSelect = true;
+            this.lvHS.GridLines = true;
+            this.lvHS.HideSelection = false;
+            this.lvHS.Location = new System.Drawing.Point(54, 375);
+            this.lvHS.Name = "lvHS";
+            this.lvHS.Size = new System.Drawing.Size(864, 269);
+            this.lvHS.TabIndex = 25;
+            this.lvHS.UseCompatibleStateImageBehavior = false;
+            this.lvHS.View = System.Windows.Forms.View.Details;
+            this.lvHS.SelectedIndexChanged += new System.EventHandler(this.lvHS_SelectedIndexChanged);
             // 
             // lblTitle
             // 
@@ -93,35 +93,16 @@
             this.lblTenLop.Text = "Mã HS";
             this.lblTenLop.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // btnThem
+            // btnCapNhat
             // 
-            this.btnThem.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThem.Location = new System.Drawing.Point(153, 167);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(122, 39);
-            this.btnThem.TabIndex = 15;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.UseVisualStyleBackColor = true;
-            // 
-            // btnSua
-            // 
-            this.btnSua.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSua.Location = new System.Drawing.Point(311, 167);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(122, 39);
-            this.btnSua.TabIndex = 16;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = true;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(467, 167);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(122, 39);
-            this.btnDelete.TabIndex = 17;
-            this.btnDelete.Text = "Xoá";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnCapNhat.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCapNhat.Location = new System.Drawing.Point(300, 168);
+            this.btnCapNhat.Name = "btnCapNhat";
+            this.btnCapNhat.Size = new System.Drawing.Size(122, 39);
+            this.btnCapNhat.TabIndex = 16;
+            this.btnCapNhat.Text = "Cập nhật";
+            this.btnCapNhat.UseVisualStyleBackColor = true;
+            this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
             // 
             // lblMaPC
             // 
@@ -134,16 +115,6 @@
             this.lblMaPC.Text = "Mã HK";
             this.lblMaPC.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // btnClear
-            // 
-            this.btnClear.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(619, 167);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(122, 39);
-            this.btnClear.TabIndex = 25;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            // 
             // txtMaNK
             // 
             this.txtMaNK.AutoSize = true;
@@ -155,13 +126,13 @@
             this.txtMaNK.Text = "Mã môn";
             this.txtMaNK.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // cbbMaLop
+            // cbbMaMon
             // 
-            this.cbbMaLop.FormattingEnabled = true;
-            this.cbbMaLop.Location = new System.Drawing.Point(165, 72);
-            this.cbbMaLop.Name = "cbbMaLop";
-            this.cbbMaLop.Size = new System.Drawing.Size(220, 21);
-            this.cbbMaLop.TabIndex = 29;
+            this.cbbMaMon.FormattingEnabled = true;
+            this.cbbMaMon.Location = new System.Drawing.Point(165, 72);
+            this.cbbMaMon.Name = "cbbMaMon";
+            this.cbbMaMon.Size = new System.Drawing.Size(220, 21);
+            this.cbbMaMon.TabIndex = 29;
             // 
             // txtMaGVCN
             // 
@@ -185,13 +156,13 @@
             this.label1.Text = "Điểm CK";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // cbbbMaGV
+            // cbbMaHS
             // 
-            this.cbbbMaGV.FormattingEnabled = true;
-            this.cbbbMaGV.Location = new System.Drawing.Point(587, 28);
-            this.cbbbMaGV.Name = "cbbbMaGV";
-            this.cbbbMaGV.Size = new System.Drawing.Size(220, 21);
-            this.cbbbMaGV.TabIndex = 34;
+            this.cbbMaHS.FormattingEnabled = true;
+            this.cbbMaHS.Location = new System.Drawing.Point(587, 28);
+            this.cbbMaHS.Name = "cbbMaHS";
+            this.cbbMaHS.Size = new System.Drawing.Size(220, 21);
+            this.cbbMaHS.TabIndex = 34;
             // 
             // label2
             // 
@@ -208,70 +179,93 @@
             // pnInfo
             // 
             this.pnInfo.BackColor = System.Drawing.Color.White;
-            this.pnInfo.Controls.Add(this.numericUpDown2);
-            this.pnInfo.Controls.Add(this.numericUpDown1);
-            this.pnInfo.Controls.Add(this.textBox3);
-            this.pnInfo.Controls.Add(this.comboBox2);
+            this.pnInfo.Controls.Add(this.nbrUDDiemGK);
+            this.pnInfo.Controls.Add(this.btnLoc);
+            this.pnInfo.Controls.Add(this.nbrUDDiemCK);
+            this.pnInfo.Controls.Add(this.txtDiemTK);
+            this.pnInfo.Controls.Add(this.cbbMaHK);
             this.pnInfo.Controls.Add(this.label2);
-            this.pnInfo.Controls.Add(this.cbbbMaGV);
+            this.pnInfo.Controls.Add(this.cbbMaHS);
             this.pnInfo.Controls.Add(this.label1);
             this.pnInfo.Controls.Add(this.txtMaGVCN);
-            this.pnInfo.Controls.Add(this.cbbMaLop);
+            this.pnInfo.Controls.Add(this.cbbMaMon);
             this.pnInfo.Controls.Add(this.txtMaNK);
-            this.pnInfo.Controls.Add(this.btnClear);
             this.pnInfo.Controls.Add(this.lblMaPC);
-            this.pnInfo.Controls.Add(this.btnDelete);
-            this.pnInfo.Controls.Add(this.btnSua);
-            this.pnInfo.Controls.Add(this.btnThem);
+            this.pnInfo.Controls.Add(this.btnCapNhat);
             this.pnInfo.Controls.Add(this.lblTenLop);
             this.pnInfo.Location = new System.Drawing.Point(54, 93);
             this.pnInfo.Name = "pnInfo";
             this.pnInfo.Size = new System.Drawing.Size(864, 234);
             this.pnInfo.TabIndex = 26;
+            this.pnInfo.Paint += new System.Windows.Forms.PaintEventHandler(this.pnInfo_Paint);
             // 
-            // comboBox2
+            // nbrUDDiemGK
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(165, 26);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(220, 21);
-            this.comboBox2.TabIndex = 37;
+            this.nbrUDDiemGK.Location = new System.Drawing.Point(587, 75);
+            this.nbrUDDiemGK.Name = "nbrUDDiemGK";
+            this.nbrUDDiemGK.Size = new System.Drawing.Size(220, 20);
+            this.nbrUDDiemGK.TabIndex = 42;
             // 
-            // textBox3
+            // nbrUDDiemCK
             // 
-            this.textBox3.Location = new System.Drawing.Point(587, 119);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(220, 20);
-            this.textBox3.TabIndex = 40;
+            this.nbrUDDiemCK.Location = new System.Drawing.Point(165, 119);
+            this.nbrUDDiemCK.Name = "nbrUDDiemCK";
+            this.nbrUDDiemCK.Size = new System.Drawing.Size(220, 20);
+            this.nbrUDDiemCK.TabIndex = 41;
             // 
-            // numericUpDown1
+            // txtDiemTK
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(165, 119);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(220, 20);
-            this.numericUpDown1.TabIndex = 41;
+            this.txtDiemTK.Location = new System.Drawing.Point(587, 119);
+            this.txtDiemTK.Name = "txtDiemTK";
+            this.txtDiemTK.ReadOnly = true;
+            this.txtDiemTK.Size = new System.Drawing.Size(220, 20);
+            this.txtDiemTK.TabIndex = 40;
             // 
-            // numericUpDown2
+            // cbbMaHK
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(587, 75);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(220, 20);
-            this.numericUpDown2.TabIndex = 42;
+            this.cbbMaHK.FormattingEnabled = true;
+            this.cbbMaHK.Location = new System.Drawing.Point(165, 26);
+            this.cbbMaHK.Name = "cbbMaHK";
+            this.cbbMaHK.Size = new System.Drawing.Size(220, 21);
+            this.cbbMaHK.TabIndex = 37;
+            // 
+            // lblDS
+            // 
+            this.lblDS.AutoSize = true;
+            this.lblDS.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDS.Location = new System.Drawing.Point(50, 340);
+            this.lblDS.Name = "lblDS";
+            this.lblDS.Size = new System.Drawing.Size(156, 21);
+            this.lblDS.TabIndex = 43;
+            this.lblDS.Text = "Danh sách học sinh";
+            this.lblDS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btnLoc
+            // 
+            this.btnLoc.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoc.Location = new System.Drawing.Point(506, 168);
+            this.btnLoc.Name = "btnLoc";
+            this.btnLoc.Size = new System.Drawing.Size(114, 39);
+            this.btnLoc.TabIndex = 43;
+            this.btnLoc.Text = "Lọc";
+            this.btnLoc.UseVisualStyleBackColor = true;
+            this.btnLoc.Click += new System.EventHandler(this.btnLoc_Click);
             // 
             // NhapDiem_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblDS);
             this.Controls.Add(this.pnInfo);
-            this.Controls.Add(this.lvLop);
+            this.Controls.Add(this.lvHS);
             this.Controls.Add(this.lblTitle);
             this.Name = "NhapDiem_UC";
             this.Size = new System.Drawing.Size(972, 673);
+            this.Load += new System.EventHandler(this.NhapDiem_UC_Load);
             this.pnInfo.ResumeLayout(false);
             this.pnInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nbrUDDiemGK)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nbrUDDiemCK)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -279,24 +273,23 @@
 
         #endregion
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ListView lvLop;
+        private System.Windows.Forms.ListView lvHS;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblTenLop;
-        private System.Windows.Forms.Button btnThem;
-        private System.Windows.Forms.Button btnSua;
-        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnCapNhat;
         private System.Windows.Forms.Label lblMaPC;
-        private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Label txtMaNK;
-        private System.Windows.Forms.ComboBox cbbMaLop;
+        private System.Windows.Forms.ComboBox cbbMaMon;
         private System.Windows.Forms.Label txtMaGVCN;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbbbMaGV;
+        private System.Windows.Forms.ComboBox cbbMaHS;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel pnInfo;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.ComboBox cbbMaHK;
+        private System.Windows.Forms.TextBox txtDiemTK;
+        private System.Windows.Forms.NumericUpDown nbrUDDiemGK;
+        private System.Windows.Forms.NumericUpDown nbrUDDiemCK;
+        private System.Windows.Forms.Label lblDS;
+        private System.Windows.Forms.Button btnLoc;
     }
 }

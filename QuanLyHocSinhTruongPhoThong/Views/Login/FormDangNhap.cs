@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static QuanLyHocSinhTruongPhoThong.CurrentUser;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace QuanLyHocSinhTruongPhoThong
 {
@@ -34,21 +36,40 @@ namespace QuanLyHocSinhTruongPhoThong
 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
-            // Giả sử bạn kiểm tra tài khoản ở đây
-            //string user = txtUser.Text;
-            //string pass = txtPassword.Text;
+            string username = txtTenDangNhap.Text.Trim();
+            string password = txtMatKhau.Text.Trim();
 
-            if (true) // ví dụ
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                // Đăng nhập thành công
+                MessageBox.Show("Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu!",
+                                "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var checker = new CheckLogin();
+            var result = checker.ValidateLogin(username, password);
+
+            if (result.Success)
+            {
+                CurrentUser.AccountId = result.AccountId;
+                CurrentUser.Username = result.Username;
+                CurrentUser.DisplayName = result.DisplayName;
+                CurrentUser.Email = result.Email;
+                CurrentUser.MaGV = result.MaGV;
+                CurrentUser.Roles = result.Roles;
+
+                MessageBox.Show($"Xin chào {CurrentUser.DisplayName ?? CurrentUser.Username}!",
+                                "Đăng nhập thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 this.DialogResult = DialogResult.OK;
-                this.Close(); // đóng form đăng nhập
+                this.Close();
             }
             else
             {
-                MessageBox.Show("Sai tài khoản hoặc mật khẩu!", "Đăng nhập thất bại",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(result.Message,
+                                "Đăng nhập thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

@@ -436,6 +436,7 @@
             this.btnDangNhap.Size = new System.Drawing.Size(58, 58);
             this.btnDangNhap.TabIndex = 0;
             this.btnDangNhap.UseVisualStyleBackColor = true;
+            this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
             // 
             // pnHost
             // 

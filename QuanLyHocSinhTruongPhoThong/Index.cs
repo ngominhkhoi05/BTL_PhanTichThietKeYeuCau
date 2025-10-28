@@ -49,18 +49,9 @@ namespace QuanLyHocSinhTruongPhoThong
 
         private void Index_Load(object sender, EventArgs e)
         {
-            //using (var dlg = new FormDangNhap())
-            //{
-            //    var result = dlg.ShowDialog(this);
-            //    if (result == DialogResult.OK)
-            //    {
-
-            //    }
-            //}
             flbnScrollBar.AutoScroll = true;
             flbnScrollBar.FlowDirection = FlowDirection.TopDown;
             flbnScrollBar.WrapContents = false;
-
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -135,6 +126,18 @@ namespace QuanLyHocSinhTruongPhoThong
         private void btnTaiKhoan_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnDangNhap_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc muốn đăng xuất không?", "Xác nhận",
+        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                CurrentUser.Logout();
+                var login = new Index();
+                login.Show();
+                this.Close();
+            }
         }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -176,6 +177,94 @@ namespace QuanLyHocSinhTruongPhoThong
     public class GetListForDatabase
     {
         public static AppDbContext context = new AppDbContext();
+        public static List<HocSinh> getHocSinhByUsername(string username)
+        {
+            try
+            {
+                string maGV = getMaGVByUsername(username);
+                if (string.IsNullOrEmpty(maGV))
+                    return new List<HocSinh>();
+
+                var lopDuocDay = (from pc in context.PhanCongGiangDays
+                                  where pc.MaGV == maGV
+                                  select pc.MaLop)
+                                 .Union(from l in context.Lops
+                                        where l.MaGV == maGV
+                                        select l.MaLop)
+                                 .Distinct()
+                                 .ToList();
+
+                var list = context.HocSinhs
+                    .Where(hs => lopDuocDay.Contains(hs.MaLop))
+                    .OrderBy(hs => hs.MaLop)
+                    .ThenBy(hs => hs.HoTen)
+                    .ToList();
+
+                return list;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi lấy danh sách học sinh theo username: " + ex.Message);
+                return new List<HocSinh>();
+            }
+        }
+
+        public static string getMaGVByUsername(string username)
+        {
+            if (string.IsNullOrWhiteSpace(username)) return null;
+
+            var maGV = context.Accounts
+                              .Where(a => a.Username == username && a.MaGV != null)
+                              .Select(a => a.MaGV)
+                              .FirstOrDefault();
+            if (!string.IsNullOrEmpty(maGV)) return maGV;
+
+            maGV = context.GiaoViens
+                          .Where(g => g.Email == username)
+                          .Select(g => g.MaGV)
+                          .FirstOrDefault();
+            if (!string.IsNullOrEmpty(maGV)) return maGV;
+
+            var isGV = context.GiaoViens.Any(g => g.MaGV == username);
+            return isGV ? username : null;
+        }
+
+        public static List<MonHoc> getListMonHocByUsername(string username)
+        {
+            try
+            {
+                var maGV = getMaGVByUsername(username);
+                if (string.IsNullOrEmpty(maGV)) return new List<MonHoc>();
+
+                return (from pc in context.PhanCongGiangDays
+                        join mh in context.MonHocs on pc.MaMH equals mh.MaMH
+                        where pc.MaGV == maGV
+                        select mh)
+                       .Distinct()
+                       .OrderBy(m => m.MaMH)
+                       .ToList();
+            }
+            catch { return new List<MonHoc>(); }
+        }
+
+        public static List<Lop> getListLopHocByUsername(string username)
+        {
+            try
+            {
+                var maGV = getMaGVByUsername(username);
+                if (string.IsNullOrEmpty(maGV)) return new List<Lop>();
+
+                return (from pc in context.PhanCongGiangDays
+                        join lop in context.Lops on pc.MaLop equals lop.MaLop
+                        where pc.MaGV == maGV
+                        select lop)
+                       .Distinct()
+                       .OrderBy(l => l.MaLop)
+                       .ToList();
+            }
+            catch { return new List<Lop>(); }
+        }
+
         public static List<PhanCongGiangDayView> getListPhanCong()
         {
             try
@@ -326,6 +415,113 @@ namespace QuanLyHocSinhTruongPhoThong
             }
         }
     }
-    
-    
+
+    public static class CurrentUser
+    {
+        public static string AccountId { get; set; }
+        public static string Username { get; set; }
+        public static string DisplayName { get; set; }
+        public static string Email { get; set; }
+        public static string MaGV { get; set; }
+        public static List<string> Roles { get; set; } = new List<string>();
+
+        public static void Logout()
+        {
+            AccountId = null;
+            Username = null;
+            DisplayName = null;
+            Email = null;
+            MaGV = null;
+            Roles.Clear();
+        }
+
+        public static bool HasRole(string roleName)
+        {
+            return Roles != null && Roles.Contains(roleName);
+        }
+        
+
+    }
+    public class CheckLogin
+    {
+        public AppDbContext context = new AppDbContext();
+
+        private string HashPassword(string password)
+        {
+            using (SHA256 sha = SHA256.Create())
+            {
+                var bytes = Encoding.UTF8.GetBytes(password);
+                var hash = sha.ComputeHash(bytes);
+                return BitConverter.ToString(hash).Replace("-", "").ToLower();
+            }
+        }
+        public LoginResult ValidateLogin(string username, string password)
+        {
+            var result = new LoginResult { Success = false };
+
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            {
+                result.Message = "Vui lòng nhập tên đăng nhập và mật khẩu.";
+                return result;
+            }
+
+            try
+            {
+                var acc = context.Accounts
+                                 .Include("Roles")
+                                 .FirstOrDefault(a => a.Username == username.Trim());
+
+                if (acc == null)
+                {
+                    result.Message = "Tài khoản không tồn tại.";
+                    return result;
+                }
+
+                if ((bool)!acc.IsActive)
+                {
+                    result.Message = "Tài khoản đã bị khóa.";
+                    return result;
+                }
+
+                //string hashInput = HashPassword(password);
+                string hashInput = password;
+
+                if (!string.Equals(acc.PasswordHash, hashInput, StringComparison.OrdinalIgnoreCase))
+                {
+                    result.Message = "Mật khẩu không chính xác.";
+                    return result;
+                }
+
+                var roles = acc.Roles.Select(r => r.RoleName).ToList();
+
+                result.Success = true;
+                result.AccountId = acc.AccountId;
+                result.Username = acc.Username;
+                result.DisplayName = acc.DisplayName;
+                result.Email = acc.Email;
+                result.MaGV = acc.MaGV;
+                result.Roles = roles;
+                result.Message = "Đăng nhập thành công.";
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                result.Message = "Lỗi khi kiểm tra đăng nhập: " + ex.Message;
+                return result;
+            }
+        }
+
+    }
+    public class LoginResult
+    {
+        public bool Success { get; set; }
+        public string Message { get; set; }
+        public string AccountId { get; set; }
+        public string Username { get; set; }
+        public string DisplayName { get; set; }
+        public string Email { get; set; }
+        public string MaGV { get; set; }
+        public List<string> Roles { get; set; } = new List<string>();
+    }
 }

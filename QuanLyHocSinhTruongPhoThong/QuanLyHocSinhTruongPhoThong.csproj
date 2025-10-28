@@ -129,11 +129,29 @@
     <Compile Include="Views\Admins\ThoiKhoaBieu_UC.Designer.cs">
       <DependentUpon>ThoiKhoaBieu_UC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Dialog\frmLocHocSinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Dialog\frmLocHocSinh.Designer.cs">
+      <DependentUpon>frmLocHocSinh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialog\frmLocTheoKy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Dialog\frmLocTheoKy.Designer.cs">
+      <DependentUpon>frmLocTheoKy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dialog\QuanHe.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Dialog\QuanHe.Designer.cs">
       <DependentUpon>QuanHe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialog\ThemKhenThuong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Dialog\ThemKhenThuong.Designer.cs">
+      <DependentUpon>ThemKhenThuong.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\GiaoViens\GiaoVienBoMons\NhapDiem_UC.cs">
       <SubType>UserControl</SubType>
@@ -203,8 +221,17 @@
     <EmbeddedResource Include="Views\Admins\ThoiKhoaBieu_UC.resx">
       <DependentUpon>ThoiKhoaBieu_UC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Dialog\frmLocHocSinh.resx">
+      <DependentUpon>frmLocHocSinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Dialog\frmLocTheoKy.resx">
+      <DependentUpon>frmLocTheoKy.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Dialog\QuanHe.resx">
       <DependentUpon>QuanHe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Dialog\ThemKhenThuong.resx">
+      <DependentUpon>ThemKhenThuong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\GiaoViens\GiaoVienBoMons\NhapDiem_UC.resx">
       <DependentUpon>NhapDiem_UC.cs</DependentUpon>
