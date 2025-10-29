@@ -34,7 +34,6 @@
             this.cbbLop = new System.Windows.Forms.ComboBox();
             this.cbbGV = new System.Windows.Forms.ComboBox();
             this.btnTaoTKB = new System.Windows.Forms.Button();
-            this.btnXacNhan = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lvTKB
@@ -94,29 +93,19 @@
             // btnTaoTKB
             // 
             this.btnTaoTKB.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTaoTKB.Location = new System.Drawing.Point(247, 612);
+            this.btnTaoTKB.Location = new System.Drawing.Point(366, 610);
             this.btnTaoTKB.Name = "btnTaoTKB";
             this.btnTaoTKB.Size = new System.Drawing.Size(207, 39);
             this.btnTaoTKB.TabIndex = 18;
             this.btnTaoTKB.Text = "Tạo thời khoá biểu";
             this.btnTaoTKB.UseVisualStyleBackColor = true;
-            // 
-            // btnXacNhan
-            // 
-            this.btnXacNhan.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXacNhan.Location = new System.Drawing.Point(520, 612);
-            this.btnXacNhan.Name = "btnXacNhan";
-            this.btnXacNhan.Size = new System.Drawing.Size(122, 39);
-            this.btnXacNhan.TabIndex = 17;
-            this.btnXacNhan.Text = "Xác nhận";
-            this.btnXacNhan.UseVisualStyleBackColor = true;
+            this.btnTaoTKB.Click += new System.EventHandler(this.btnTaoTKB_Click);
             // 
             // ThoiKhoaBieu_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnTaoTKB);
-            this.Controls.Add(this.btnXacNhan);
             this.Controls.Add(this.cbbGV);
             this.Controls.Add(this.cbbLop);
             this.Controls.Add(this.lblLop);
@@ -136,6 +125,5 @@
         private System.Windows.Forms.ComboBox cbbLop;
         private System.Windows.Forms.ComboBox cbbGV;
         private System.Windows.Forms.Button btnTaoTKB;
-        private System.Windows.Forms.Button btnXacNhan;
     }
 }

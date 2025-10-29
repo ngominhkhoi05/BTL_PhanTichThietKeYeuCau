@@ -173,21 +173,68 @@ namespace QuanLyHocSinhTruongPhoThong
         public string MaHK { get; set; }
         public string TenHK { get; set; }
     }
-
+    public class HocSinhHanhKiemView
+    {
+        public string MaHS { get; set; }
+        public string HoTenHocSinh { get; set; }
+        public string TenLop { get; set; }
+        public string GiaoVienChuNhiem { get; set; }
+        public string MaHK { get; set; }
+        public string TenHK { get; set; }
+        public string HanhKiem { get; set; }
+    }
+    public class HocSinhKTKLView
+    {
+        public string MaHS { get; set; }
+        public string HoTenHocSinh { get; set; }
+        public DateTime NgaySinh { get; set; }
+        public bool GioiTinh { get; set; }
+        public string TenLop { get; set; }
+        public string GiaoVienChuNhiem { get; set; }
+        public string TrangThai { get; set; }  // Khen thưởng / Kỷ luật / Không có
+        public string NoiDung { get; set; }
+        public DateTime? Ngay { get; set; }
+    }
     public class GetListForDatabase
     {
         public static AppDbContext context = new AppDbContext();
-        public class HocSinhKTKLView
+        public static List<HocSinhHanhKiemView> getDanhSachHanhKiemTheoGVCN(string username)
         {
-            public string MaHS { get; set; }
-            public string HoTenHocSinh { get; set; }
-            public DateTime NgaySinh { get; set; }
-            public bool GioiTinh { get; set; }
-            public string TenLop { get; set; }
-            public string GiaoVienChuNhiem { get; set; }
-            public string TrangThai { get; set; }  // Khen thưởng / Kỷ luật / Không có
-            public string NoiDung { get; set; }
-            public DateTime? Ngay { get; set; }
+            try
+            {
+                string maGV = getMaGVByUsername(username);
+                if (string.IsNullOrEmpty(maGV))
+                    return new List<HocSinhHanhKiemView>();
+
+                var result = (from gv in context.GiaoViens
+                              join lop in context.Lops on gv.MaGV equals lop.MaGV
+                              join hs in context.HocSinhs on lop.MaLop equals hs.MaLop
+                              join hk in context.HanhKiems on hs.MaHS equals hk.MaHS into hsHK
+                              from hk in hsHK.DefaultIfEmpty()
+                              join hkInfo in context.HocKies on hk.MaHK equals hkInfo.MaHK into hkJoin
+                              from hkInfo in hkJoin.DefaultIfEmpty()
+                              where gv.MaGV == maGV
+                              select new HocSinhHanhKiemView
+                              {
+                                  MaHS = hs.MaHS,
+                                  HoTenHocSinh = hs.HoTen,
+                                  TenLop = lop.TenLop,
+                                  GiaoVienChuNhiem = gv.HoTen,
+                                  MaHK = hkInfo != null ? hkInfo.MaHK : null,
+                                  TenHK = hkInfo != null ? hkInfo.TenHK : null,
+                                  HanhKiem = hk != null ? hk.Loai : "Chưa có"
+                              })
+                              .OrderBy(x => x.TenLop)
+                              .ThenBy(x => x.HoTenHocSinh)
+                              .ToList();
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi lấy danh sách hạnh kiểm theo GVCN: " + ex.Message);
+                return new List<HocSinhHanhKiemView>();
+            }
         }
 
         public static List<HocSinhKTKLView> getDanhSachHocSinhTheoGVCN(string username)

@@ -39,12 +39,16 @@
             this.lblTenMH = new System.Windows.Forms.Label();
             this.lvMonHoc = new System.Windows.Forms.ListView();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.txtTietTuan = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnInfo
             // 
             this.pnInfo.BackColor = System.Drawing.Color.White;
+            this.pnInfo.Controls.Add(this.txtTietTuan);
+            this.pnInfo.Controls.Add(this.label1);
             this.pnInfo.Controls.Add(this.btnClear);
             this.pnInfo.Controls.Add(this.txtMaMon);
             this.pnInfo.Controls.Add(this.lblMaMH);
@@ -55,15 +59,15 @@
             this.pnInfo.Controls.Add(this.lblTenMH);
             this.pnInfo.Location = new System.Drawing.Point(54, 91);
             this.pnInfo.Name = "pnInfo";
-            this.pnInfo.Size = new System.Drawing.Size(864, 143);
+            this.pnInfo.Size = new System.Drawing.Size(864, 190);
             this.pnInfo.TabIndex = 20;
             // 
             // btnClear
             // 
             this.btnClear.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(601, 77);
+            this.btnClear.Location = new System.Drawing.Point(650, 115);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(122, 39);
+            this.btnClear.Size = new System.Drawing.Size(157, 39);
             this.btnClear.TabIndex = 25;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -98,9 +102,9 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(449, 77);
+            this.btnDelete.Location = new System.Drawing.Point(452, 115);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(122, 39);
+            this.btnDelete.Size = new System.Drawing.Size(181, 39);
             this.btnDelete.TabIndex = 17;
             this.btnDelete.Text = "Xoá";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -109,9 +113,9 @@
             // btnSua
             // 
             this.btnSua.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSua.Location = new System.Drawing.Point(293, 77);
+            this.btnSua.Location = new System.Drawing.Point(650, 70);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(122, 39);
+            this.btnSua.Size = new System.Drawing.Size(157, 39);
             this.btnSua.TabIndex = 16;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -120,9 +124,9 @@
             // btnThem
             // 
             this.btnThem.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThem.Location = new System.Drawing.Point(135, 77);
+            this.btnThem.Location = new System.Drawing.Point(452, 70);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(122, 39);
+            this.btnThem.Size = new System.Drawing.Size(181, 39);
             this.btnThem.TabIndex = 15;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
@@ -145,9 +149,9 @@
             this.lvMonHoc.FullRowSelect = true;
             this.lvMonHoc.GridLines = true;
             this.lvMonHoc.HideSelection = false;
-            this.lvMonHoc.Location = new System.Drawing.Point(54, 258);
+            this.lvMonHoc.Location = new System.Drawing.Point(54, 287);
             this.lvMonHoc.Name = "lvMonHoc";
-            this.lvMonHoc.Size = new System.Drawing.Size(864, 384);
+            this.lvMonHoc.Size = new System.Drawing.Size(864, 355);
             this.lvMonHoc.TabIndex = 19;
             this.lvMonHoc.UseCompatibleStateImageBehavior = false;
             this.lvMonHoc.View = System.Windows.Forms.View.Details;
@@ -162,6 +166,24 @@
             this.lblTitle.Size = new System.Drawing.Size(191, 40);
             this.lblTitle.TabIndex = 18;
             this.lblTitle.Text = "MÔN HỌC";
+            // 
+            // txtTietTuan
+            // 
+            this.txtTietTuan.Location = new System.Drawing.Point(166, 81);
+            this.txtTietTuan.Name = "txtTietTuan";
+            this.txtTietTuan.Size = new System.Drawing.Size(220, 20);
+            this.txtTietTuan.TabIndex = 27;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(67, 79);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(84, 21);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Tiết / tuần";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // MonHoc_UC
             // 
@@ -193,5 +215,7 @@
         private System.Windows.Forms.Label lblTenMH;
         private System.Windows.Forms.ListView lvMonHoc;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.TextBox txtTietTuan;
+        private System.Windows.Forms.Label label1;
     }
 }
