@@ -115,7 +115,7 @@ namespace QuanLyHocSinhTruongPhoThong
 
         private void btnKhenThuong_Click(object sender, EventArgs e)
         {
-
+            _nav.Show("KhenThuong");
         }
 
         private void btnBaoCao_Click(object sender, EventArgs e)

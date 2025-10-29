@@ -177,6 +177,58 @@ namespace QuanLyHocSinhTruongPhoThong
     public class GetListForDatabase
     {
         public static AppDbContext context = new AppDbContext();
+        public class HocSinhKTKLView
+        {
+            public string MaHS { get; set; }
+            public string HoTenHocSinh { get; set; }
+            public DateTime NgaySinh { get; set; }
+            public bool GioiTinh { get; set; }
+            public string TenLop { get; set; }
+            public string GiaoVienChuNhiem { get; set; }
+            public string TrangThai { get; set; }  // Khen thưởng / Kỷ luật / Không có
+            public string NoiDung { get; set; }
+            public DateTime? Ngay { get; set; }
+        }
+
+        public static List<HocSinhKTKLView> getDanhSachHocSinhTheoGVCN(string username)
+        {
+            try
+            {
+                string maGV = getMaGVByUsername(username);
+                if (string.IsNullOrEmpty(maGV))
+                    return new List<HocSinhKTKLView>();
+
+                var result = (from gv in context.GiaoViens
+                              join lop in context.Lops on gv.MaGV equals lop.MaGV
+                              join hs in context.HocSinhs on lop.MaLop equals hs.MaLop
+                              join kt in context.KhenThuongKyLuats on hs.MaHS equals kt.MaHS into hsKT
+                              from kt in hsKT.DefaultIfEmpty()
+                              where gv.MaGV == maGV
+                              select new HocSinhKTKLView
+                              {
+                                  MaHS = hs.MaHS,
+                                  HoTenHocSinh = hs.HoTen,
+                                  NgaySinh = hs.NgaySinh,
+                                  GioiTinh = hs.GioiTinh,
+                                  TenLop = lop.TenLop,
+                                  GiaoVienChuNhiem = gv.HoTen,
+                                  TrangThai = kt.Loai ?? "Không có",
+                                  NoiDung = kt.NoiDung,
+                                  Ngay = kt.Ngay
+                              })
+                              .OrderBy(x => x.TenLop)
+                              .ThenBy(x => x.HoTenHocSinh)
+                              .ToList();
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi lấy danh sách học sinh theo GVCN: " + ex.Message);
+                return new List<HocSinhKTKLView>();
+            }
+        }
+
         public static List<HocSinh> getHocSinhCuaGVCN(string username)
         {
             try
@@ -579,4 +631,5 @@ namespace QuanLyHocSinhTruongPhoThong
         public string MaGV { get; set; }
         public List<string> Roles { get; set; } = new List<string>();
     }
+
 }
