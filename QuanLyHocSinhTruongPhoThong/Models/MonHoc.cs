@@ -25,6 +25,8 @@ namespace QuanLyHocSinhTruongPhoThong.Models
         [StringLength(50)]
         public string TenMH { get; set; }
 
+        public int TietTuan { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BangDiem> BangDiems { get; set; }
 

@@ -32,7 +32,7 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblLop = new System.Windows.Forms.Label();
             this.cbbLop = new System.Windows.Forms.ComboBox();
-            this.cbbGV = new System.Windows.Forms.ComboBox();
+            this.cbbGiaoVien = new System.Windows.Forms.ComboBox();
             this.btnTaoTKB = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -66,29 +66,29 @@
             this.lblLop.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLop.Location = new System.Drawing.Point(63, 121);
             this.lblLop.Name = "lblLop";
-            this.lblLop.Size = new System.Drawing.Size(100, 24);
+            this.lblLop.Size = new System.Drawing.Size(142, 24);
             this.lblLop.TabIndex = 13;
-            this.lblLop.Text = "Lớp 10A3";
+            this.lblLop.Text = "Thời khoá biểu";
             // 
             // cbbLop
             // 
             this.cbbLop.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbLop.FormattingEnabled = true;
-            this.cbbLop.Location = new System.Drawing.Point(578, 116);
+            this.cbbLop.Location = new System.Drawing.Point(494, 116);
             this.cbbLop.Name = "cbbLop";
-            this.cbbLop.Size = new System.Drawing.Size(160, 29);
+            this.cbbLop.Size = new System.Drawing.Size(171, 29);
             this.cbbLop.TabIndex = 14;
             this.cbbLop.Text = "Lớp";
             // 
-            // cbbGV
+            // cbbGiaoVien
             // 
-            this.cbbGV.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbGV.FormattingEnabled = true;
-            this.cbbGV.Location = new System.Drawing.Point(753, 116);
-            this.cbbGV.Name = "cbbGV";
-            this.cbbGV.Size = new System.Drawing.Size(160, 29);
-            this.cbbGV.TabIndex = 15;
-            this.cbbGV.Text = "Giáo viên";
+            this.cbbGiaoVien.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbGiaoVien.FormattingEnabled = true;
+            this.cbbGiaoVien.Location = new System.Drawing.Point(671, 116);
+            this.cbbGiaoVien.Name = "cbbGiaoVien";
+            this.cbbGiaoVien.Size = new System.Drawing.Size(242, 29);
+            this.cbbGiaoVien.TabIndex = 15;
+            this.cbbGiaoVien.Text = "Giáo viên";
             // 
             // btnTaoTKB
             // 
@@ -106,13 +106,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnTaoTKB);
-            this.Controls.Add(this.cbbGV);
+            this.Controls.Add(this.cbbGiaoVien);
             this.Controls.Add(this.cbbLop);
             this.Controls.Add(this.lblLop);
             this.Controls.Add(this.lvTKB);
             this.Controls.Add(this.lblTitle);
             this.Name = "ThoiKhoaBieu_UC";
             this.Size = new System.Drawing.Size(972, 673);
+            this.Load += new System.EventHandler(this.ThoiKhoaBieu_UC_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -123,7 +124,7 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblLop;
         private System.Windows.Forms.ComboBox cbbLop;
-        private System.Windows.Forms.ComboBox cbbGV;
+        private System.Windows.Forms.ComboBox cbbGiaoVien;
         private System.Windows.Forms.Button btnTaoTKB;
     }
 }

@@ -6,16 +6,16 @@ using System.Data;
 using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QuanLyHocSinhTruongPhoThong.Views.Admins
 {
-    public partial class MonHoc_UC : UserControl,IReloadable
+    public partial class MonHoc_UC : UserControl, IReloadable
     {
-        public AppDbContext context=new AppDbContext();
+        public AppDbContext context = new AppDbContext();
+
         public MonHoc_UC()
         {
             InitializeComponent();
@@ -25,6 +25,7 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
         {
             LoadMonHoc();
         }
+
         private void SetupListViewMonHoc()
         {
             lvMonHoc.View = View.Details;
@@ -34,13 +35,11 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
 
             lvMonHoc.Columns.Clear();
 
-            int totalWidth = lvMonHoc.ClientSize.Width;
-            int col1 = (int)(totalWidth * 0.4); // 40%
-            int col2 = (int)(totalWidth * 0.6); // 60%
-
-            lvMonHoc.Columns.Add("Mã môn", col1);
-            lvMonHoc.Columns.Add("Tên môn học", col2);
+            lvMonHoc.Columns.Add("Mã môn", 100);
+            lvMonHoc.Columns.Add("Tên môn học", 200);
+            lvMonHoc.Columns.Add("Tiết / Tuần", 100);
         }
+
         private void LoadMonHoc()
         {
             try
@@ -49,7 +48,7 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
                 lvMonHoc.Items.Clear();
 
                 var list = context.MonHocs
-                    .AsNoTracking()              
+                    .AsNoTracking()
                     .OrderBy(m => m.MaMH)
                     .ToList();
 
@@ -57,6 +56,7 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
                 {
                     var item = new ListViewItem(mh.MaMH);
                     item.SubItems.Add(mh.TenMH);
+                    item.SubItems.Add(mh.TietTuan.ToString());
                     lvMonHoc.Items.Add(item);
                 }
             }
@@ -70,7 +70,6 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
                 lvMonHoc.EndUpdate();
             }
         }
-
 
         private void MonHoc_UC_Load(object sender, EventArgs e)
         {
@@ -86,6 +85,7 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
             var item = lvMonHoc.SelectedItems[0];
             txtMaMon.Text = item.SubItems[0].Text;
             txtTenMon.Text = item.SubItems[1].Text;
+            txtTietTuan.Text = item.SubItems[2].Text;
         }
 
         private void ClearTracker()
@@ -105,6 +105,13 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
                     return;
                 }
 
+                if (!int.TryParse(txtTietTuan.Text, out int tietTuan) || tietTuan < 0)
+                {
+                    MessageBox.Show("Số tiết/tuần phải là số nguyên không âm!",
+                                    "Dữ liệu không hợp lệ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 string maMH = GetIDForDatabase.getIDNextMonHoc();
                 string tenMH = txtTenMon.Text.Trim();
 
@@ -119,7 +126,8 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
                 var newMon = new MonHoc
                 {
                     MaMH = maMH,
-                    TenMH = tenMH
+                    TenMH = tenMH,
+                    TietTuan = tietTuan
                 };
 
                 context.MonHocs.Add(newMon);
@@ -146,7 +154,8 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
             {
                 if (string.IsNullOrWhiteSpace(txtMaMon.Text))
                 {
-                    MessageBox.Show("Vui lòng chọn môn học cần sửa!", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Vui lòng chọn môn học cần sửa!",
+                                    "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -155,29 +164,41 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
 
                 if (string.IsNullOrWhiteSpace(tenMH))
                 {
-                    MessageBox.Show("Tên môn học không được để trống!", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Tên môn học không được để trống!",
+                                    "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!int.TryParse(txtTietTuan.Text, out int tietTuan) || tietTuan < 0)
+                {
+                    MessageBox.Show("Số tiết/tuần phải là số nguyên không âm!",
+                                    "Dữ liệu không hợp lệ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
                 var monHoc = context.MonHocs.FirstOrDefault(m => m.MaMH == maMH);
                 if (monHoc == null)
                 {
-                    MessageBox.Show("Không tìm thấy môn học cần sửa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Không tìm thấy môn học cần sửa!",
+                                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 bool trungTen = context.MonHocs.Any(m => m.MaMH != maMH && m.TenMH == tenMH);
                 if (trungTen)
                 {
-                    MessageBox.Show("Tên môn học đã được sử dụng!", "Trùng dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Tên môn học đã được sử dụng!",
+                                    "Trùng dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
                 monHoc.TenMH = tenMH;
+                monHoc.TietTuan = tietTuan;
                 context.SaveChanges();
                 ClearTracker();
 
-                MessageBox.Show("Cập nhật môn học thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Cập nhật môn học thành công!",
+                                "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 LoadMonHoc();
 
@@ -194,10 +215,10 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
             catch (Exception ex)
             {
                 ClearTracker();
-                MessageBox.Show("Lỗi khi sửa môn học:\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi khi sửa môn học:\n" + ex.Message,
+                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -256,6 +277,7 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
             {
                 txtMaMon.Text = GetIDForDatabase.getIDNextMonHoc();
                 txtTenMon.Clear();
+                txtTietTuan.Text = "0";
                 lvMonHoc.SelectedItems.Clear();
             }
             catch (Exception ex)
@@ -264,6 +286,5 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
                                 "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
     }
 }
