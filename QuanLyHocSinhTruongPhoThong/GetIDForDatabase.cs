@@ -137,6 +137,39 @@ namespace QuanLyHocSinhTruongPhoThong
                 return nextID;
             }
         }
+
+        public static string getIDNextAccount()
+        {
+            // Giả sử bạn có class AppDbContext
+            using (var context = new AppDbContext())
+            {
+                // 1. Lấy tài khoản cuối cùng, sắp xếp theo AccountId
+                var lastAccount = context.Accounts
+                    .OrderByDescending(acc => acc.AccountId)
+                    .FirstOrDefault();
+
+                // 2. Mã ID mặc định nếu bảng trống
+                string nextID = "ACC001";
+
+                // 3. Nếu bảng đã có dữ liệu
+                if (lastAccount != null)
+                {
+                    // 4. Lấy phần số từ mã ID cuối cùng.
+                    // "ACC" có 3 ký tự, nên chúng ta dùng Substring(3)
+                    string numberPart = lastAccount.AccountId.Substring(3);
+
+                    // 5. Chuyển phần số sang kiểu int
+                    if (int.TryParse(numberPart, out int number))
+                    {
+                        // 6. Tăng số lên 1 và định dạng lại thành 3 chữ số ("D3")
+                        nextID = "ACC" + (number + 1).ToString("D3");
+                    }
+                }
+
+                // 7. Trả về mã ID mới
+                return nextID;
+            }
+        }
         public static string getIDNextKhenThuongKyLuat()
         {
             using (var context = new AppDbContext())
@@ -195,9 +228,11 @@ namespace QuanLyHocSinhTruongPhoThong
         public string NoiDung { get; set; }
         public DateTime? Ngay { get; set; }
     }
+
     public class GetListForDatabase
     {
         public static AppDbContext context = new AppDbContext();
+
         public static List<HocSinhHanhKiemView> getDanhSachHanhKiemTheoGVCN(string username)
         {
             try

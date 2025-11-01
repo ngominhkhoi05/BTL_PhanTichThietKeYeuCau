@@ -50,7 +50,35 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lvTaiKhoan = new System.Windows.Forms.ListView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnResetPass = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.chkActive = new System.Windows.Forms.CheckBox();
+            this.dtpkCreatedAt = new System.Windows.Forms.DateTimePicker();
+            this.cbbGiaoVien = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.cbbRole = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtDisplayName = new System.Windows.Forms.TextBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtAccountId = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.pnInfo.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label8
@@ -283,18 +311,315 @@
             this.lblTitle.TabIndex = 32;
             this.lblTitle.Text = "QUẢN LÝ TÀI KHOẢN";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(131, 432);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(188, 22);
+            this.label1.TabIndex = 39;
+            this.label1.Text = "Danh sáách tài khoản";
+            // 
+            // lvTaiKhoan
+            // 
+            this.lvTaiKhoan.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvTaiKhoan.FullRowSelect = true;
+            this.lvTaiKhoan.GridLines = true;
+            this.lvTaiKhoan.HideSelection = false;
+            this.lvTaiKhoan.Location = new System.Drawing.Point(126, 467);
+            this.lvTaiKhoan.Name = "lvTaiKhoan";
+            this.lvTaiKhoan.Size = new System.Drawing.Size(720, 182);
+            this.lvTaiKhoan.TabIndex = 38;
+            this.lvTaiKhoan.UseCompatibleStateImageBehavior = false;
+            this.lvTaiKhoan.View = System.Windows.Forms.View.Details;
+            this.lvTaiKhoan.SelectedIndexChanged += new System.EventHandler(this.lvTaiKhoan_SelectedIndexChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.btnClear);
+            this.panel1.Controls.Add(this.btnXoa);
+            this.panel1.Controls.Add(this.btnResetPass);
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.chkActive);
+            this.panel1.Controls.Add(this.dtpkCreatedAt);
+            this.panel1.Controls.Add(this.cbbGiaoVien);
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.label12);
+            this.panel1.Controls.Add(this.cbbRole);
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.txtDisplayName);
+            this.panel1.Controls.Add(this.txtUsername);
+            this.panel1.Controls.Add(this.txtPassword);
+            this.panel1.Controls.Add(this.txtAccountId);
+            this.panel1.Controls.Add(this.txtEmail);
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.label15);
+            this.panel1.Controls.Add(this.btnSua);
+            this.panel1.Controls.Add(this.btnThem);
+            this.panel1.Controls.Add(this.label16);
+            this.panel1.Controls.Add(this.label17);
+            this.panel1.Controls.Add(this.label18);
+            this.panel1.Location = new System.Drawing.Point(126, 97);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(720, 311);
+            this.panel1.TabIndex = 37;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.Location = new System.Drawing.Point(556, 251);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(122, 39);
+            this.btnClear.TabIndex = 49;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoa.Location = new System.Drawing.Point(419, 251);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(122, 39);
+            this.btnXoa.TabIndex = 48;
+            this.btnXoa.Text = "Xoá";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // btnResetPass
+            // 
+            this.btnResetPass.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResetPass.Location = new System.Drawing.Point(85, 251);
+            this.btnResetPass.Name = "btnResetPass";
+            this.btnResetPass.Size = new System.Drawing.Size(173, 39);
+            this.btnResetPass.TabIndex = 47;
+            this.btnResetPass.Text = "Đặt lại mật khẩu";
+            this.btnResetPass.UseVisualStyleBackColor = true;
+            this.btnResetPass.Click += new System.EventHandler(this.btnResetPass_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(51, 214);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(84, 21);
+            this.label10.TabIndex = 46;
+            this.label10.Text = "Trạng thái";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // chkActive
+            // 
+            this.chkActive.AutoSize = true;
+            this.chkActive.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkActive.Location = new System.Drawing.Point(167, 210);
+            this.chkActive.Name = "chkActive";
+            this.chkActive.Size = new System.Drawing.Size(108, 25);
+            this.chkActive.TabIndex = 45;
+            this.chkActive.Text = "Hoạt động";
+            this.chkActive.UseVisualStyleBackColor = true;
+            // 
+            // dtpkCreatedAt
+            // 
+            this.dtpkCreatedAt.Enabled = false;
+            this.dtpkCreatedAt.Location = new System.Drawing.Point(513, 162);
+            this.dtpkCreatedAt.Name = "dtpkCreatedAt";
+            this.dtpkCreatedAt.Size = new System.Drawing.Size(181, 20);
+            this.dtpkCreatedAt.TabIndex = 44;
+            // 
+            // cbbGiaoVien
+            // 
+            this.cbbGiaoVien.FormattingEnabled = true;
+            this.cbbGiaoVien.Location = new System.Drawing.Point(167, 163);
+            this.cbbGiaoVien.Name = "cbbGiaoVien";
+            this.cbbGiaoVien.Size = new System.Drawing.Size(181, 21);
+            this.cbbGiaoVien.TabIndex = 43;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(390, 163);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(77, 21);
+            this.label11.TabIndex = 42;
+            this.label11.Text = "Ngày tạo";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(51, 163);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(81, 21);
+            this.label12.TabIndex = 39;
+            this.label12.Text = "Giáo viên";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // cbbRole
+            // 
+            this.cbbRole.FormattingEnabled = true;
+            this.cbbRole.Location = new System.Drawing.Point(513, 117);
+            this.cbbRole.Name = "cbbRole";
+            this.cbbRole.Size = new System.Drawing.Size(181, 21);
+            this.cbbRole.TabIndex = 38;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(390, 118);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(59, 21);
+            this.label13.TabIndex = 37;
+            this.label13.Text = "Quyền";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtDisplayName
+            // 
+            this.txtDisplayName.Location = new System.Drawing.Point(513, 74);
+            this.txtDisplayName.Name = "txtDisplayName";
+            this.txtDisplayName.Size = new System.Drawing.Size(181, 20);
+            this.txtDisplayName.TabIndex = 36;
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.Location = new System.Drawing.Point(513, 27);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(181, 20);
+            this.txtUsername.TabIndex = 35;
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(167, 74);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(181, 20);
+            this.txtPassword.TabIndex = 34;
+            // 
+            // txtAccountId
+            // 
+            this.txtAccountId.Location = new System.Drawing.Point(167, 28);
+            this.txtAccountId.Name = "txtAccountId";
+            this.txtAccountId.ReadOnly = true;
+            this.txtAccountId.Size = new System.Drawing.Size(181, 20);
+            this.txtAccountId.TabIndex = 33;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(167, 118);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(181, 20);
+            this.txtEmail.TabIndex = 32;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(51, 118);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(51, 21);
+            this.label14.TabIndex = 31;
+            this.label14.Text = "Email";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(51, 25);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(106, 21);
+            this.label15.TabIndex = 29;
+            this.label15.Text = "Mã tài khoản";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btnSua
+            // 
+            this.btnSua.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSua.Location = new System.Drawing.Point(556, 206);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(122, 39);
+            this.btnSua.TabIndex = 16;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
+            // btnThem
+            // 
+            this.btnThem.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThem.Location = new System.Drawing.Point(419, 206);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(122, 39);
+            this.btnThem.TabIndex = 15;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(390, 72);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(60, 21);
+            this.label16.TabIndex = 9;
+            this.label16.Text = "Họ tên";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(51, 70);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(79, 21);
+            this.label17.TabIndex = 7;
+            this.label17.Text = "Mật khẩu";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(390, 27);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(121, 21);
+            this.label18.TabIndex = 2;
+            this.label18.Text = "Tên đăng nhập";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Times New Roman", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(286, 23);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(387, 40);
+            this.label19.TabIndex = 36;
+            this.label19.Text = "QUẢN LÝ TÀI KHOẢN";
+            // 
             // TaiKhoan_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lvTaiKhoan);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.label19);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.pnInfo);
             this.Controls.Add(this.lblTitle);
             this.Name = "TaiKhoan_UC";
             this.Size = new System.Drawing.Size(972, 673);
+            this.Load += new System.EventHandler(this.TaiKhoan_UC_Load);
             this.pnInfo.ResumeLayout(false);
             this.pnInfo.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -324,5 +649,32 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListView lvTaiKhoan;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnXoa;
+        private System.Windows.Forms.Button btnResetPass;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.CheckBox chkActive;
+        private System.Windows.Forms.DateTimePicker dtpkCreatedAt;
+        private System.Windows.Forms.ComboBox cbbGiaoVien;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox cbbRole;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtDisplayName;
+        private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.TextBox txtAccountId;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button btnSua;
+        private System.Windows.Forms.Button btnThem;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
     }
 }

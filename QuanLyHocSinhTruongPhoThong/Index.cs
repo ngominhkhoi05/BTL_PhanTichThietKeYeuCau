@@ -125,7 +125,7 @@ namespace QuanLyHocSinhTruongPhoThong
 
         private void btnTaiKhoan_Click(object sender, EventArgs e)
         {
-
+            _nav.Show("TaiKhoan");
         }
 
         private void btnDangNhap_Click(object sender, EventArgs e)
