@@ -47,7 +47,7 @@ namespace QuanLyHocSinhTruongPhoThong.Views.GiaoViens.GiaoVienChuNhiems
             {
                 lvHocSinh.Items.Clear();
 
-                var list = GetListForDatabase.getDanhSachHanhKiemTheoGVCN();
+                var list = GetListForDatabase.getDanhSachHanhKiem();
 
                 foreach (var hs in list)
                 {

@@ -141,33 +141,24 @@ namespace QuanLyHocSinhTruongPhoThong
 
         public static string getIDNextAccount()
         {
-            // Giả sử bạn có class AppDbContext
             using (var context = new AppDbContext())
             {
-                // 1. Lấy tài khoản cuối cùng, sắp xếp theo AccountId
                 var lastAccount = context.Accounts
                     .OrderByDescending(acc => acc.AccountId)
                     .FirstOrDefault();
 
-                // 2. Mã ID mặc định nếu bảng trống
                 string nextID = "ACC001";
 
-                // 3. Nếu bảng đã có dữ liệu
                 if (lastAccount != null)
                 {
-                    // 4. Lấy phần số từ mã ID cuối cùng.
-                    // "ACC" có 3 ký tự, nên chúng ta dùng Substring(3)
                     string numberPart = lastAccount.AccountId.Substring(3);
 
-                    // 5. Chuyển phần số sang kiểu int
                     if (int.TryParse(numberPart, out int number))
                     {
-                        // 6. Tăng số lên 1 và định dạng lại thành 3 chữ số ("D3")
                         nextID = "ACC" + (number + 1).ToString("D3");
                     }
                 }
 
-                // 7. Trả về mã ID mới
                 return nextID;
             }
         }
@@ -234,171 +225,258 @@ namespace QuanLyHocSinhTruongPhoThong
     {
         public static AppDbContext context = new AppDbContext();
 
-        public static List<HocSinhHanhKiemView> getDanhSachHanhKiemTheoGVCN()
+        public static List<HocSinhHanhKiemView> getDanhSachHanhKiem()
         {
             try
             {
-                string username = CurrentUser.Username;
-                string maGV = getMaGVByUsername(username);
-                if (string.IsNullOrEmpty(maGV))
-                    return new List<HocSinhHanhKiemView>();
+                using (var context = new AppDbContext())
+                {
+                    if (CurrentUser.HasRole("Admin"))
+                    {
+                        var result = (from hs in context.HocSinhs
+                                      join lop in context.Lops on hs.MaLop equals lop.MaLop
+                                      join gv in context.GiaoViens on lop.MaGV equals gv.MaGV into gvJoin
+                                      from gv in gvJoin.DefaultIfEmpty()
+                                      join hk in context.HanhKiems on hs.MaHS equals hk.MaHS into hsHK
+                                      from hk in hsHK.DefaultIfEmpty()
+                                      join hkInfo in context.HocKies on hk.MaHK equals hkInfo.MaHK into hkJoin
+                                      from hkInfo in hkJoin.DefaultIfEmpty()
+                                      select new HocSinhHanhKiemView
+                                      {
+                                          MaHS = hs.MaHS,
+                                          HoTenHocSinh = hs.HoTen,
+                                          TenLop = lop.TenLop,
+                                          GiaoVienChuNhiem = (gv != null) ? gv.HoTen : "Chưa gán",
+                                          MaHK = (hkInfo != null) ? hkInfo.MaHK : null,
+                                          TenHK = (hkInfo != null) ? hkInfo.TenHK : null,
+                                          HanhKiem = (hk != null) ? hk.Loai : "Chưa có"
+                                      })
+                                      .OrderBy(x => x.TenLop)
+                                      .ThenBy(x => x.HoTenHocSinh)
+                                      .ToList();
 
-                var result = (from gv in context.GiaoViens
-                              join lop in context.Lops on gv.MaGV equals lop.MaGV
-                              join hs in context.HocSinhs on lop.MaLop equals hs.MaLop
-                              join hk in context.HanhKiems on hs.MaHS equals hk.MaHS into hsHK
-                              from hk in hsHK.DefaultIfEmpty()
-                              join hkInfo in context.HocKies on hk.MaHK equals hkInfo.MaHK into hkJoin
-                              from hkInfo in hkJoin.DefaultIfEmpty()
-                              where gv.MaGV == maGV
-                              select new HocSinhHanhKiemView
-                              {
-                                  MaHS = hs.MaHS,
-                                  HoTenHocSinh = hs.HoTen,
-                                  TenLop = lop.TenLop,
-                                  GiaoVienChuNhiem = gv.HoTen,
-                                  MaHK = hkInfo != null ? hkInfo.MaHK : null,
-                                  TenHK = hkInfo != null ? hkInfo.TenHK : null,
-                                  HanhKiem = hk != null ? hk.Loai : "Chưa có"
-                              })
-                              .OrderBy(x => x.TenLop)
-                              .ThenBy(x => x.HoTenHocSinh)
-                              .ToList();
+                        return result;
+                    }
+                    else
+                    {
+                        string username = CurrentUser.Username;
 
-                return result;
+                        string maGV = getMaGVByUsername(username, context);
+
+                        if (string.IsNullOrEmpty(maGV))
+                            return new List<HocSinhHanhKiemView>(); // Không phải GVCN
+
+                        var result = (from gv in context.GiaoViens
+                                      join lop in context.Lops on gv.MaGV equals lop.MaGV
+                                      join hs in context.HocSinhs on lop.MaLop equals hs.MaLop
+                                      join hk in context.HanhKiems on hs.MaHS equals hk.MaHS into hsHK
+                                      from hk in hsHK.DefaultIfEmpty()
+                                      join hkInfo in context.HocKies on hk.MaHK equals hkInfo.MaHK into hkJoin
+                                      from hkInfo in hkJoin.DefaultIfEmpty()
+                                      where gv.MaGV == maGV // Lọc theo GVCN
+                                      select new HocSinhHanhKiemView
+                                      {
+                                          MaHS = hs.MaHS,
+                                          HoTenHocSinh = hs.HoTen,
+                                          TenLop = lop.TenLop,
+                                          GiaoVienChuNhiem = gv.HoTen,
+                                          MaHK = hkInfo != null ? hkInfo.MaHK : null,
+                                          TenHK = hkInfo != null ? hkInfo.TenHK : null,
+                                          HanhKiem = hk != null ? hk.Loai : "Chưa có"
+                                      })
+                                      .OrderBy(x => x.TenLop)
+                                      .ThenBy(x => x.HoTenHocSinh)
+                                      .ToList();
+
+                        return result;
+                    }
+                } 
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Lỗi khi lấy danh sách hạnh kiểm theo GVCN: " + ex.Message);
+                Console.WriteLine("Lỗi khi lấy danh sách hạnh kiểm: " + ex.Message);
                 return new List<HocSinhHanhKiemView>();
             }
+        }
+
+        public static string getMaGVByUsername(string username, AppDbContext context)
+        {
+            if (string.IsNullOrWhiteSpace(username)) return null;
+
+            var maGV = context.Accounts
+                             .Where(a => a.Username == username && a.MaGV != null)
+                             .Select(a => a.MaGV)
+                             .FirstOrDefault();
+            if (!string.IsNullOrEmpty(maGV)) return maGV;
+
+            maGV = context.GiaoViens
+                           .Where(g => g.Email == username)
+                           .Select(g => g.MaGV)
+                           .FirstOrDefault();
+            if (!string.IsNullOrEmpty(maGV)) return maGV;
+
+            var isGV = context.GiaoViens.Any(g => g.MaGV == username);
+            return isGV ? username : null;
         }
 
         public static List<HocSinhKTKLView> getDanhSachHocSinhTheoGVCN(string username)
         {
             try
             {
-                string maGV = getMaGVByUsername(username);
-                if (string.IsNullOrEmpty(maGV))
-                    return new List<HocSinhKTKLView>();
+                using (var context = new AppDbContext())
+                {
+                    if (CurrentUser.HasRole("Admin"))
+                    {
+                        var result = (from hs in context.HocSinhs
+                                      join lop in context.Lops on hs.MaLop equals lop.MaLop
+                                      join gv in context.GiaoViens on lop.MaGV equals gv.MaGV into gvJoin
+                                      from gv in gvJoin.DefaultIfEmpty()
+                                      join kt in context.KhenThuongKyLuats on hs.MaHS equals kt.MaHS into hsKT
+                                      from kt in hsKT.DefaultIfEmpty()
+                                      select new HocSinhKTKLView
+                                      {
+                                          MaHS = hs.MaHS,
+                                          HoTenHocSinh = hs.HoTen,
+                                          NgaySinh = hs.NgaySinh,
+                                          GioiTinh = hs.GioiTinh,
+                                          TenLop = lop.TenLop,
+                                          GiaoVienChuNhiem = (gv != null) ? gv.HoTen : "Chưa gán",
+                                          TrangThai = kt.Loai ?? "Không có",
+                                          NoiDung = kt.NoiDung,
+                                          Ngay = kt.Ngay
+                                      })
+                                      .OrderBy(x => x.TenLop)
+                                      .ThenBy(x => x.HoTenHocSinh)
+                                      .ToList();
 
-                var result = (from gv in context.GiaoViens
-                              join lop in context.Lops on gv.MaGV equals lop.MaGV
-                              join hs in context.HocSinhs on lop.MaLop equals hs.MaLop
-                              join kt in context.KhenThuongKyLuats on hs.MaHS equals kt.MaHS into hsKT
-                              from kt in hsKT.DefaultIfEmpty()
-                              where gv.MaGV == maGV
-                              select new HocSinhKTKLView
-                              {
-                                  MaHS = hs.MaHS,
-                                  HoTenHocSinh = hs.HoTen,
-                                  NgaySinh = hs.NgaySinh,
-                                  GioiTinh = hs.GioiTinh,
-                                  TenLop = lop.TenLop,
-                                  GiaoVienChuNhiem = gv.HoTen,
-                                  TrangThai = kt.Loai ?? "Không có",
-                                  NoiDung = kt.NoiDung,
-                                  Ngay = kt.Ngay
-                              })
-                              .OrderBy(x => x.TenLop)
-                              .ThenBy(x => x.HoTenHocSinh)
-                              .ToList();
+                        return result;
+                    }
+                    else
+                    {
+                        string maGV = getMaGVByUsername(username, context);
 
-                return result;
+                        if (string.IsNullOrEmpty(maGV))
+                            return new List<HocSinhKTKLView>();
+
+                        var result = (from gv in context.GiaoViens
+                                      join lop in context.Lops on gv.MaGV equals lop.MaGV
+                                      join hs in context.HocSinhs on lop.MaLop equals hs.MaLop
+                                      join kt in context.KhenThuongKyLuats on hs.MaHS equals kt.MaHS into hsKT
+                                      from kt in hsKT.DefaultIfEmpty()
+                                      where gv.MaGV == maGV // Lọc theo GVCN
+                                      select new HocSinhKTKLView
+                                      {
+                                          MaHS = hs.MaHS,
+                                          HoTenHocSinh = hs.HoTen,
+                                          NgaySinh = hs.NgaySinh,
+                                          GioiTinh = hs.GioiTinh,
+                                          TenLop = lop.TenLop,
+                                          GiaoVienChuNhiem = gv.HoTen,
+                                          TrangThai = kt.Loai ?? "Không có",
+                                          NoiDung = kt.NoiDung,
+                                          Ngay = kt.Ngay
+                                      })
+                                      .OrderBy(x => x.TenLop)
+                                      .ThenBy(x => x.HoTenHocSinh)
+                                      .ToList();
+
+                        return result;
+                    }
+                } 
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Lỗi khi lấy danh sách học sinh theo GVCN: " + ex.Message);
+                Console.WriteLine("Lỗi khi lấy danh sách học sinh: " + ex.Message);
                 return new List<HocSinhKTKLView>();
             }
         }
 
-        public static List<HocSinh> getHocSinhCuaGVCN(string username)
-        {
-            try
-            {
-                string maGV = getMaGVByUsername(username);
-                if (string.IsNullOrEmpty(maGV))
-                    return new List<HocSinh>();
+        //public static List<HocSinh> getHocSinhCuaGVCN(string username)
+        //{
+        //    try
+        //    {
+        //        string maGV = getMaGVByUsername(username);
+        //        if (string.IsNullOrEmpty(maGV))
+        //            return new List<HocSinh>();
 
-                var lopCuaGV = context.Lops
-                    .Where(l => l.MaGV == maGV)
-                    .Select(l => new { l.MaLop, l.TenLop, l.MaNienKhoa })
-                    .ToList();
+        //        var lopCuaGV = context.Lops
+        //            .Where(l => l.MaGV == maGV)
+        //            .Select(l => new { l.MaLop, l.TenLop, l.MaNienKhoa })
+        //            .ToList();
 
-                if (lopCuaGV.Count == 0)
-                    return new List<HocSinh>();
+        //        if (lopCuaGV.Count == 0)
+        //            return new List<HocSinh>();
 
-                var list = (from hs in context.HocSinhs
-                            join lop in context.Lops on hs.MaLop equals lop.MaLop
-                            join nk in context.NienKhoas on lop.MaNienKhoa equals nk.MaNienKhoa
-                            where lop.MaGV == maGV
-                            select new
-                            {
-                                hs.MaHS,
-                                hs.HoTen,
-                                hs.GioiTinh,
-                                hs.NgaySinh,
-                                hs.Sdt,
-                                hs.Email,
-                                hs.DiaChi,
-                                lop.TenLop,
-                                NamBatDau = nk.NamBatDau,
-                                NamKetThuc = nk.NamKetThuc
-                            })
-                            .OrderBy(x => x.TenLop)
-                            .ThenBy(x => x.HoTen)
-                            .ToList();
+        //        var list = (from hs in context.HocSinhs
+        //                    join lop in context.Lops on hs.MaLop equals lop.MaLop
+        //                    join nk in context.NienKhoas on lop.MaNienKhoa equals nk.MaNienKhoa
+        //                    where lop.MaGV == maGV
+        //                    select new
+        //                    {
+        //                        hs.MaHS,
+        //                        hs.HoTen,
+        //                        hs.GioiTinh,
+        //                        hs.NgaySinh,
+        //                        hs.Sdt,
+        //                        hs.Email,
+        //                        hs.DiaChi,
+        //                        lop.TenLop,
+        //                        NamBatDau = nk.NamBatDau,
+        //                        NamKetThuc = nk.NamKetThuc
+        //                    })
+        //                    .OrderBy(x => x.TenLop)
+        //                    .ThenBy(x => x.HoTen)
+        //                    .ToList();
 
-                return list.Select(x => new HocSinh
-                {
-                    MaHS = x.MaHS,
-                    HoTen = $"{x.HoTen} ({x.TenLop})",
-                    GioiTinh = x.GioiTinh,
-                    NgaySinh = x.NgaySinh,
-                    Sdt = x.Sdt,
-                    Email = x.Email,
-                    DiaChi = x.DiaChi
-                }).ToList();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Lỗi khi lấy danh sách học sinh của GVCN: " + ex.Message);
-                return new List<HocSinh>();
-            }
-        }
+        //        return list.Select(x => new HocSinh
+        //        {
+        //            MaHS = x.MaHS,
+        //            HoTen = $"{x.HoTen} ({x.TenLop})",
+        //            GioiTinh = x.GioiTinh,
+        //            NgaySinh = x.NgaySinh,
+        //            Sdt = x.Sdt,
+        //            Email = x.Email,
+        //            DiaChi = x.DiaChi
+        //        }).ToList();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("Lỗi khi lấy danh sách học sinh của GVCN: " + ex.Message);
+        //        return new List<HocSinh>();
+        //    }
+        //}
 
-        public static List<HocSinh> getHocSinhByUsername(string username)
-        {
-            try
-            {
-                string maGV = getMaGVByUsername(username);
-                if (string.IsNullOrEmpty(maGV))
-                    return new List<HocSinh>();
+        //public static List<HocSinh> getHocSinhByUsername(string username)
+        //{
+        //    try
+        //    {
+        //        string maGV = getMaGVByUsername(username);
+        //        if (string.IsNullOrEmpty(maGV))
+        //            return new List<HocSinh>();
 
-                var lopDuocDay = (from pc in context.PhanCongGiangDays
-                                  where pc.MaGV == maGV
-                                  select pc.MaLop)
-                                 .Union(from l in context.Lops
-                                        where l.MaGV == maGV
-                                        select l.MaLop)
-                                 .Distinct()
-                                 .ToList();
+        //        var lopDuocDay = (from pc in context.PhanCongGiangDays
+        //                          where pc.MaGV == maGV
+        //                          select pc.MaLop)
+        //                         .Union(from l in context.Lops
+        //                                where l.MaGV == maGV
+        //                                select l.MaLop)
+        //                         .Distinct()
+        //                         .ToList();
 
-                var list = context.HocSinhs
-                    .Where(hs => lopDuocDay.Contains(hs.MaLop))
-                    .OrderBy(hs => hs.MaLop)
-                    .ThenBy(hs => hs.HoTen)
-                    .ToList();
+        //        var list = context.HocSinhs
+        //            .Where(hs => lopDuocDay.Contains(hs.MaLop))
+        //            .OrderBy(hs => hs.MaLop)
+        //            .ThenBy(hs => hs.HoTen)
+        //            .ToList();
 
-                return list;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Lỗi khi lấy danh sách học sinh theo username: " + ex.Message);
-                return new List<HocSinh>();
-            }
-        }
+        //        return list;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("Lỗi khi lấy danh sách học sinh theo username: " + ex.Message);
+        //        return new List<HocSinh>();
+        //    }
+        //}
 
         public static string getMaGVByUsername(string username)
         {

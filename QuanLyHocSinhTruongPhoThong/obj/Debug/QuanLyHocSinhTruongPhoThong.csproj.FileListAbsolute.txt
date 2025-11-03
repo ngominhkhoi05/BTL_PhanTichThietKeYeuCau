@@ -58,7 +58,6 @@ D:\nam3\PhanTichThietKeYeuCau\BTL_PhanTichThietKeYeuCau\QuanLyHocSinhTruongPhoTh
 D:\nam3\PhanTichThietKeYeuCau\BTL_PhanTichThietKeYeuCau\QuanLyHocSinhTruongPhoThong\bin\Debug\EntityFramework.xml
 D:\nam3\PhanTichThietKeYeuCau\BTL_PhanTichThietKeYeuCau\QuanLyHocSinhTruongPhoThong\bin\Debug\EntityFramework.SqlServer.xml
 D:\nam3\PhanTichThietKeYeuCau\BTL_PhanTichThietKeYeuCau\QuanLyHocSinhTruongPhoThong\obj\Debug\QuanLyHocSinhTruongPhoThong.csproj.AssemblyReference.cache
-D:\nam3\PhanTichThietKeYeuCau\BTL_PhanTichThietKeYeuCau\QuanLyHocSinhTruongPhoThong\obj\Debug\QuanLyHocSinhTruongPhoThong.exe.config
 D:\nam3\PhanTichThietKeYeuCau\BTL_PhanTichThietKeYeuCau\QuanLyHocSinhTruongPhoThong\obj\Debug\QuanLyHocSinhTruongPhoThong.Index.resources
 D:\nam3\PhanTichThietKeYeuCau\BTL_PhanTichThietKeYeuCau\QuanLyHocSinhTruongPhoThong\obj\Debug\QuanLyHocSinhTruongPhoThong.Views.Admins.GiaoVien_UC.resources
 D:\nam3\PhanTichThietKeYeuCau\BTL_PhanTichThietKeYeuCau\QuanLyHocSinhTruongPhoThong\obj\Debug\QuanLyHocSinhTruongPhoThong.Views.Admins.HocSinh_UC.resources
@@ -85,3 +84,4 @@ D:\nam3\PhanTichThietKeYeuCau\BTL_PhanTichThietKeYeuCau\QuanLyHocSinhTruongPhoTh
 D:\nam3\PhanTichThietKeYeuCau\BTL_PhanTichThietKeYeuCau\QuanLyHocSinhTruongPhoThong\obj\Debug\QuanLyHo.E8E225F4.Up2Date
 D:\nam3\PhanTichThietKeYeuCau\BTL_PhanTichThietKeYeuCau\QuanLyHocSinhTruongPhoThong\obj\Debug\QuanLyHocSinhTruongPhoThong.exe
 D:\nam3\PhanTichThietKeYeuCau\BTL_PhanTichThietKeYeuCau\QuanLyHocSinhTruongPhoThong\obj\Debug\QuanLyHocSinhTruongPhoThong.pdb
+D:\nam3\PhanTichThietKeYeuCau\BTL_PhanTichThietKeYeuCau\QuanLyHocSinhTruongPhoThong\obj\Debug\QuanLyHocSinhTruongPhoThong.exe.config

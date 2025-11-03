@@ -1,4 +1,5 @@
-﻿using QuanLyHocSinhTruongPhoThong.Views;
+﻿using QuanLyHocSinhTruongPhoThong.Models;
+using QuanLyHocSinhTruongPhoThong.Views;
 using QuanLyHocSinhTruongPhoThong.Views.Admins;
 using QuanLyHocSinhTruongPhoThong.Views.GiaoVienBoMons;
 using QuanLyHocSinhTruongPhoThong.Views.GiaoViens.GiaoVienChuNhiems;
@@ -49,6 +50,53 @@ namespace QuanLyHocSinhTruongPhoThong
             flbnScrollBar.AutoScroll = true;
             flbnScrollBar.FlowDirection = FlowDirection.TopDown;
             flbnScrollBar.WrapContents = false;
+
+            if (CurrentUser.HasRole("Admin"))
+            {
+                btnBangDieuKhien.Visible = true;
+                btnNienKhoa.Visible = true;
+                btnLop.Visible = true;
+                btnGiaoVien.Visible = true;
+                btnHocSinh.Visible = true;
+                btnPhuHuynh.Visible = true;
+                btnMon.Visible = true;
+                btnGiangDay.Visible = true;
+                btnTKB.Visible = true;
+                btnNhapDiem.Visible = false;
+                btnHanhKiem.Visible = false;
+                btnKhenThuong.Visible = false;
+                btnBaoCao.Visible = true;
+                btnTaiKhoan.Visible = true;
+            }
+
+            if (CurrentUser.HasRole("GiaoVien") || CurrentUser.HasRole("GVCN"))
+            {
+                btnNienKhoa.Visible = false;
+                btnLop.Visible = false;
+                btnGiaoVien.Visible = false;
+                btnHocSinh.Visible = false; 
+                btnPhuHuynh.Visible = false; 
+                btnMon.Visible = false;
+                btnGiangDay.Visible = false;
+                btnBaoCao.Visible = false;
+                btnTaiKhoan.Visible = false;
+                btnBangDieuKhien.Visible = true;
+                btnTKB.Visible = true;
+                btnNhapDiem.Visible = true;
+                bool laGVCN = false;
+
+                if (!string.IsNullOrEmpty(CurrentUser.MaGV))
+                {
+                    using (var _context=new AppDbContext())
+                    {
+                        laGVCN = _context.Lops.Any(lop => lop.MaGV == CurrentUser.MaGV);
+                    }
+                }
+
+                btnHanhKiem.Visible = laGVCN;
+                btnKhenThuong.Visible = laGVCN;
+            }
+
         }
         private void button1_Click(object sender, EventArgs e)
         {
