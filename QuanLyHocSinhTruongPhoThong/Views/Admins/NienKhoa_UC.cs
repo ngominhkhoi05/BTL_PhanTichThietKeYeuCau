@@ -131,6 +131,9 @@ namespace QuanLyHocSinhTruongPhoThong.Views
             dtpkNamBatDau.ValueChanged += dtpkNamBatDau_ValueChanged;
             dtpkNamBatDau.Value = new DateTime(DateTime.Now.Year, 1, 1);
             dtpkNamKetThuc.Value = new DateTime(DateTime.Now.Year + 1, 1, 1);
+            this.txtTenHocKy.KeyPress += new System.Windows.Forms.KeyPressEventHandler(Event.TextBox_KhongNhapKyTuDacBiet_KeyPress);
+            this.txtMaHocKy.KeyPress += new System.Windows.Forms.KeyPressEventHandler(Event.TextBox_KhongNhapKyTuDacBiet_KeyPress);
+            this.txtMaNienKhoa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(Event.TextBox_KhongNhapKyTuDacBiet_KeyPress);
         }
         private void ConfigDateTimePickerNam()
         {

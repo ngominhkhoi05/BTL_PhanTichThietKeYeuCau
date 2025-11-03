@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lvGiaoVien = new System.Windows.Forms.ListView();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pnInfo = new System.Windows.Forms.Panel();
@@ -49,7 +50,9 @@
             this.lblGioiTinh = new System.Windows.Forms.Label();
             this.lblNgaySinh = new System.Windows.Forms.Label();
             this.lblTenGV = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.pnInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // lvGiaoVien
@@ -277,6 +280,10 @@
             this.lblTenGV.Text = "Họ tên";
             this.lblTenGV.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // GiaoVien_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -289,6 +296,7 @@
             this.Load += new System.EventHandler(this.GiaoVien_UC_Load);
             this.pnInfo.ResumeLayout(false);
             this.pnInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -316,5 +324,6 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.TextBox txtDiaChi;
         private System.Windows.Forms.Label lblDiaChi;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

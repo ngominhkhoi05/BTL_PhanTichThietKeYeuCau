@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -70,11 +71,13 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
                 lvMonHoc.EndUpdate();
             }
         }
-
         private void MonHoc_UC_Load(object sender, EventArgs e)
         {
             SetupListViewMonHoc();
             LoadMonHoc();
+            this.txtTenMon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(Event.TextBox_KhongNhapKyTuDacBiet_KeyPress);
+            this.txtTietTuan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(Event.TextBox_KhongNhapChu_KeyPress);
+            this.txtTietTuan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(Event.TextBox_KhongNhapKyTuDacBiet_KeyPress);
         }
 
         private void lvMonHoc_SelectedIndexChanged(object sender, EventArgs e)

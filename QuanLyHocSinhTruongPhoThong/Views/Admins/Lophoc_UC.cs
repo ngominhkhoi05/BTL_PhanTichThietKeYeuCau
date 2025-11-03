@@ -6,12 +6,14 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.Entity;
 
 namespace QuanLyHocSinhTruongPhoThong.Views.Admins
 {
-    public partial class Lophoc_UC : UserControl,IReloadable
+    public partial class Lophoc_UC : UserControl, IReloadable
     {
         public Lophoc_UC()
         {
@@ -25,20 +27,36 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
             LoadNienKhoaToComboBox();
             LoadLopHoc();
 
+            this.txtHoTen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(Event.TextBox_KhongNhapKyTuDacBiet_KeyPress);
+            this.txtmaGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(Event.TextBox_KhongNhapKyTuDacBiet_KeyPress);
         }
+
         private void LoadLopHoc()
         {
             try
             {
                 lvLop.Items.Clear();
-                var list = GetListForDatabase.getListLop();
+                var list = GetListForDatabase.context.Lops
+                            .Include(l => l.GiaoVien)
+                            .Include(l => l.NienKhoa)
+                            .ToList();
 
                 foreach (var lop in list)
                 {
                     var item = new ListViewItem(lop.MaLop);
                     item.SubItems.Add(lop.TenLop);
-                    item.SubItems.Add($"{lop.MaNienKhoa}");
-                    item.SubItems.Add(lop.MaGV);
+
+                    string nienKhoaText = (lop.NienKhoa != null)
+                        ? $"{lop.MaNienKhoa} - {lop.NienKhoa.NamBatDau}-{lop.NienKhoa.NamKetThuc}"
+                        : lop.MaNienKhoa;
+                    item.SubItems.Add(nienKhoaText);
+
+                    string gvcnText = (lop.GiaoVien != null)
+                        ? $"{lop.MaGV} - {lop.GiaoVien.HoTen}"
+                        : lop.MaGV; // Nếu MaGV là NULL hoặc không tìm thấy GV
+
+                    item.SubItems.Add(gvcnText ?? "Chưa gán"); // ?? "Chưa gán" nếu MaGV là NULL
+
                     lvLop.Items.Add(item);
                 }
             }
@@ -57,25 +75,27 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
             lvLop.MultiSelect = false;
 
             lvLop.Columns.Clear();
-
-            int totalWidth = lvLop.ClientSize.Width; 
-
+            int totalWidth = lvLop.ClientSize.Width;
             int col1 = (int)(totalWidth * 0.15);
-            int col2 = (int)(totalWidth * 0.25); 
-            int col3 = (int)(totalWidth * 0.25); 
-            int col4 = (int)(totalWidth * 0.35); 
+            int col2 = (int)(totalWidth * 0.25);
+            int col3 = (int)(totalWidth * 0.25);
+            int col4 = (int)(totalWidth * 0.35);
             lvLop.Columns.Add("Mã lớp", col1);
             lvLop.Columns.Add("Tên lớp", col2);
             lvLop.Columns.Add("Niên khóa", col3);
             lvLop.Columns.Add("Giáo viên chủ nhiệm", col4);
         }
+
         private void LoadGiaoVienToComboBox()
         {
             try
             {
                 var listGV = GetListForDatabase.getListGiaoVien();
 
+                // Thêm một mục "Không chọn" hoặc "Chưa gán"
                 cbbGVCN.Items.Clear();
+                cbbGVCN.Items.Add("NULL - Chưa gán GVCN"); // Dùng "NULL" để xử lý
+
                 foreach (var gv in listGV)
                 {
                     cbbGVCN.Items.Add($"{gv.MaGV} - {gv.HoTen}");
@@ -90,12 +110,12 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
                                 "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void LoadNienKhoaToComboBox()
         {
             try
             {
                 var listNK = GetListForDatabase.getListNienKhoa();
-
                 cbbNienKHoa.Items.Clear();
 
                 foreach (var nk in listNK)
@@ -127,31 +147,37 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
 
             var item = lvLop.SelectedItems[0];
 
-            // Lấy dữ liệu theo thứ tự cột
             string maLop = item.SubItems[0].Text;
             string tenLop = item.SubItems[1].Text;
-            string maNienKhoa = item.SubItems[2].Text;
-            string maGVCN = item.SubItems[3].Text;
+            string nienKhoaFullText = item.SubItems[2].Text;
+            string gvcnFullText = item.SubItems[3].Text;    
 
             txtmaGV.Text = maLop;
             txtHoTen.Text = tenLop;
 
+            string maNienKhoa = nienKhoaFullText.Split('-')[0].Trim();
+
             var nkItem = cbbNienKHoa.Items
                 .Cast<string>()
                 .FirstOrDefault(x => x.StartsWith(maNienKhoa));
+
             if (nkItem != null)
                 cbbNienKHoa.SelectedItem = nkItem;
             else
                 cbbNienKHoa.SelectedIndex = -1;
 
+            string maGVCN = gvcnFullText.Split('-')[0].Trim(); // Sẽ lấy "GV0001" hoặc "NULL"
+
             var gvItem = cbbGVCN.Items
                 .Cast<string>()
-                .FirstOrDefault(x => x.StartsWith(maGVCN));
+                .FirstOrDefault(x => x.StartsWith(maGVCN)); // Tìm "GV0001" hoặc "NULL"
+
             if (gvItem != null)
                 cbbGVCN.SelectedItem = gvItem;
             else
-                cbbGVCN.SelectedIndex = -1;
+                cbbGVCN.SelectedIndex = 0; // Nếu không tìm thấy, quay về "Chưa gán"
         }
+
         private void ClearTracker()
         {
             foreach (var entry in GetListForDatabase.context.ChangeTracker.Entries().ToList())
@@ -162,8 +188,9 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
         {
             try
             {
-                string maLop = txtmaGV.Text.Trim(); // ⚠️ đổi thành txtMaLop nếu bạn rename
-                string tenLop = txtHoTen.Text.Trim(); // ⚠️ đổi thành txtTenLop nếu bạn rename
+                // Tên control của bạn nên là txtMaLop và txtTenLop
+                string maLop = txtmaGV.Text.Trim();
+                string tenLop = txtHoTen.Text.Trim();
 
                 if (string.IsNullOrWhiteSpace(maLop) ||
                     string.IsNullOrWhiteSpace(tenLop) ||
@@ -177,6 +204,9 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
 
                 string maNienKhoa = cbbNienKHoa.SelectedItem.ToString().Split('-')[0].Trim();
                 string maGVCN = cbbGVCN.SelectedItem.ToString().Split('-')[0].Trim();
+
+                if (maGVCN == "NULL")
+                    maGVCN = null;
 
                 bool tonTai = GetListForDatabase.context.Lops
                     .Any(l => l.MaLop == maLop);
@@ -227,6 +257,13 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
                     return;
                 }
 
+                if (cbbNienKHoa.SelectedIndex < 0 || cbbGVCN.SelectedIndex < 0)
+                {
+                    MessageBox.Show("Vui lòng chọn Niên khóa và GVCN!",
+                                    "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 ClearTracker();
 
                 var lop = GetListForDatabase.context.Lops
@@ -240,6 +277,10 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
 
                 string maNienKhoa = cbbNienKHoa.SelectedItem.ToString().Split('-')[0].Trim();
                 string maGVCN = cbbGVCN.SelectedItem.ToString().Split('-')[0].Trim();
+
+                // Xử lý nếu chọn "Chưa gán GVCN"
+                if (maGVCN == "NULL")
+                    maGVCN = null;
 
                 lop.TenLop = tenLop;
                 lop.MaNienKhoa = maNienKhoa;
@@ -282,8 +323,8 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
                 }
 
                 var confirm = MessageBox.Show($"Bạn có chắc muốn xóa lớp {maLop}?",
-                                              "Xác nhận xóa", MessageBoxButtons.YesNo,
-                                              MessageBoxIcon.Question);
+                                            "Xác nhận xóa", MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Question);
                 if (confirm != DialogResult.Yes)
                     return;
 
@@ -322,7 +363,7 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
                     cbbNienKHoa.SelectedIndex = 0;
 
                 if (cbbGVCN.Items.Count > 0)
-                    cbbGVCN.SelectedIndex = 0;
+                    cbbGVCN.SelectedIndex = 0; // Quay về "Chưa gán"
 
                 lvLop.SelectedItems.Clear();
             }
@@ -332,6 +373,5 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
                                 "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
     }
 }

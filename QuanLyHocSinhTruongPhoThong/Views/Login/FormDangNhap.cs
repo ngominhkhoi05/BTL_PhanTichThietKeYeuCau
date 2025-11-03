@@ -21,7 +21,7 @@ namespace QuanLyHocSinhTruongPhoThong
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            this.txtTenDangNhap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(Event.TextBox_KhongNhapKyTuDacBiet_KeyPress);
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {

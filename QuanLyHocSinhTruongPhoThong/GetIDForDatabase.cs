@@ -778,8 +778,7 @@ namespace QuanLyHocSinhTruongPhoThong
                     return result;
                 }
 
-                //string hashInput = HashPassword(password);
-                string hashInput = password;
+                string hashInput = HashPassword(password);
 
                 if (!string.Equals(acc.PasswordHash, hashInput, StringComparison.OrdinalIgnoreCase))
                 {

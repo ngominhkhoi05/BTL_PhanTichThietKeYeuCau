@@ -496,6 +496,7 @@
             // 
             this.txtPassword.Location = new System.Drawing.Point(167, 74);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(181, 20);
             this.txtPassword.TabIndex = 34;
             // 
@@ -564,9 +565,9 @@
             this.label16.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(390, 72);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(60, 21);
+            this.label16.Size = new System.Drawing.Size(97, 21);
             this.label16.TabIndex = 9;
-            this.label16.Text = "Họ tên";
+            this.label16.Text = "Tên hiển thị";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label17

@@ -7,7 +7,9 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -37,12 +39,16 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
         {
 
         }
-
         private void GiaoVien_UC_Load(object sender, EventArgs e)
         {
             SetupListView();
             Reload();
-
+            this.txtHoTen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(Event.TextBox_KhongNhapSo_KeyPress);
+            this.txtSDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(Event.TextBox_KhongNhapChu_KeyPress);
+            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(Event.TextBox_Email_Validating);
+            this.txtDiaChi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(Event.TextBox_KhongNhapKyTuDacBiet_KeyPress);
+            this.txtHoTen.KeyPress +=new System.Windows.Forms.KeyPressEventHandler(Event.TextBox_KhongNhapKyTuDacBiet_KeyPress);
+            this.txtSDT.KeyPress +=new System.Windows.Forms.KeyPressEventHandler(Event.TextBox_KhongNhapKyTuDacBiet_KeyPress);
             // Gắn sự kiện khi chọn 1 dòng trong ListView
             lvGiaoVien.SelectedIndexChanged += lvGiaoVien_SelectedIndexChanged;
 
@@ -50,6 +56,7 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
             cbbGioiTinh.Items.Clear();
             cbbGioiTinh.Items.Add("Nam");
             cbbGioiTinh.Items.Add("Nữ");
+            cbbGioiTinh.SelectedIndex = 0;
             // Cấu hình DateTimePicker hiển thị ngày theo dạng dd/MM/yyyy
             dtpkNgaySinh.Format = DateTimePickerFormat.Custom;
             dtpkNgaySinh.CustomFormat = "dd/MM/yyyy";
@@ -301,5 +308,7 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
             foreach (var e in context.ChangeTracker.Entries().ToList())
                 e.State = EntityState.Detached;
         }
+
+        
     }
 }

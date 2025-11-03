@@ -107,6 +107,8 @@
             this.Controls.Add(this.cbbMaMon);
             this.Controls.Add(this.txtMaNK);
             this.Controls.Add(this.lblMaPC);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmLocHocSinh";
             this.Text = "Loc";
             this.Load += new System.EventHandler(this.Loc_Load);

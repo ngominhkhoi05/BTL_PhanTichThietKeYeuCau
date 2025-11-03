@@ -33,6 +33,9 @@ namespace QuanLyHocSinhTruongPhoThong.Views.GiaoViens.GiaoVienChuNhiems
             SetupListViewHocSinh();
             LoadPhuHuynh();
             LoadHocSinh();
+            this.txtHoTen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(Event.TextBox_KhongNhapSo_KeyPress);
+            this.txtSDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(Event.TextBox_KhongNhapChu_KeyPress);
+            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(Event.TextBox_Email_Validating);
         }
 
         private void btnThem_Click(object sender, EventArgs e)

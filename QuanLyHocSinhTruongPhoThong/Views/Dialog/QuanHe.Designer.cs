@@ -83,6 +83,8 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cbbQuanHe);
             this.Controls.Add(this.lblQuanHe);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "QuanHe";
             this.Text = "QuanHe";
             this.Load += new System.EventHandler(this.QuanHe_Load);

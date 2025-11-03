@@ -51,6 +51,9 @@ namespace QuanLyHocSinhTruongPhoThong
             flbnScrollBar.FlowDirection = FlowDirection.TopDown;
             flbnScrollBar.WrapContents = false;
 
+            txtTenNguoiDung.Text = CurrentUser.DisplayName;
+            txtVaiTro.Text = string.Join(", ", CurrentUser.Roles);
+
             if (CurrentUser.HasRole("Admin"))
             {
                 btnBangDieuKhien.Visible = true;
@@ -62,11 +65,31 @@ namespace QuanLyHocSinhTruongPhoThong
                 btnMon.Visible = true;
                 btnGiangDay.Visible = true;
                 btnTKB.Visible = true;
-                btnNhapDiem.Visible = false;
-                btnHanhKiem.Visible = false;
-                btnKhenThuong.Visible = false;
+
+                bool coGiangDay = false;
+
+                if (!string.IsNullOrEmpty(CurrentUser.MaGV))
+                {
+                    using (var _context = new AppDbContext())
+                    {
+                        coGiangDay = _context.PhanCongGiangDays.Any(pc => pc.MaGV == CurrentUser.MaGV);
+                    }
+                }
+                btnNhapDiem.Visible = coGiangDay;
+
                 btnBaoCao.Visible = true;
                 btnTaiKhoan.Visible = true;
+                bool laGVCN = false;
+                if (!string.IsNullOrEmpty(CurrentUser.MaGV))
+                {
+                    using (var _context = new AppDbContext())
+                    {
+                        laGVCN = _context.Lops.Any(lop => lop.MaGV == CurrentUser.MaGV);
+                    }
+                }
+
+                btnHanhKiem.Visible = laGVCN;
+                btnKhenThuong.Visible = laGVCN;
             }
 
             if (CurrentUser.HasRole("GiaoVien") || CurrentUser.HasRole("GVCN"))
@@ -82,7 +105,18 @@ namespace QuanLyHocSinhTruongPhoThong
                 btnTaiKhoan.Visible = false;
                 btnBangDieuKhien.Visible = true;
                 btnTKB.Visible = true;
-                btnNhapDiem.Visible = true;
+
+                bool coGiangDay = false;
+
+                if (!string.IsNullOrEmpty(CurrentUser.MaGV))
+                {
+                    using (var _context = new AppDbContext())
+                    {
+                        coGiangDay = _context.PhanCongGiangDays.Any(pc => pc.MaGV == CurrentUser.MaGV);
+                    }
+                }
+                btnNhapDiem.Visible = coGiangDay;
+
                 bool laGVCN = false;
 
                 if (!string.IsNullOrEmpty(CurrentUser.MaGV))

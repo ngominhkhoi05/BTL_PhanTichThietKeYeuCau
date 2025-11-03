@@ -202,6 +202,7 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Dialog
             SetupListViewHocSinh();
             string username = CurrentUser.Username;
             LoadHocSinhChuaKTKL(username);
+            this.txtNoiDung.KeyPress += new System.Windows.Forms.KeyPressEventHandler(Event.TextBox_KhongNhapKyTuDacBiet_KeyPress);
         }
     }
 }

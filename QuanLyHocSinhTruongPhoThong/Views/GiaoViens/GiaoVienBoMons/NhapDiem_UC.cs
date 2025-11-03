@@ -194,6 +194,12 @@ namespace QuanLyHocSinhTruongPhoThong.Views.GiaoVienBoMons
             nbrUDDiemGK.Value = 0;
             nbrUDDiemCK.Value = 0;
 
+            nbrUDDiemGK.Minimum = 0;
+            nbrUDDiemGK.Maximum = 10;
+
+            nbrUDDiemCK.Minimum = 0;
+            nbrUDDiemCK.Maximum = 10;
+
             nbrUDDiemGK.ValueChanged += nbrUDDiem_ValueChanged;
             nbrUDDiemCK.ValueChanged += nbrUDDiem_ValueChanged;
         }

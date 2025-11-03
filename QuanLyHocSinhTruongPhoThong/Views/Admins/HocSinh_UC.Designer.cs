@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lvHS = new System.Windows.Forms.ListView();
@@ -56,7 +57,9 @@
             this.lblTenHS = new System.Windows.Forms.Label();
             this.lvPH = new System.Windows.Forms.ListView();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.pnInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -362,6 +365,10 @@
             this.lblTitle.TabIndex = 32;
             this.lblTitle.Text = "HỌC SINH";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // HocSinh_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -377,6 +384,7 @@
             this.Load += new System.EventHandler(this.HocSinh_UC_Load);
             this.pnInfo.ResumeLayout(false);
             this.pnInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -412,5 +420,6 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.ComboBox cbbMaLop;
         private System.Windows.Forms.Label lblMaLop;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

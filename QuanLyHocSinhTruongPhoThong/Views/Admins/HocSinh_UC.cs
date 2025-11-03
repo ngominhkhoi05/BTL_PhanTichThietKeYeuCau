@@ -7,8 +7,10 @@ using System.Data;
 using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -477,16 +479,24 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
             var listLop = GetListForDatabase.getListLop();
             cbbMaLop.Items.Clear();
             cbbMaLop.Items.AddRange(listLop.Select(l => l.MaLop).Cast<object>().ToArray());
+            cbbMaLop.SelectedIndex = 0;
             cbbGioiTinh.Items.Clear();
             cbbGioiTinh.Items.Add("Nam");
             cbbGioiTinh.Items.Add("Nữ");
+            cbbGioiTinh.SelectedIndex = 0;
 
             ConfigNgaySinhHocSinh();
             SetupListViewHocSinh();
             SetupListViewPhuHuynh();
             Reload();
-        }
+            this.txtHoTen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(Event.TextBox_KhongNhapSo_KeyPress);
+            this.txtSDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(Event.TextBox_KhongNhapChu_KeyPress);
+            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(Event.TextBox_Email_Validating);
 
+            this.txtDiaChi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(Event.TextBox_KhongNhapKyTuDacBiet_KeyPress);
+            this.txtHoTen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(Event.TextBox_KhongNhapKyTuDacBiet_KeyPress);
+            this.txtSDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(Event.TextBox_KhongNhapKyTuDacBiet_KeyPress);
+        }
         public void Reload(object arg = null)
         {
 
@@ -541,5 +551,7 @@ namespace QuanLyHocSinhTruongPhoThong.Views.Admins
                                 "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        
     }
 }

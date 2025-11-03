@@ -82,6 +82,8 @@
             this.Controls.Add(this.btnLoc);
             this.Controls.Add(this.cbbMaHK);
             this.Controls.Add(this.lblMaPC);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmLocTheoKy";
             this.Text = "frmLocTheoKy";
             this.Load += new System.EventHandler(this.frmLocTheoKy_Load);

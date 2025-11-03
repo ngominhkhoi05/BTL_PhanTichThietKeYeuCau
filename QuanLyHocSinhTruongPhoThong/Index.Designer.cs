@@ -455,6 +455,8 @@
             this.Controls.Add(this.flbnScrollBar);
             this.Controls.Add(this.pnInfo);
             this.Controls.Add(this.lblMKVN);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Index";
             this.Text = "Trang chủ";
             this.Load += new System.EventHandler(this.Index_Load);

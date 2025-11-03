@@ -23,6 +23,7 @@ namespace QuanLyHocSinhTruongPhoThong.Views.GiaoViens.GiaoVienChuNhiems
             var user = CurrentUser.Username;
             LoadKhenThuongKyLuat(user);
             cbbMaHK.SelectedIndexChanged += cbbMaHK_SelectedIndexChanged;
+            this.txtNoiDung.KeyPress += new System.Windows.Forms.KeyPressEventHandler(Event.TextBox_KhongNhapKyTuDacBiet_KeyPress);
         }
         private void SetupListViewHocSinh()
         {

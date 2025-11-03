@@ -39,13 +39,13 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.txtTen = new System.Windows.Forms.TextBox();
             this.lblTenHS = new System.Windows.Forms.Label();
+            this.cbbMaHK = new System.Windows.Forms.ComboBox();
             this.cbbLoai = new System.Windows.Forms.ComboBox();
             this.lblLoai = new System.Windows.Forms.Label();
             this.txtMaHS = new System.Windows.Forms.TextBox();
             this.lblMaHS = new System.Windows.Forms.Label();
             this.lblHocKi = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.cbbMaHK = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -174,6 +174,15 @@
             this.lblTenHS.Text = "Tên học sinh";
             this.lblTenHS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // cbbMaHK
+            // 
+            this.cbbMaHK.Enabled = false;
+            this.cbbMaHK.FormattingEnabled = true;
+            this.cbbMaHK.Location = new System.Drawing.Point(169, 126);
+            this.cbbMaHK.Name = "cbbMaHK";
+            this.cbbMaHK.Size = new System.Drawing.Size(220, 21);
+            this.cbbMaHK.TabIndex = 45;
+            // 
             // cbbLoai
             // 
             this.cbbLoai.FormattingEnabled = true;
@@ -233,15 +242,6 @@
             this.lblTitle.TabIndex = 36;
             this.lblTitle.Text = "KHEN THƯỞNG - KỶ LUẬT";
             // 
-            // cbbMaHK
-            // 
-            this.cbbMaHK.Enabled = false;
-            this.cbbMaHK.FormattingEnabled = true;
-            this.cbbMaHK.Location = new System.Drawing.Point(169, 126);
-            this.cbbMaHK.Name = "cbbMaHK";
-            this.cbbMaHK.Size = new System.Drawing.Size(220, 21);
-            this.cbbMaHK.TabIndex = 45;
-            // 
             // ThemKhenThuong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -251,6 +251,8 @@
             this.Controls.Add(this.lvHocSinh);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblTitle);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "ThemKhenThuong";
             this.Text = "ThemKhenThuong";
             this.Load += new System.EventHandler(this.ThemKhenThuong_Load);

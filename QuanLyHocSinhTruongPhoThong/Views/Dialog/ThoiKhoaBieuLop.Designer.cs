@@ -84,6 +84,8 @@
             this.Controls.Add(this.lblTKB);
             this.Controls.Add(this.btnXacNhan);
             this.Controls.Add(this.lvLop);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "ThoiKhoaBieuLop";
             this.Text = "ThoiKhoaBieuLop";
             this.Load += new System.EventHandler(this.ThoiKhoaBieuLop_Load);
