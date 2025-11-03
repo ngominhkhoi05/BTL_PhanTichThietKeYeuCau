@@ -17,8 +17,6 @@ namespace QuanLyHocSinhTruongPhoThong
     public partial class Index : Form
     {
         private NavManager _nav;
-
-
         public string userName = "";
         public string passwordHash = "";
         private int _smoothTargetY = 0;
@@ -27,7 +25,6 @@ namespace QuanLyHocSinhTruongPhoThong
         public Index()
         {
             InitializeComponent();
-            // Khởi tạo NavManager
             _nav = new NavManager(pnHost);
             _nav.Register("BangDieuKhien", () => new BangDieuKhien_UC());
             _nav.Show("BangDieuKhien");
@@ -134,9 +131,7 @@ namespace QuanLyHocSinhTruongPhoThong
         MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 CurrentUser.Logout();
-                var login = new Index();
-                login.Show();
-                this.Close();
+                Application.Restart();
             }
         }
     }

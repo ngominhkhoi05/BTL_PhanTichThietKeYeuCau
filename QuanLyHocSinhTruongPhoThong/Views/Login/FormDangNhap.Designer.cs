@@ -109,6 +109,7 @@
             this.lblQuenMK.Size = new System.Drawing.Size(152, 23);
             this.lblQuenMK.TabIndex = 6;
             this.lblQuenMK.Text = "Quên mật khẩu?";
+            this.lblQuenMK.Click += new System.EventHandler(this.lblQuenMK_Click);
             // 
             // lblMatKhau
             // 
@@ -124,10 +125,10 @@
             // txtMatKhau
             // 
             this.txtMatKhau.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMatKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMatKhau.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMatKhau.Location = new System.Drawing.Point(55, 249);
             this.txtMatKhau.Name = "txtMatKhau";
-            this.txtMatKhau.Size = new System.Drawing.Size(370, 35);
+            this.txtMatKhau.Size = new System.Drawing.Size(370, 29);
             this.txtMatKhau.TabIndex = 4;
             // 
             // lblTenDangNhap
@@ -145,10 +146,10 @@
             // txtTenDangNhap
             // 
             this.txtTenDangNhap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTenDangNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTenDangNhap.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTenDangNhap.Location = new System.Drawing.Point(55, 150);
             this.txtTenDangNhap.Name = "txtTenDangNhap";
-            this.txtTenDangNhap.Size = new System.Drawing.Size(370, 35);
+            this.txtTenDangNhap.Size = new System.Drawing.Size(370, 29);
             this.txtTenDangNhap.TabIndex = 2;
             // 
             // panel3

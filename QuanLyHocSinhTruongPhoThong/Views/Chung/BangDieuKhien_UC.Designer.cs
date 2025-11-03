@@ -28,15 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartDiemMonHoc = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pnDiemTB = new System.Windows.Forms.Panel();
             this.lblDiemTB = new System.Windows.Forms.Label();
             this.lblTitleDiemTB = new System.Windows.Forms.Label();
@@ -56,9 +52,10 @@
             this.pnTitle = new System.Windows.Forms.Panel();
             this.lbtContent = new System.Windows.Forms.TextBox();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.cboLop = new System.Windows.Forms.ComboBox();
+            this.cboHocKy = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartDiemMonHoc)).BeginInit();
             this.pnDiemTB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptrbDiemTB)).BeginInit();
             this.pnGV.SuspendLayout();
@@ -73,51 +70,36 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel2.Controls.Add(this.chart2);
-            this.panel2.Controls.Add(this.chart1);
+            this.panel2.Controls.Add(this.cboHocKy);
+            this.panel2.Controls.Add(this.cboLop);
+            this.panel2.Controls.Add(this.chartDiemMonHoc);
             this.panel2.Controls.Add(this.pnDiemTB);
             this.panel2.Controls.Add(this.pnGV);
             this.panel2.Controls.Add(this.pnTiLeDau);
             this.panel2.Controls.Add(this.pnHS);
             this.panel2.Controls.Add(this.pnTitle);
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(0, 1);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(972, 673);
+            this.panel2.Size = new System.Drawing.Size(972, 674);
             this.panel2.TabIndex = 6;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // chart2
+            // chartDiemMonHoc
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart2.Legends.Add(legend1);
-            this.chart2.Location = new System.Drawing.Point(510, 235);
-            this.chart2.Name = "chart2";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart2.Series.Add(series1);
-            this.chart2.Size = new System.Drawing.Size(418, 394);
-            this.chart2.TabIndex = 14;
-            this.chart2.Text = "chart2";
-            // 
-            // chart1
-            // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(43, 235);
-            this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(418, 394);
-            this.chart1.TabIndex = 13;
-            this.chart1.Text = "chart1";
+            chartArea4.Name = "ChartArea1";
+            this.chartDiemMonHoc.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chartDiemMonHoc.Legends.Add(legend4);
+            this.chartDiemMonHoc.Location = new System.Drawing.Point(43, 262);
+            this.chartDiemMonHoc.Name = "chartDiemMonHoc";
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chartDiemMonHoc.Series.Add(series4);
+            this.chartDiemMonHoc.Size = new System.Drawing.Size(893, 367);
+            this.chartDiemMonHoc.TabIndex = 13;
+            this.chartDiemMonHoc.Text = "chart1";
             // 
             // pnDiemTB
             // 
@@ -288,7 +270,7 @@
             this.pnTitle.BackColor = System.Drawing.Color.White;
             this.pnTitle.Controls.Add(this.lbtContent);
             this.pnTitle.Controls.Add(this.lblTitle);
-            this.pnTitle.Location = new System.Drawing.Point(1, 1);
+            this.pnTitle.Location = new System.Drawing.Point(0, 2);
             this.pnTitle.Name = "pnTitle";
             this.pnTitle.Size = new System.Drawing.Size(971, 91);
             this.pnTitle.TabIndex = 5;
@@ -316,6 +298,24 @@
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Bảng điều khiển";
             // 
+            // cboLop
+            // 
+            this.cboLop.FormattingEnabled = true;
+            this.cboLop.Location = new System.Drawing.Point(795, 212);
+            this.cboLop.Name = "cboLop";
+            this.cboLop.Size = new System.Drawing.Size(141, 28);
+            this.cboLop.TabIndex = 14;
+            this.cboLop.SelectedIndexChanged += new System.EventHandler(this.cboLop_SelectedIndexChanged);
+            // 
+            // cboHocKy
+            // 
+            this.cboHocKy.FormattingEnabled = true;
+            this.cboHocKy.Location = new System.Drawing.Point(624, 212);
+            this.cboHocKy.Name = "cboHocKy";
+            this.cboHocKy.Size = new System.Drawing.Size(153, 28);
+            this.cboHocKy.TabIndex = 15;
+            this.cboHocKy.SelectedIndexChanged += new System.EventHandler(this.cboHocKy_SelectedIndexChanged);
+            // 
             // BangDieuKhien_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -323,9 +323,9 @@
             this.Controls.Add(this.panel2);
             this.Name = "BangDieuKhien_UC";
             this.Size = new System.Drawing.Size(972, 673);
+            this.Load += new System.EventHandler(this.BangDieuKhien_UC_Load);
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartDiemMonHoc)).EndInit();
             this.pnDiemTB.ResumeLayout(false);
             this.pnDiemTB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptrbDiemTB)).EndInit();
@@ -347,8 +347,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartDiemMonHoc;
         private System.Windows.Forms.Panel pnDiemTB;
         private System.Windows.Forms.Label lblDiemTB;
         private System.Windows.Forms.Label lblTitleDiemTB;
@@ -368,5 +367,7 @@
         private System.Windows.Forms.Panel pnTitle;
         private System.Windows.Forms.TextBox lbtContent;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.ComboBox cboLop;
+        private System.Windows.Forms.ComboBox cboHocKy;
     }
 }

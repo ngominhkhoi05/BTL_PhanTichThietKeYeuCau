@@ -71,5 +71,11 @@ namespace QuanLyHocSinhTruongPhoThong
             }
         }
 
+        private void lblQuenMK_Click(object sender, EventArgs e)
+        {
+              MessageBox.Show("Vui lòng liên hệ admin hệ thống để cấp lại mật khẩu",
+                                "Thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+        }
     }
 }

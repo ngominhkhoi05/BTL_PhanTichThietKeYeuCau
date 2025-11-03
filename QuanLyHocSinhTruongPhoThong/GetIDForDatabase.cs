@@ -1,6 +1,7 @@
 ﻿using QuanLyHocSinhTruongPhoThong.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Security.Cryptography;
@@ -233,10 +234,11 @@ namespace QuanLyHocSinhTruongPhoThong
     {
         public static AppDbContext context = new AppDbContext();
 
-        public static List<HocSinhHanhKiemView> getDanhSachHanhKiemTheoGVCN(string username)
+        public static List<HocSinhHanhKiemView> getDanhSachHanhKiemTheoGVCN()
         {
             try
             {
+                string username = CurrentUser.Username;
                 string maGV = getMaGVByUsername(username);
                 if (string.IsNullOrEmpty(maGV))
                     return new List<HocSinhHanhKiemView>();
@@ -454,6 +456,28 @@ namespace QuanLyHocSinhTruongPhoThong
             catch { return new List<Lop>(); }
         }
 
+        public static List<DiemTrungBinhMonHocDTO> GetDiemTrungBinhCacMon(string maLop, string maHk)
+        {
+            using (var context = new AppDbContext())
+            {
+                // 2. Toàn bộ code LINQ của bạn được đặt BÊN TRONG khối using
+                var duLieuBieuDo = from bd in context.BangDiems
+                                   join hs in context.HocSinhs on bd.MaHS equals hs.MaHS
+                                   join mh in context.MonHocs on bd.MaMH equals mh.MaMH
+                                   where hs.MaLop == maLop && bd.MaHK == maHk
+                                   group bd by new { mh.MaMH, mh.TenMH } into g
+                                   select new DiemTrungBinhMonHocDTO
+                                   {
+                                       TenMonHoc = g.Key.TenMH,
+                                       // (double)x.DiemTongKet là ĐÚNG
+                                       // vì CSDL của bạn định nghĩa DiemTongKet là NOT NULL
+                                       DiemTrungBinh = g.Average(x => (double)x.DiemTongKet)
+                                   };
+
+                return duLieuBieuDo.OrderByDescending(x => x.DiemTrungBinh).ToList();
+            }
+        }
+
         public static List<PhanCongGiangDayView> getListPhanCong()
         {
             try
@@ -604,7 +628,11 @@ namespace QuanLyHocSinhTruongPhoThong
             }
         }
     }
-
+    public class DiemTrungBinhMonHocDTO
+    {
+        public string TenMonHoc { get; set; }
+        public double DiemTrungBinh { get; set; }
+    }
     public static class CurrentUser
     {
         public static string AccountId { get; set; }

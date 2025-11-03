@@ -46,9 +46,8 @@ namespace QuanLyHocSinhTruongPhoThong.Views.GiaoViens.GiaoVienChuNhiems
             try
             {
                 lvHocSinh.Items.Clear();
-                string username = CurrentUser.Username;
 
-                var list = GetListForDatabase.getDanhSachHanhKiemTheoGVCN(username);
+                var list = GetListForDatabase.getDanhSachHanhKiemTheoGVCN();
 
                 foreach (var hs in list)
                 {
